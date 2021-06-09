@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            폼 요소</title>
+    </head>
+    <body>
+        <h3>폼 요소
+        </h3>
+        <form>
+            <h4>회원가입</h4>
+            <fieldset style="width: 600px; height: 500px;">
+                <legend>회원가입</legend>
+                아이디
+                <input type="text" id="ID"><br>
+                비밀번호
+                <input type="password" id="password"><br>
+                생년월일<br>
+                <select name="year">
+                    <option value="1" selected="selected">년도</option>
+                    <option value="2">1980s</option>
+                    <option value="3">1990s</option>
+                    <option value="4">2000s</option>
+                    <option value="5">2010s</option>
+                </select>
+                년도
+                <select name="year">
+                    <option value="1" selected="selected">월</option>
+                    <option value="2">1</option>
+                    <option value="3">2</option>
+                    <option value="4">3</option>
+                    <option value="5">4</option>
+                </select>
+                월
+                <select name="year">
+                    <option value="1" selected="selected">일</option>
+                    <option value="2">1</option>
+                    <option value="3">2</option>
+                    <option value="4">3</option>
+                    <option value="5">4</option>
+                </select>
+                일
+                <br>
+
+                성별<br>
+                <label class="btn btn-primary active">
+                    <input
+                        type="radio"
+                        name="userGender"
+                        autocomplete="off"
+                        value="남자"
+                        checked="checked">남자
+                </label>
+                <label class="btn btn-primary">
+                    <input type="radio" name="userGender" autocomplete="off" value="여자">여자
+                </label>
+                <br>
+                이메일
+                <input type="email" id="email" placeholder="@를 포함해주세요"><br>
+                휴대전화<br>
+                <input type="number" id="number" placeholder="숫자만 입력해주세요">
+                <input type="submit" id="Click" value="인증번호 받기"><br>
+                인증번호
+                <input type="text" id="number" placeholder="인증번호를 입력해주세요"><br>
+                취미<br>
+                <input type="checkbox" id="vehicle1" name="exercise" value="exercise">
+                <label for="vehicle1">
+                    운동</label>
+
+                <input type="checkbox" id="vehicle2" name="cook" value="Car">
+                <label for="vehicle2">
+                    요리</label>
+
+                <input type="checkbox" id="vehicle3" name="trip" value="trip">
+                <label for="vehicle3">
+                    여행</label>
+
+                <input type="checkbox" id="vehicle4" name="game" value="game">
+                <label for="vehicle4">
+                    게임</label>
+                <br>
+                가입인사
+                <br>
+                <textarea cols="50" rows="10" id="resome" placeholder=""></textarea><br>
+                <input type="submit" value="가입하기">
+            </form>
+        </body>
+    </html>
