@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <Script>
+
+        var value;
+        var num1;
+        var num2;
+        var num3;
+        var num4;
+
+        var value = prompt("입력해주세요", "입력");
+
+       
+         
+         var num1 = Math.floor(value/1000);
+         var num2 = Math.floor (value % 1000 / 100);
+         var num3 = Math.floor (value / 10 % 10);
+         var num4 = Math.floor (value % 10); 
+    
+        
+
+        document.write("천의 자리: " +num1);
+        document.write(" 백의 자리: " +num2);
+        document.write(" 십의 자리: " +num3);
+        document.write(" 일의 자리: " +num4);
+    </Script>
+</body>
+</html>
