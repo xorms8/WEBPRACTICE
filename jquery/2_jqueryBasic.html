@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8"/>
+	<title> 첫 연습 </title>
+	
+	<style type="text/css">
+	.active {
+	outline :2px solid red;
+	border : 2px solid red;}
+	</style>
+	
+	<script src = '../lib/jquery-3.1.1.min.js' type="text/javascript"></script>
+	<script type="text/javascript">
+	
+	$(function(){ //문서가 준비되면 이 함수를 불러주세요
+		
+		//Q1. li tag man woman 에 css로 baground 변경
+		$('li.man').css({'background' : 'pink'});
+		$('li.woman').css({'background' : 'yellow'}); 
+		
+		//입력창에 focus 가 가면 저 active 속성지정
+		//focus를 잃으면 (blur) active 속성해제
+		
+		//Q2.입력창에 focus blur 를 이용하여 focus와 blur시 위에 선언된 스타일 .active 를 적용하여라
+		$('.inputText').focus(function(){
+			$(this).addClass('active')
+		})
+		
+		$('.inputText').blur(function(){
+			$(this).removeClass('active')
+		})
+		
+		//Q3. 여기에 글씨를, 여기에 그림을 문장에 각각 text로 <img src ="images/grim.jpg">를 삽입하여 결과를 나타내라
+		$('#divText').text('<img src ="images/grim.jpg">')
+		//text를 바꿈
+		
+		$('#divHtml').html('<img src ="images/grim.jpg">')
+		//html 문장을 바꿈
+		/*
+			[참고] jquery의 html()의 역할을 하는 javascript의 구문??
+				==> innerHTML
+		*/ 
+		
+		//Q4. 강아지 그림을 클릭했을때 src를 변경해 cat으로 변경하여라
+		 $('#changeGrim').click(function(){
+			alert($(this).attr('src')) //알림창 띄워준다 #changeGrim 태그 값을 클릭하면  attr(그 속성값) 중 'src'로 시작하는 값을
+			
+			$(this).attr('src', 'images/cat.jpg') // this->changeGrim의 attribute값 ('src'를 images/cat.jpg로 변경)
+			
+			alert($(this).attr('src'))
+			
+			var a = $(this).attr('src'); // 'images/puppy.jpg'
+			$(this).attr('src',$(this).attr('src').replace('puppy', 'cat'));
+			 //#changeGrim을 클릭했을때 이벤트가 발생한다 attr(속성을 변경한다) src원래 속성은 images/puppy.jpg 를 replace (puppy -> cat)
+		})
+		
+		 //Q5.밑 과정을 10번 따라하기
+		 var actor = $('#actor') 
+		 var tae = $('#tae')
+		 var su = $('#su')
+		 var bin = $('#bin')
+		 
+		 actor.append(tae); // var actor에 append(추가한다) var tae 값을
+		 su.appendTo(actor); //약간 거꾸로 버전 actor에 append(추가한다) var su를
+		 
+		 actor.append('<div>어떤배우</div>') //var actor에 추가한다 <div>어떤배우<div> 태그도 가능
+		 
+		 var n = $('<div/>') //일단 n선언한 값에 <div/> <-div태그의 시작과 끝맺음
+		 n.text('그냥배우') //그 n 값에 text삽입 '그냥배우'
+		 actor.append(n) //actor변수에 append n 즉 위에 두문장인 <div>'그냥배우'</div>를 삽입하여 밑으로 내려가 뜰것이다.
+})
+
+
+
+</script>
+</head>
+<body>
+	<!--  1 -->
+	<ul>
+		<li class="man">김수현</li>
+		<li class="woman">김희애</li>
+		<li class="woman">송혜교</li>
+		<li class="man">하정우</li>
+		<li class="woman">김태희</li>
+	</ul>
+	<!-- 2 -->
+	<input type="text" class="inputText"/>
+	<input type="text" class="inputText"/>
+	<input type="text" class="inputText"/>
+	
+
+	<!-- 3 -->
+		<div id="divText">여기에 글씨를</div>
+		<div id="divHtml">여기에 그림을</div>
+		<div id="divEmpty">여기를 비움</div>
+		<p>
+		<img src="images/puppy.jpg" id='changeGrim'>
+		</p>
+		
+	<!-- 4 -->	
+		<p>
+		이름 : <input id="tf" type="text" size="20" /><br/>
+		메세지 : <textarea id="ta" rows="3" cols="20"></textarea><br/>
+		주소 : <select id="sel">
+			<option value="seoul">서울</option>	<!-- option에 value 값 없어도 됨 -->
+			<option value="busan">부산</option>
+			<option value="masan">마산</option>
+			<option value="incheon">인천</option>
+		</select>
+		<select id="sel_m" multiple="multiple">
+			<option value="seom1">제주도</option>
+			<option value="seom2">울릉도</option>
+			<option value="seom3">독도</option>
+			<option value="seom4">거제도</option>
+		</select><br/>
+		<input type='button' id='check' value='확인'/>
+		<input type='button' id='init' value='초기화'/> <!--  [과제] 클릭시 값 지정하려면  -->
+		<div id='result'></div>
+		</p>
+		
+	<!-- 5 -->
+		<div id="actor">배우</div>
+		<div id="tae">김태희</div>
+		<div id="su">김수현</div>
+		<div id="bin">현빈</div>
+		<!-- [ 과제 ] 동적 테이블 만들기  -->
+
+	<!-- 6 -->
+		<div class="data">이름</div>
+		<div class="data">직업</div>
+		<div class="data">나이</div>
+
+	
+</body>
+</html>

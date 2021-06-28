@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src='../lib/jquery-3.1.1.min.js' type="text/javascript"></script>
+<script type="text/javascript">
+	$(function() {
+
+		$('#btn').click(function() {
+			
+			/* var n = $('#name').val(); //사용자가 입력한 값을 얻어오는 var()
+			alert(n + '님 환영합니다.')
+			$('#name').val('') //setter(재지정) 공백을 지정하겠다 - >초기화 하려고 */
+					
+			var html = "";
+					
+			var name = $('#name').val();
+			var dept = $('#dept').val();
+			var job = $('#job').val();
+			
+			html += '<tr>';
+			html += '<td>' + name + '</td>';
+			html += '<td>' + dept + '</td>';
+			html += '<td>' + job + '</td>';
+			html += '</tr>';
+
+			$("table").append(html);
+
+			$("#name").val('');
+			$("#dept").val('');
+			$("#job").val(''); 
+			
+		})
+
+	})
+</script>
+
+</head>
+
+
+<body>
+<div>
+	<form>
+
+		<label>이름 :</label> <input type='text' id='name' name="name"><br />
+		<label>부서 :</label> <input type='text' id='dept' name='dept'><br />
+		<label>업무 :</label> <input type='text' id='job' name='job'><br />
+		<input type='button' value='send' id='btn'>
+		<hr />
+
+		<table border='2'>
+			<thead>
+				<tr>
+					<th>이름</th>
+					<th>부서</th>
+					<th>직업</th>
+				</tr>
+			</thead>
+			<tbody id='tableresult'></tbody>
+		</table>
+	</form>
+	</div>
+</body>
+</html>

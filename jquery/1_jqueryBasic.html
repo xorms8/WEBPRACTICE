@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title> 첫 연습 </title>
+<!-- 1.jquery 라이브러리 연동  -->
+<!--  상대 경로 <script src = '../lib/jquery-3.1.1.min.js' type="text/javascript"></script> -->
+
+<!-- 절대 경로 변경  (/(슬래쉬)부터 시작하는게 절대경로  -->
+<script src = '/jquery/5_jquery_class/lib/jquery-3.1.1.min.js' type="text/javascript"></script>
+
+<script type="text/javascript">
+	
+	$(function(){
+		
+		//$('선택자').동작()
+		
+		//변수선언 : var, let / const
+		
+		 var h = $('#here');
+		
+		/*h.click(function(){
+			//text()->텍스트 변환 / html()->태그도 변환
+			h.text('클릭합니다')
+		});
+		 */
+		//마우스가 들어갔을때 '마우스가 들어옴'
+		
+	/* 	h.mouseenter(function(){
+			h.text('마우스가 들어옴')
+		})
+		h.mouseleave(function(){
+			h.text('마우스가 나감')
+		}) */
+		
+		h.mouseover(function(){
+			h.text('마우스가 들어옴')
+		})
+		h.mouseleave(function(){
+			h.text('마우스가 나감')
+		})
+		
+		//한꺼번에
+		
+		/* h.hover(function(){
+			//h.css('border', '2px solid red')
+			//h.css('cursor', 'pointer')
+			//위 두줄을 한줄로 만들고 싶어	
+			//클래스->객체로 만들기 !!
+			h.css({
+				'border' : '2px solid red',
+				'cursor' : 'pointer'
+				})
+			
+		}, function(){
+			h.css('border', '2px dotted #AA5581')
+		});  */
+		
+		
+		//효과함수
+		//$('#here').fadeOut(2000).fadeIn(1000)
+		//slide down
+	/* 	$('#here').slideUp(1000)
+		$('#here').slideDown(1000) */
+		
+		
+
+		
+		
+	})
+	
+</script>
+</head>
+<body>
+	
+
+	<div id="here">
+	아자아자 제이쿼리~~!!! 
+	</div>
+	
+	
+	<div id="student">
+		<div id="name">홍길동</div>
+		<div id="age">34</div>
+	</div>
+
+	
+
+
+
+</body>
+</html>
