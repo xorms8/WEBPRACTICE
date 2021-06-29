@@ -1,0 +1,165 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8"/>
+  <title>스타트래커!</title>
+  <!-- js, css, jquery 지정 --> 
+  <link rel="stylesheet" href="css/base.css" type="text/css" media="screen" /> 
+  <link rel="stylesheet" href="css/bio.css" type="text/css" media="screen"  />
+ 	<!-- 1.jquery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<!-- 2. plugin 라이브러리 -->
+<script src="./js/jquery.easing.1.3.js" type="text/javascript"></script>
+	<!-- 3. 우리 코드 -->
+<script type="text/javascript">
+	$(function(){
+		/* $('#bio').each(function(){ //id=bio 값을 each 함수로 구조를 나눈다 그 나누는걸 밑에 작성
+			
+			var allh3 = $(this).find('h3'); //var allh3 변수에 대입  <- #bio내부에 find 찾는다 <h3> 태그값을
+			var h3div = $(this).find('div');// var h3 div 변수에 대입 <- #bio내부 find함수로 <div> 태그값을
+			
+			h3div.hide(); //변수로 저장한 h3div는 #bio내에 <div> 태그들을 모두 숨긴다.html코드를 보면 div내부에는 img와 p태그 내용이 들어있다.
+			
+			allh3.css("cursor","pointer").click(function(){
+				//allh3변수 즉, #bio내의 모든 h3태그의 css를 변경한다 ->마우스 포인터 올렸을때 커서 모양변경 -> 동시에 클릭 함수를 펼친다
+				
+				allh3.click(function(){ //위에서 클릭하면 이 액션이 실행된다. allh3 모든 <h3> 태그 값을 클릭하면 ~ ex)이승기,김수현,송중기
+					$(this).next().toggle(); //this->allh3 의 하단(next)태그가 toggle방식으로 SHOW/HIDE 기능을 수행케 한다.
+				})
+			})
+			
+		})
+		 */
+		//1) 모든 내용 숨기기
+		$('#bio > div').hide();
+		
+		//2) 첫번째 내용은 보이기
+		$('#bio > div:first').show();
+		
+		//3) 이름을 클릭시 보이기(토글)
+		$('#bio > h3').css("cursor","pointer").click(function(){
+			//$(this).next().toggle(); 
+			$(this).next().animate({'height' : 'toggle'}
+			,2000,'easeInExpo');
+		})
+	})
+
+
+
+</script>
+
+</head>
+
+
+
+
+<body>
+  <div id="container">
+    <div id="header">
+      <h1>스타파헤치기</h1>
+    </div>
+    <div id="content">
+      <h2>
+        환영합니다!
+      </h2>
+      <div id="navigation">
+        <ul>
+          <li><a href="#">처음으로</a></li>
+          <li><a href="#">지금 구매!</a></li>
+          <li><a href="#">스타트래커!란</a></li>
+          <li><a href="#">선물 코너</a></li>
+        </ul>
+      </div>
+      <p id="intro">		
+		최고의 유명인을 추적하고 살펴볼 수 있는 <strong>스타파헤치기</strong>에 오신 것을 환영합니다. 
+		최고의 유명인을 추적하고 살펴볼 수 있는 <strong>스타파헤치기</strong>에 오신 것을 환영합니다. 
+		최고의 유명인을 추적하고 살펴볼 수 있는 <strong>스타파헤치기</strong>에 오신 것을 환영합니다. 
+		최고의 유명인을 추적하고 살펴볼 수 있는 <strong>스타파헤치기</strong>에 오신 것을 환영합니다. 
+		최고의 유명인을 추적하고 살펴볼 수 있는 <strong>스타파헤치기</strong>에 오신 것을 환영합니다. 
+      </p>
+
+
+      <div id="bio">
+        <h2>지금 누가 가장 인기인가?</h2>
+        <h3>김수현</h3>
+            <div>
+          <img src="images/kimsuhyun.jpg" width="100" height="100 "/>
+          <p>김수현에 대한 내용</p>
+        </div>
+
+            <h3>이승기</h3>
+        <div>
+          <img src="images/leeseunggi.jpg" width="100" height="100 "/>
+          <p>이승기에 대한 내용</p>
+        </div>
+
+            <h3>송중기</h3>
+        <div>
+          <img src="images/songjunggi.jpg" width="100" height="100 "/>
+          <p>송중기에 대한 내용</p>
+        </div>
+      </div>
+
+
+      <div id="celebs">
+        <h2 class="heading"> 우리 스타 보기</h2>
+        <table class="data">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>이름</th>
+              <th>직업</th>
+              <th>거주지</th>             
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>203A</td>
+              <td>샤이니</td>
+              <td>가수</td>
+              <td>용인</td>
+            </tr>
+            <tr>
+              <td>141B</td>
+              <td>소녀시대</td>
+              <td>가수</td>
+              <td>부산</td>
+            </tr>
+            <tr>
+              <td>2031</td>
+              <td>김수현</td>
+              <td>배우</td>
+              <td>뉴욕</td>
+            </tr>
+            <tr>
+              <td>007F</td>
+              <td>국카스텐</td>
+              <td>가수</td>
+              <td>마산</td>
+            </tr>
+            <tr>
+              <td>8A05</td>
+              <td>김태희</td>
+              <td>배우</td>
+              <td>서울</td>
+            </tr>
+            <tr>
+              <td>6636</td>
+              <td>송혜교</td>
+              <td>배우</td>
+              <td>런던</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+    <div id="footer">
+      <p>
+        &copy; Copyright 2010 유명인추적 프로덕션
+      </p>
+    </div>
+
+  </div>
+  </div>
+</body>
+</html>
