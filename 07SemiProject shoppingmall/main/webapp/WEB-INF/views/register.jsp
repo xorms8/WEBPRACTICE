@@ -44,15 +44,15 @@
                             <!-- Start Single Content -->
                             <!--  회원가입폼 -->
                             <div id="register" role="tabpanel" class="single__tabs__panel tab-pane fade in active">
-                                <form class="login" method="get" action="confirm.do" name="register" id="register">
-                                    <input type="text" name="mNAME" id="mNAME" placeholder="이름">
-                                    <input type="text" name="mID" id="mID" placeholder="아이디">
-                                    <input type="email" name="mEMAIL" id="mEMAIL" placeholder="이메일">
-                                    <input type="text" name="mPHONE" id="mPHONE" placeholder="휴대전화 번호">
-                                    <input type="password" name="mPW" id="mPW" placeholder="비밀번호">
-                                    <input type="password" name="mPW2" id="mPW2" placeholder="비밀번호 확인">
+                                <form class="login" method="post" action="userInsert.do" name="userinsert" id=""userinsert"">
+                                    <input type="text" name="mID" id="mID" placeholder="아이디" required="required">
+                                    <input type="password" name="mPW" id="mPW" placeholder="비밀번호" required="required">
+                                    <input type="text" name="mNAME" id="mNAME" placeholder="이름" required="required">
+                                    <input type="email" name="mEMAIL" id="mEMAIL" placeholder="이메일" required="required">
+                                    <input type="text" name="mPHONE" id="mPHONE" placeholder="휴대전화 번호" required="required">
+                                 
                                 <div class="registerBtn">
-                                    <input type="submit" name="comfirm" id="comfirm" value="회원가입"/>
+                                    <input type="submit" name="userinsert" id="userinsert" value="회원가입"/>
                                   </div>
                                 </form>
                                 <div class="htc__social__connect">

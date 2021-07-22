@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
@@ -35,7 +36,6 @@
 
 </head>
 <body>
-
         <!-- Start Header Style -->
         <header id="header" class="htc-header header--3 bg__white">
             <!-- Start Mainmenu Area -->
@@ -53,59 +53,30 @@
                         <div class="col-md-8 col-lg-8 col-sm-6 col-xs-6">
                             <nav class="mainmenu__nav hidden-xs hidden-sm">
                                 <ul class="main__menu">
-                                    <li class="drop"><a href="test.jsp">Home</a></li>
-                                    <li class="drop"><a href="shop.do">Shop</a>
-                                        <ul class="dropdown mega_dropdown">
-                                            <!-- Start Single Mega MEnu -->
-                                            <li><a class="mega__title" href="shop.html">shop layout</a>
-                                              
-                                            </li>
-                                            <!-- End Single Mega MEnu -->
-                                            <!-- Start Single Mega MEnu -->
-                                            <li><a class="mega__title" href="shop.html">product details layout</a>
-                                                <ul class="mega__item">
-                                                    <li><a href="product-details.html">tab style 1</a></li></li>
-                                                </ul>
-                                            </li>
-                                            <!-- End Single Mega MEnu -->
-                                            <!-- Start Single Mega MEnu -->
-                                            <li>
-                                                <ul class="mega__item">
-                                                    <li>
-                                                        <div class="mega-item-img">
-                                                            <a href="shop.html">
-                                                                <img src="images/feature-img/3.png" alt="">
-                                                            </a>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <!-- End Single Mega MEnu -->
-                                        </ul>
-                                    </li>
-                                    <li><a href="about.do">about</a>
-                                    </li>
-                                    <li><a href="contact.html">event</a></li>
+                                    <li><a href="index.jsp">Home</a></li>
+                                    <li><a href="shop.do">Shop</a></li>
+                                    <li><a href="about.do">about</a></li>
+                                    <li><a href="contact.do">event</a></li>
                                 </ul>
                             </nav>
                             <div class="mobile-menu clearfix visible-xs visible-sm">
                                 <nav id="mobile_dropdown">
                                     <ul>
-                                        <li><a href="test.jsp">Home</a></li>
-                                        <li><a href="#">portfolio</a>
-                                            <ul>
+                                        <li><a href="index.jsp">Home</a></li>
+                                        <li><a href="shop.do">SHOP</a>
+                                            <!-- <ul>
                                                 <li><a href="portfolio-card-box-2.html">portfolio</a></li>
                                                 <li><a href="single-portfolio.html">Single portfolio</a></li>
-                                            </ul>
+                                            </ul> -->
                                         </li>
-                                        <li><a href="blog.html">blog</a>
-                                            <ul>
+                                        <li><a href="event.do">EVENT</a>
+                                            <!-- <ul>
                                                 <li><a href="blog.html">blog 3 column</a></li>
                                                 <li><a href="blog-details.html">Blog details</a></li>
-                                            </ul>
+                                            </ul> -->
                                         </li>
-                                        <li><a href="#">pages</a>
-                                            <ul>
+                                        <li><a href="about.do">ABOUT</a>
+                                           <!--  <ul>
                                                 <li><a href="about.html">about</a></li>
                                                 <li><a href="customer-review.html">customer review</a></li>
                                                 <li><a href="shop.html">shop</a></li>
@@ -116,9 +87,9 @@
                                                 <li><a href="checkout.html">checkout</a></li>
                                                 <li><a href="team.html">team</a></li>
                                                 <li><a href="login.do">login & register</a></li>
-                                            </ul>
+                                            </ul> -->
                                         </li>
-                                        <li><a href="contact.html">contact</a></li>
+                                        <li><a href="contact.do">contact</a></li>
                                     </ul>
                                 </nav>
                             </div>                          
@@ -126,7 +97,14 @@
                         <!-- End MAinmenu Ares -->
                         <div class="col-md-2 col-sm-4 col-xs-3">  
                             <ul class="menu-extra">
+                            <!-- 로그인,카트 직속 -->
+                            <c:if test="${sessionScope.member == null }">
                                 <li><a href="login.do"><span class="ti-user"></span></a></li>
+                                </c:if>
+                                 <c:if test="${sessionScope.member != null }">
+                                <li><a href="logout.do"><span class="ti-shift-left"></span></a></li>
+                                <li><a href="memberInfo.do"><span class="ti-id-badge"></span></a></li>
+                                </c:if>
                                 <li class="cart__menu"><a href="cart.do"><span class="ti-shopping-cart"></span></a></li>
                                 <li class="toggle__menu hidden-xs hidden-sm"><span class="ti-menu"></span></li>
                             </ul>
@@ -169,7 +147,7 @@
                     </div>
                     <div class="off__contact">
                         <div class="logo">
-                            <a href="index.html">
+                            <a href="index.jsp">
                                 <img src="images/logo/logo.png" alt="logo">
                             </a>
                         </div>
@@ -220,55 +198,7 @@
                 </div>
             </div>
             <!-- End Offset MEnu -->
-            <!-- Start Cart Panel -->
-            <div class="shopping__cart">
-                <div class="shopping__cart__inner">
-                    <div class="offsetmenu__close__btn">
-                        <a href="#"><i class="zmdi zmdi-close"></i></a>
-                    </div>
-                    <div class="shp__cart__wrap">
-                        <div class="shp__single__product">
-                            <div class="shp__pro__thumb">
-                                <a href="#">
-                                    <img src="images/product/sm-img/1.jpg" alt="product images">
-                                </a>
-                            </div>
-                            <div class="shp__pro__details">
-                                <h2><a href="product-details.html">BO&Play Wireless Speaker</a></h2>
-                                <span class="quantity">QTY: 1</span>
-                                <span class="shp__price">$105.00</span>
-                            </div>
-                            <div class="remove__btn">
-                                <a href="#" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
-                            </div>
-                        </div>
-                        <div class="shp__single__product">
-                            <div class="shp__pro__thumb">
-                                <a href="#">
-                                    <img src="images/product/sm-img/2.jpg" alt="product images">
-                                </a>
-                            </div>
-                            <div class="shp__pro__details">
-                                <h2><a href="product-details.html">Brone Candle</a></h2>
-                                <span class="quantity">QTY: 1</span>
-                                <span class="shp__price">$25.00</span>
-                            </div>
-                            <div class="remove__btn">
-                                <a href="#" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <ul class="shoping__total">
-                        <li class="subtotal">Subtotal:</li>
-                        <li class="total__price">$130.00</li>
-                    </ul>
-                    <ul class="shopping__btn">
-                        <li><a href="cart.html">View Cart</a></li>
-                        <li class="shp__checkout"><a href="checkout.html">Checkout</a></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- End Cart Panel -->
+            <hr/>
         </div>
         <!-- End Offset Wrapper -->
 
