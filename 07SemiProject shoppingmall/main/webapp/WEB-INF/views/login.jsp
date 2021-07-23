@@ -74,7 +74,7 @@ var addressCheck = false         // 주소
                                      <span class="forget"><a href="register.do">회원 가입하기</a></span>
                                 </div>
                                
-                                <div class="htc__social__connect">
+                              <div class="htc__social__connect">
                                     <h2>Or Login With</h2>
                                     <ul class="htc__soaial__list">
                                         <li><a class="bg--twitter" href="#"><i class="zmdi zmdi-twitter"></i></a></li>
@@ -88,7 +88,6 @@ var addressCheck = false         // 주소
                                 </div>
                             </div>
                             <!-- End Single Content -->
-                          
                     </div>
                 </div>
                 <!-- End Login Register Content -->

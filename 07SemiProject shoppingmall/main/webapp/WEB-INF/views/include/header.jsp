@@ -40,7 +40,7 @@
         <header id="header" class="htc-header header--3 bg__white">
             <!-- Start Mainmenu Area -->
             <div id="sticky-header-with-topbar" class="mainmenu__area sticky__header">
-                <div class="container">
+                <div class="container" style="height:100px;">
                     <div class="row">
                         <div class="col-md-2 col-lg-2 col-sm-3 col-xs-3">
                             <div class="logo">
@@ -114,7 +114,9 @@
                 </div>
             </div>
             <!-- End Mainmenu Area -->
+              <hr/>
         </header>
+        
         <!-- End Header Style -->
         
         <div class="body__overlay"></div>
@@ -122,7 +124,7 @@
         <div class="offset__wrapper">
             <!-- Start Search Popap -->
             <div class="search__area">
-                <div class="container" >
+                <div class="container">
                     <div class="row" >
                         <div class="col-md-12" >
                             <div class="search__inner">
@@ -196,9 +198,10 @@
                         </ul>
                     </div>
                 </div>
+                 
             </div>
             <!-- End Offset MEnu -->
-            <hr/>
+         
         </div>
         <!-- End Offset Wrapper -->
 
