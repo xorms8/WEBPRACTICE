@@ -6,6 +6,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,4 +20,17 @@ import com.perfume.domain.MemberVO;;
 @Controller
 public class AdminController {
 	
+	
+	@RequestMapping("index2.do")
+	public String preHandle(MemberVO vo, HttpServletRequest req, HttpServletResponse res) 
+			throws Exception{
+		
+		HttpSession session = req.getSession();
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		
+		if(member == null || member.getVerify() != 9) {
+			return "login";
+		}else {return "index2";}
+		
+	}
 }

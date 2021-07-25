@@ -21,7 +21,14 @@ public class MemberVO {
 	private String mEMAIL;
 	private String mPHONE;
 	private Date mRDATE;
+	private int verify;
 	
+	public int getVerify() {
+		return verify;
+	}
+	public void setVerify(int verify) {
+		this.verify = verify;
+	}
 	public String getmID() {
 		return mID;
 	}

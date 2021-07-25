@@ -11,7 +11,7 @@
 </head>
 <body>
 <div id = "root"> <!-- S: Index(Home).jsp 의 div 총괄 시작 -->
-   ${sessionScope.member } <!-- 아주 중요한 로그인 세션값 member이름의 공백값 가져옴 -->
+   <!-- 아주 중요한 로그인 세션값 member이름의 공백값 가져옴 -->
    <header id= "header">
       <div id = "header_box">
          <jsp:include page="/WEB-INF/views/include/header.jsp"/>

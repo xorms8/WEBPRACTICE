@@ -51,21 +51,16 @@ public class MemberController {
 	//로그인 요청이 들어왔을 때
 	@RequestMapping("loginInsert.do")
 	public String loginInsert(MemberVO vo, HttpSession session) {
-		/*
-		 *	1. 사용자 입력값 받아오기 
-		 *  2. DB에 해당 정보가 있는지 확인
-		 *  3. 해당정보가 있다면 (로그인 성공이라면) /user/Main.jsp 뷰 페이지 지정
-		 *  4. 그렇지 않다면 (로그인 실패시) /user/userLogin.jsp 뷰 페이지 지정
-		 */
 		
 		MemberVO result = memberService.idCheck_Login(vo);
 		
 		if(result == null || result.getmID()==null) {
 			//로그인 실패
+			session.setAttribute("member", null);
 			return "login";
 		}else {
 			//로그인 성공
-			session.setAttribute("member", " ");
+			session.setAttribute("member", result);
 			session.setAttribute("userName", result.getmID());
 			session.setAttribute("sessionTime", new Date());
 			return "home";
