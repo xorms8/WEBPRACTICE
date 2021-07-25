@@ -6,7 +6,6 @@ public class ProductVO {
 //	CREATE TABLE PRODUCT(
 //		    pID         NUMBER(4)       not null,         --상품번호
 //		    pNAME       VARCHAR2(100)   not null,         --상품이름
-//		    catecode    VARCHAR2(30)    not null,         --카테고리코드
 //		    pPRICE      NUMBER(10)      not null,         --상품가격
 //		    pSTOCK      NUMBER(3)       null,             --상품재고
 //		    pIMAGE      VARCHAR2(4000)  null,             --상품이미지
@@ -16,7 +15,6 @@ public class ProductVO {
 	
 	private int pID;
 	private String pNAME;
-	private String catecode;
 	private int pPRICE;
 	private int pSTOCK;
 	private String pIMAGE;
@@ -34,12 +32,6 @@ public class ProductVO {
 	}
 	public void setpNAME(String pNAME) {
 		this.pNAME = pNAME;
-	}
-	public String getCatecode() {
-		return catecode;
-	}
-	public void setCatecode(String catecode) {
-		this.catecode = catecode;
 	}
 	public int getpPRICE() {
 		return pPRICE;

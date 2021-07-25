@@ -102,16 +102,6 @@ aside ul li a:hover {
 </head>
 <body>
 	<div id="root">
-		<!-- S: Index(Home).jsp 의 div 총괄 시작 -->
-		<%-- <c:if test="${member != null }">
- <!-- 관리자/ 로그인 상태 이면서 verify 값이 9인 계정이 로그인 ! -->
- <!-- 이미 oracle DB에서 설정함 -->
- <c:if test="${member.verify == 9 }">
-<li><a href="index2.do"><span class="ti-crown"></span></a></li>
-</c:if>
-                                
- <li><a href="logout.do"><span class="ti-shift-left"></span></a></li>
- </c:if> --%>
 		<!-- S: 헤더 부분 시작 -->
 		<header id="header">
 			<div id="header_box">
@@ -122,21 +112,24 @@ aside ul li a:hover {
 
 
 		<!-- S: 본문 영역 시작 -->
-		<section id="container">
+		<div class="row content">
 			<h1 style="text-align: center;">F2T Perfume 관리자 페이지</h1>
-			<div id="container_box">본문
-			<aside>
-				<ul>
-					<li><a href="productInsert.do">상품 등록</a></li>
-					<li><a href="#">상품 목록</a></li>
-					<li><a href="#">상품 리뷰</a></li>
-					<li><a href="#">유저 목록</a></li>
-					<li><a href="#">판매 목록</a></li>
-				</ul>
-			</aside>
-			
+			<div class="col-sm-2">
+				왼쪽 사이드
+				<aside>
+					<ul class="list-group">
+						<li><a href="productInsert.do">상품 등록</a></li>
+						<li><a href="#">상품 목록</a></li>
+						<li><a href="#">상품 리뷰</a></li>
+						<li><a href="#">유저 목록</a></li>
+						<li>판매 목록</li>
+					</ul>
+				</aside>
 			</div>
-		</section>
+			<div class="col-sm-6 text-left"></div>
+
+			<div class="col-sm-2">오른쪽 사이드</div>
+		</div>
 		<!-- E: 본문 영역 끝 -->
 
 

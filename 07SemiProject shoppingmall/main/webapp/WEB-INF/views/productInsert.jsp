@@ -137,9 +137,9 @@ aside ul li a:hover {
 					</ul>
 				</aside>
 				<!-- S :상품 등록 폼  -->
-				<div class="InputArea" id="productInsertForm">
-					<form method="post" action="productSave.do"
-						enctype="multipart/form-data">
+				<div class="InputArea" id="productInsertForm" style="margin: auto;">
+					<form method="post" action="productSave.do">
+						
 						<table border="1">
 							<tr>
 								<td>상품 이름</td>
@@ -154,10 +154,18 @@ aside ul li a:hover {
 								<td><input type="text" id="pSTOCK" name="pSTOCK"></td>
 							</tr>
 							<tr>
-								<td bgcolor="orange" width="70">상품 사진</td>
+								<td>상품 사진</td>
+								<td><input type="text" id="pIMAGE" name="pIMAGE"></td>
+							</tr>
+							<tr>
+								<td>상품 설명</td>
+								<td><input type="text" id="pDETAIL" name="pDETAIL"></td>
+							</tr>
+							<!-- <tr>
+								<td bgcolor="#58D68D" width="70">상품 사진</td>
 								<td align="left"><input type="file" name='file'
 									maxlength="60" size="40"></td>
-							</tr>
+							</tr> -->
 							<tr>
 								<td colspan="2" align="center"><input type="submit"
 									class="btn btn-default" value="확인"> <input type="reset"
@@ -166,6 +174,7 @@ aside ul li a:hover {
 						</table>
 					</form>
 					<!-- E :상품 등록 폼  -->
+				</div>
 				</div>
 		</section>
 		<!-- E: 본문 영역 끝 -->

@@ -6,6 +6,8 @@
 
 <typeAliases>
 	<typeAlias alias="member" type="com.perfume.domain.MemberVO"/>
+	<typeAlias alias="product" type="com.perfume.domain.ProductVO"/>
 </typeAliases>
+
 
 </configuration>
