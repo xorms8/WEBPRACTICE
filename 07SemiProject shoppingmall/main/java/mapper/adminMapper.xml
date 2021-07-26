@@ -4,9 +4,49 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="AdminDAO">
   
+  <!-- 상품 등록 -->
   <insert id="productInsert" parameterType="product">
-  insert into PRODUCT(pID, pNAME, pPRICE, pSTOCK, pIMAGE, pDETAIL)
-  values (PRODUCT_seq.nextval, #{pNAME}, #{pPRICE}, #{pSTOCK}, #{pIMAGE}, #{pDETAIL})
+  INSERT into PRODUCT(pID, pNAME, pPRICE, pSTOCK, pDETAIL
+  <if test='pFname != null'>
+		,	pFname,pFsize
+		</if>)
+		
+  values (PRODUCT_seq.nextval, #{pNAME}, #{pPRICE}, #{pSTOCK}, #{pDETAIL}
+  
+  <if test='pFname != null'>
+		,	#{pFname}, #{pFsize}
+		</if>
+  )
   </insert>
   
+  <!-- 상품 목록 -->
+  <select id ="getProductList" resultType="product">
+  	SELECT * FROM PRODUCT ORDER BY pID DESC
+  </select>
+  
+  <!-- 상품 상세 내역 -->
+  <select id ="getProduct" parameterType="product" resultType="product">
+  	SELECT * FROM PRODUCT WHERE pID= #{pID}
+  </select>
+  
+  <!-- 상품 수정 -->
+  <update id="updateProduct" parameterType="product">
+  UPDATE PRODUCT SET
+  pNAME = #{pNAME},
+  pPRICE = #{pPRICE},
+  pSTOCK = #{pSTOCK},
+  pFname = #{pFname},
+  pFsize = #{pFsize}
+  WHERE pID = #{pID}
+  </update>
+  
+  <!-- 상품 삭제 -->
+  <delete id="deleteProduct" parameterType="product">
+  DELETE PRODUCT
+  WHERE pID = #{pID}
+  </delete>
+ 
+ 
+ 
+ 
   </mapper>

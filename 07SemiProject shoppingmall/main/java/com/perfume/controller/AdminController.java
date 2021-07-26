@@ -11,6 +11,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,9 +26,7 @@ public class AdminController {
 	
 	@Autowired
 	private AdminService adminService;
-	
-	
-	
+
 	//관리자 페이지 요청
 	@RequestMapping("index2.do")
 	public String preHandle(MemberVO vo, HttpServletRequest req, HttpServletResponse res) 
@@ -53,9 +53,32 @@ public class AdminController {
 	@RequestMapping("productSave.do")
 	public String productSave(ProductVO vo) throws Exception{
 		adminService.productInsert(vo);
-		return "producInsert";
+		return "productInsert";
 	}
 	
+	//상품 목록 페이지 요청
+	@RequestMapping("productList.do")
+	public void productList(ProductVO vo, Model model ){
+		model.addAttribute("productList", adminService.getProductList(vo));
+	}
 	
+	//상품 상세 조회
+	@RequestMapping("getProduct.do")
+	public void getProduct(ProductVO vo, Model model){
+		model.addAttribute("product", adminService.getProduct(vo));
+	}
 	
+	//상품 수정
+	@RequestMapping("productUpdate.do")
+	public String productUpdate(@ModelAttribute("product") ProductVO vo) {
+		adminService.updateProduct(vo);
+		return "productList";
+	}
+	
+	//상품 삭제
+	@RequestMapping("productDelete.do")
+	public String productDelete(ProductVO vo) {
+		adminService.deleteProduct(vo);
+		return "redirect:productList";
+	}
 }

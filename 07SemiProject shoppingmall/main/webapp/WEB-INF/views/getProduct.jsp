@@ -118,7 +118,7 @@ aside ul li a:hover {
 		<!-- S: 본문 영역 시작 -->
 		<section id="container">
 			<h1 style="text-align: center;">F2T Perfume 관리자 페이지</h1>
-			<h2 style="text-align: center;">상품 등록</h2>
+			<h2 style="text-align: center;">상품 수정</h2>
 			<div class="col-sm-1">
 			
 				<aside>
@@ -134,32 +134,39 @@ aside ul li a:hover {
 			</div>
 			<div id="container_box">
 				<!-- S :상품 등록 폼  -->
-				<div class="InputArea" id="productInsertForm" style="margin: auto;">
-					<form method="post" action="productSave.do" enctype="multipart/form-data">
-						
+				<div class="InputArea" id="productUpdateform" style="margin: auto;">
+					<form method="post" action="productUpdate.do" enctype="multipart/form-data">
+						<input name ="pID" type="hidden" value="${product.pID }"/>
 						<div class = "inputArea">
 							<label for ="pID">상품 이름</label>
-							<input type="text" id="pNAME" name="pNAME"/>
+							<input type="text" id="pNAME" name="pNAME"
+							value = "${product.pNAME }"/>
 						</div>
 						<div class = "inputArea">
 							<label for ="pPRICE">상품 가격</label>
-							<input type="text" id="pPRICE" name="pPRICE"/>
+							<input type="text" id="pPRICE" name="pPRICE"
+							value = "${product.pPRICE }"/>
 						</div>
 						<div class = "inputArea">
 							<label for ="pSTOCK">상품 재고</label>
-							<input type="text" id="pSTOCK" name="pSTOCK"/>
+							<input type="text" id="pSTOCK" name="pSTOCK"
+							value = "${product.pSTOCK }"/>
 						</div>
 						<div class = "inputArea">
 							<label for ="pFname">상품 파일</label>
-							<input type="file" id="pFname" name="file"/>
+							<input type="file" id="pFname" name="file"
+							value = "${product.pFname }"/>
+							<span><img src="/zSemiProject/resources/upload/${product.pFname }"></span>
 						</div>
 						<div class = "inputArea">
 							<label for ="pDETAIL">상품 설명</label>
-							<input type="text" id="pDETAIL" name="pDETAIL"/>
+							<input type="text" id="pDETAIL" name="pDETAIL"
+							value = "${product.pDETAIL }"/>
 						</div>	
-							<input type="submit"class="btn btn-success" value="등록"> 
+							<input type="submit"class="btn btn-warning" value="수정">
+							<a href="productDelete.do?pID=${product.pID }"><input type="button"class="btn btn-danger" value="삭제"> </a>
 							<input type="reset" class="btn btn-default" value="취소">
-						
+							
 					</form>
 					<!-- E :상품 등록 폼  -->
 				</div>
