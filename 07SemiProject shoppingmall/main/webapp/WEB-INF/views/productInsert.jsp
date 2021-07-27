@@ -104,7 +104,8 @@ aside ul li a:hover {
 
 </style>
 </head>
-<body>
+<body><c:if test="${sessionScope.member != null }"> 
+                                  
 	<div id="root">
 		<!-- S: 헤더 부분 시작 -->
 		<header id="header">
@@ -127,8 +128,8 @@ aside ul li a:hover {
 						<li><a href="productInsert.do">상품 등록</a></li>
 						<li><a href="productList.do">상품 목록</a></li>
 						<li><a href="#">상품 리뷰</a></li>
-						<li><a href="#">유저 목록</a></li>
-						<li>판매 목록</li>
+						<li><a href="memberList.do">유저 목록</a></li>
+						<li><a href="saleList.do">판매 목록</a></li>
 					</ul>
 				</aside>
 			</div>
@@ -177,5 +178,6 @@ aside ul li a:hover {
 
 	</div>
 	<!-- E: Index(Home).jsp 의 div 총괄 끝  -->
+	 	</c:if>
 </body>
 </html>

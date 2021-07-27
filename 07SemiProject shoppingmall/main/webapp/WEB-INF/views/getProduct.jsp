@@ -127,8 +127,8 @@ aside ul li a:hover {
 						<li><a href="productInsert.do">상품 등록</a></li>
 						<li><a href="productList.do">상품 목록</a></li>
 						<li><a href="#">상품 리뷰</a></li>
-						<li><a href="#">유저 목록</a></li>
-						<li>판매 목록</li>
+						<li><a href="memberList.do">유저 목록</a></li>
+						<li><a href="saleList.do">판매 목록</a></li>
 					</ul>
 				</aside>
 			</div>
@@ -154,6 +154,7 @@ aside ul li a:hover {
 						</div>
 						<div class = "inputArea">
 							<label for ="pFname">상품 파일</label>
+							<!-- <label for ="file">${product.pFname }</label> -->
 							<input type="file" id="pFname" name="file"
 							value = "${product.pFname }"/>
 							<span><img src="/zSemiProject/resources/upload/${product.pFname }"></span>

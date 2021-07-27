@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.perfume.domain.MemberVO;
 import com.perfume.domain.ProductVO;
 
 
@@ -49,6 +50,39 @@ public class AdminDAOImpl implements AdminDAO{
 		System.out.println("Mybatis deleteProduct() 호출");
 		mybatis.update("AdminDAO.deleteProduct", vo);
 		
+	}
+
+
+
+	
+	public List<MemberVO> getMemberList(MemberVO vo) {
+		System.out.println("===> Mybatis getMemberList() 호출");
+		return mybatis.selectList("AdminDAO.getMemberList", vo);
+	}
+
+
+
+	public MemberVO getMember(MemberVO vo) {
+		System.out.println("Mybatis getMember()호출");
+		return (MemberVO) mybatis.selectOne("AdminDAO.getMember", vo);
+	}
+
+
+
+
+	public void updateMember(MemberVO vo) {
+		System.out.println("Mybatis updateMember() 호출");
+		mybatis.update("AdminDAO.updateMember", vo);
+		
+	}
+
+
+
+	
+	public void deleteMember(MemberVO vo) {
+		
+		System.out.println("Mybatis deleteMember() 호출");
+		mybatis.update("AdminDAO.deleteMember", vo);
 	}
 	
 	

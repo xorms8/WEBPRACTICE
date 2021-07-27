@@ -31,7 +31,7 @@ public class AdminController {
 	@RequestMapping("index2.do")
 	public String preHandle(MemberVO vo, HttpServletRequest req, HttpServletResponse res) 
 			throws Exception{
-		
+		//관리자만 접근 가능하게 세션관리, 로그인 화면으로 리턴
 		HttpSession session = req.getSession();
 		MemberVO member = (MemberVO)session.getAttribute("member");
 		
@@ -41,12 +41,19 @@ public class AdminController {
 		
 	}
 	
-	
+	//상품 PRODUCT Controller@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 	
 	//상품 등록 입력 페이지 요청 (시작임)
 	@RequestMapping("productInsert.do")
-	public void productInsert() {
-			
+	public String productInsert(MemberVO vo, HttpServletRequest req, HttpServletResponse res) {
+		//관리자만 접근 가능하게 세션관리, 로그인 화면으로 리턴
+		HttpSession session = req.getSession();
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		
+		if(member == null || member.getVerify() != 9) {
+			return "login";
+		}
+		return "productInsert";
 	}
 		
 	//상품 등록 버튼 링크 요청시(Insert / CRUD->C(CREATE)
@@ -58,8 +65,17 @@ public class AdminController {
 	
 	//상품 목록 페이지 요청
 	@RequestMapping("productList.do")
-	public void productList(ProductVO vo, Model model ){
+	public String productList(ProductVO vo, Model model,MemberVO v2, HttpServletRequest req, HttpServletResponse res){
 		model.addAttribute("productList", adminService.getProductList(vo));
+		
+		//관리자만 접근 가능하게 세션관리, 로그인 화면으로 리턴
+		HttpSession session = req.getSession();
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		
+		if(member == null || member.getVerify() != 9) {
+			return "login";
+		}
+		return "productList";
 	}
 	
 	//상품 상세 조회
@@ -70,7 +86,8 @@ public class AdminController {
 	
 	//상품 수정
 	@RequestMapping("productUpdate.do")
-	public String productUpdate(@ModelAttribute("product") ProductVO vo) {
+	public String productUpdate(@ModelAttribute("product") ProductVO vo, Model model) {
+		model.addAttribute("productList", adminService.getProductList(vo));
 		adminService.updateProduct(vo);
 		return "productList";
 	}
@@ -81,4 +98,71 @@ public class AdminController {
 		adminService.deleteProduct(vo);
 		return "redirect:productList";
 	}
+	
+	
+	//회원 Member Controller@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+	
+	//회원 목록
+	
+	@RequestMapping("memberList.do")
+	public String memberList(MemberVO vo, Model model, HttpServletRequest req, HttpServletResponse res){
+		
+		model.addAttribute("memberList", adminService.getMemberList(vo));
+		//관리자만 접근 가능하게 세션관리, 로그인 화면으로 리턴
+		HttpSession session = req.getSession();
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		
+		if(member == null || member.getVerify() != 9) {
+			return "login";
+		}
+		return "memberList";
+	}
+		//---------------------------------------
+		//회원 상세 조회
+		@RequestMapping("getMember.do")
+		public String getMember(MemberVO vo, Model model, HttpSession session){
+			MemberVO loginSession = (MemberVO)session.getAttribute("member"); // 세션명이 뭐야?
+			String returnData = "../../index";
+			if(loginSession.getVerify() == 9) { // 이렇게 주면 세션값에 관리자 값이 없으면 로그인 페이지로 가겠지
+				model.addAttribute("member", adminService.getMember(vo));
+				returnData = "getMember"; // 이런식으로 줘야 관리자라는 값이 있을 때만 지정해 줄 수 있어.
+											 // 여기 등급이랑 getClass? 부분 바꿔줘봐 등급 준 것에 대해서
+			}
+			return returnData;
+		}
+		
+		//회원 수정
+		@RequestMapping("memberUpdate.do")
+		public String memberUpdate(@ModelAttribute("member") MemberVO vo, Model model,HttpServletRequest req, HttpServletResponse res) {
+			model.addAttribute("memberList", adminService.getMemberList(vo));
+			adminService.updateMember(vo);
+			
+			//관리자만 접근 가능하게 세션관리, 로그인 화면으로 리턴
+			HttpSession session = req.getSession();
+			MemberVO member = (MemberVO)session.getAttribute("member");
+			
+			if(member == null || member.getVerify() != 9) {
+				return "login";
+			}
+			return "memberList";
+		}
+		
+		//회원 삭제
+		@RequestMapping("memberDelete.do")
+		public String memberDelete(MemberVO vo,Model model, HttpSession session) {
+			adminService.deleteMember(vo);
+			model.addAttribute("memberList", adminService.getMemberList(vo));
+			
+			MemberVO loginSession = (MemberVO)session.getAttribute("member");
+			String returnData = "../../memberList";
+			if(loginSession.getVerify() == 9) { // 이렇게 주면 세션값에 관리자 값이 없으면 로그인 페이지로 가겠지
+				model.addAttribute("member", adminService.getMember(vo));
+				returnData = "memberList"; // 이런식으로 줘야 관리자라는 값이 있을 때만 지정해 줄 수 있어.
+											 // 여기 등급이랑 getClass? 부분 바꿔줘봐 등급 준 것에 대해서
+			}
+			
+			return returnData;
+		}
+		
+		
 }

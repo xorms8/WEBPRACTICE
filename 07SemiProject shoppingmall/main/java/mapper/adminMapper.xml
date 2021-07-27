@@ -36,6 +36,7 @@
   pPRICE = #{pPRICE},
   pSTOCK = #{pSTOCK},
   pFname = #{pFname},
+  pDETAIL = #{pDETAIL},
   pFsize = #{pFsize}
   WHERE pID = #{pID}
   </update>
@@ -46,7 +47,34 @@
   WHERE pID = #{pID}
   </delete>
  
+	<!-- 회원 관리자 모드 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
  
- 
- 
+  <!-- 회원 목록 -->
+  <select id ="getMemberList" resultType="member">
+  	SELECT * FROM MEMBER ORDER BY mID DESC
+  </select>
+  
+  <!-- 회원 상세 조회 -->
+ <select id ="getMember" parameterType="member" resultType="member">
+  	SELECT * FROM MEMBER WHERE mID= #{mID}
+  </select>
+  
+  
+  <!-- 회원 수정 -->
+  <update id="updateMember" parameterType="member">
+  UPDATE MEMBER SET
+  mNAME = #{mNAME},
+  mEMAIL = #{mEMAIL},
+  mPHONE = #{mPHONE}
+  WHERE mID = #{mID}
+  </update>
+  
+  <!-- 회원 삭제 -->
+  <delete id="deleteMember" parameterType="member">
+  DELETE MEMBER
+  WHERE mID = #{mID}
+  </delete>
+  
+  
+  
   </mapper>

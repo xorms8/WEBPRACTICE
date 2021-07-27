@@ -101,7 +101,7 @@
 							<c:if test="${member != null }">
 								<!-- 관리자/ 로그인 상태 이면서 verify 값이 9인 계정이 로그인 ! -->
 								<!-- 이미 oracle DB에서 설정함 -->
-								<c:if test="${member.verify == 9 }">
+								<c:if test="${member.verify == 9 && member.verify != 0 }">
 									<li><a href="index2.do"><span class="ti-crown"></span></a></li>
 								</c:if>
 
@@ -109,7 +109,7 @@
 
 								<!-- 로그인 상태 이면서 verify 값이 9가 아닌 (일반 유저) -->
 								<!-- 마이페이지가 보이게 구분 한 코드 -->
-								<c:if test="${member.verify != 9 }">
+								<c:if test="${member.verify != 9 && member.verify == 0}">
 									<li><a href="memberInfo.do"><span class="ti-id-badge"></span></a></li>
 								</c:if>
 
@@ -133,7 +133,7 @@
 	<div class="body__overlay"></div>
 	<!-- Start Offset Wrapper -->
 	<div class="offset__wrapper">
-		<!-- Start Search Popap -->
+		<!-- Start Search Popap -->	
 		<div class="search__area">
 			<div class="container">
 				<div class="row">

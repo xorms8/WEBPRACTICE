@@ -151,26 +151,6 @@
             <!-- End Cart Panel -->
         </div>
         <!-- End Offset Wrapper -->
-        <!-- Start Bradcaump area -->
-        <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/2.jpg) no-repeat scroll center center / cover ;">
-            <div class="ht__bradcaump__wrap">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="bradcaump__inner text-center">
-                                <h2 class="bradcaump-title">Product Details</h2>
-                                <nav class="bradcaump-inner">
-                                  <a class="breadcrumb-item" href="index.jsp">Home</a>
-                                  <span class="brd-separetor">/</span>
-                                  <span class="breadcrumb-item active">Product Details</span>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Bradcaump area -->
         <!-- Start Product Details -->
         <section class="htc__product__details pt--120 pb--100 bg__white">
             <div class="container">
@@ -180,7 +160,7 @@
                             <div class="product__big__images">
                                 <div class="portfolio-full-image tab-content">
                                     <div role="tabpanel" class="tab-pane fade in active product-video-position" id="img-tab-1">
-                                        <img src="resources/images/product-details/CHANEL5.jpg" alt="full-image">
+                                        <img src="resources/upload/향수테스트1.PNG" alt="full-image">
                                         <div class="product-video">
                                             <a class="video-popup" href="https://www.youtube.com/watch?v=qeMqcApmS7g">
                                                 <i class="zmdi zmdi-videocam"></i> View Video

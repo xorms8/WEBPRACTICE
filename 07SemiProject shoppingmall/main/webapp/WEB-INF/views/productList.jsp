@@ -2,9 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+
 <!doctype html>
 <html>
 <head>
+
 <meta charset="utf-8">
 <title>F2T Perfume Admin Page</title>
 <link rel="stylesheet"
@@ -113,6 +116,7 @@ aside ul li a:hover {
 	<div id="root">
 		<!-- S: 헤더 부분 시작 -->
 		<header id="header">
+		
 			<div id="header_box">
 				<jsp:include page="/WEB-INF/views/include/header.jsp" />
 			</div>
@@ -121,6 +125,7 @@ aside ul li a:hover {
 
 
 		<!-- S: 본문 영역 시작 -->
+	
 		<section id="container">
 			<h1 style="text-align: center;">F2T Perfume 관리자 페이지</h1>
 			<h2 style="text-align: center;">상품 목록</h2>
@@ -132,8 +137,8 @@ aside ul li a:hover {
 						<li><a href="productInsert.do">상품 등록</a></li>
 						<li><a href="productList.do">상품 목록</a></li>
 						<li><a href="#">상품 리뷰</a></li>
-						<li><a href="#">유저 목록</a></li>
-						<li><a href="#">판매 목록</a></li>
+						<li><a href="memberList.do">유저 목록</a></li>
+						<li><a href="saleList.do">판매 목록</a></li>
 					</ul>
 				</aside>
 			</div>

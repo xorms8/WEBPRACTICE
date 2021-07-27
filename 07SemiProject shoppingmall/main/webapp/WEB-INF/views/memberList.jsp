@@ -1,9 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+
 <!doctype html>
 <html>
 <head>
+
 <meta charset="utf-8">
 <title>F2T Perfume Admin Page</title>
 <link rel="stylesheet"
@@ -98,12 +102,21 @@ aside ul li a {
 aside ul li a:hover {
 	background: #eee;
 }
+
+#container_box table td {
+	width: 100px;
+}
+
+.inputArea {
+	margin: 10px 0;
+}
 </style>
 </head>
-<body> 
+<body>
 	<div id="root">
 		<!-- S: 헤더 부분 시작 -->
 		<header id="header">
+		
 			<div id="header_box">
 				<jsp:include page="/WEB-INF/views/include/header.jsp" />
 			</div>
@@ -112,35 +125,63 @@ aside ul li a:hover {
 
 
 		<!-- S: 본문 영역 시작 -->
-		<div class="row content">
+	
+		<section id="container">
 			<h1 style="text-align: center;">F2T Perfume 관리자 페이지</h1>
-			<div class="col-sm-2">
-				왼쪽 사이드
+			<h2 style="text-align: center;">고객 목록</h2>
+			<hr/>
+			<div class="col-sm-1">
 				<aside>
 					<ul class="list-group">
+						<li><h2>MENU</h2></li>
 						<li><a href="productInsert.do">상품 등록</a></li>
 						<li><a href="productList.do">상품 목록</a></li>
 						<li><a href="#">상품 리뷰</a></li>
-						<li><a href="memberList.do">유저 목록</a></li>
+						<li><a href="memberList.do">회원 목록</a></li>
 						<li><a href="saleList.do">판매 목록</a></li>
 					</ul>
 				</aside>
 			</div>
-			<div class="col-sm-6 text-left"></div>
+			<!-- S :상품 목록  -->
+			<div id="container_box">
 
-			<div class="col-sm-2">오른쪽 사이드</div>
-		</div>
-		<!-- E: 본문 영역 끝 -->
+				<table>
+					<thead>
+						<tr>
+							<th>회원 ID</th>
+							<th>회원 이름</th>
+							<th>회원 이메일</th>
+							<th>회원 연락처</th>
+							<th>회원 가입일</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${memberList }" var="member">
+							<tr>
+								<td><a href="getMember.do?mID=${member.mID}">${member.mID}</a></td>
+								<td>${member.mNAME}</td>
+								<td>${member.mEMAIL}</td>
+								<td>${member.mPHONE}</td>
+								<td>${member.mRDATE}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 
-
-		<!-- S: 푸터 영역 시작 -->
-		<footer id="footer">
-			<div id="footer_box">
-				<jsp:include page="/WEB-INF/views/include/footer.jsp" />
 			</div>
-		</footer>
-
+			<!-- E :상품 목록  -->
+		</section>
 	</div>
+	<!-- E: 본문 영역 끝 -->
+
+
+	<!-- S: 푸터 영역 시작 -->
+	<footer id="footer">
+		<div id="footer_box">
+			<jsp:include page="/WEB-INF/views/include/footer.jsp" />
+		</div>
+	</footer>
+
 	<!-- E: Index(Home).jsp 의 div 총괄 끝  -->
 </body>
 </html>

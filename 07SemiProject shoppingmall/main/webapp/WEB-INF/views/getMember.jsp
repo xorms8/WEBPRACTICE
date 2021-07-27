@@ -98,9 +98,13 @@ aside ul li a {
 aside ul li a:hover {
 	background: #eee;
 }
+
+.inputArea { margin:10px 0; }
+
+
 </style>
 </head>
-<body> 
+<body>
 	<div id="root">
 		<!-- S: 헤더 부분 시작 -->
 		<header id="header">
@@ -112,24 +116,59 @@ aside ul li a:hover {
 
 
 		<!-- S: 본문 영역 시작 -->
-		<div class="row content">
+		<section id="container">
 			<h1 style="text-align: center;">F2T Perfume 관리자 페이지</h1>
-			<div class="col-sm-2">
-				왼쪽 사이드
+			<h2 style="text-align: center;">회원 수정</h2>
+			<div class="col-sm-1">
+			
 				<aside>
 					<ul class="list-group">
+						<li><h2>MENU</h2></li>
 						<li><a href="productInsert.do">상품 등록</a></li>
 						<li><a href="productList.do">상품 목록</a></li>
 						<li><a href="#">상품 리뷰</a></li>
-						<li><a href="memberList.do">유저 목록</a></li>
+						<li><a href="memberList.do">회원 목록</a></li>
 						<li><a href="saleList.do">판매 목록</a></li>
 					</ul>
 				</aside>
 			</div>
-			<div class="col-sm-6 text-left"></div>
-
-			<div class="col-sm-2">오른쪽 사이드</div>
-		</div>
+			<div id="container_box">
+				<!-- S :상품 등록 폼  -->
+				<div class="InputArea" id="memberUpdateform" style="margin: auto;">
+					<form method="post" action="memberUpdate.do">
+						<input name ="mID" class="hidden" type="hidden" value="${member.mID }"/>
+						<div class = "inputArea">
+							<label for ="mID">회원 ID</label>
+							<label>${member.mID }</label>
+						</div>
+						<div class = "inputArea">
+							<label for ="mNAME">회원 이름 </label>
+							<input type="text" id="mNAME" name="mNAME"
+							value = "${member.mNAME }"/>
+						</div>
+						<div class = "inputArea">
+							<label for ="mEMAIL">회원 이메일</label>
+							<input type="text" id="mEMAIL" name="mEMAIL"
+							value = "${member.mEMAIL }"/>
+						</div>
+						<div class = "inputArea">
+							<label for ="mPHONE">회원 연락처</label>
+							<input type="text" id="mPHONE" name="mPHONE"
+							value = "${member.mPHONE }"/>
+						</div>
+						<div class = "inputArea">
+							<label for ="mRDATE">회원 가입일</label>
+							<label>${member.mRDATE }</label>
+						</div>	
+							<input type="submit"class="btn btn-warning" value="수정">
+							<a href="memberDelete.do?mID=${member.mID }"><input type="button"class="btn btn-danger" value="삭제"> </a>
+							<input type="reset" class="btn btn-default" value="취소">
+							
+					</form>
+					<!-- E :상품 등록 폼  -->
+				</div>
+				</div>
+		</section>
 		<!-- E: 본문 영역 끝 -->
 
 
