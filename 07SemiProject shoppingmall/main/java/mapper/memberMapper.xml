@@ -18,5 +18,31 @@
 		and mPW = #{mPW}
 		</if>
 </select>
+
+
+	<!-- 회원가입의 유효성 검사 -->
+	<select id="idCheck1" resultType="int">
+	SELECT count(*) 
+	FROM member WHERE mID = #{mID} 
+	</select>
+
+
+
+
+	<!-- 마이페이지 회원 관리  -->
+	
+	<select parameterType="String" id="readMember" resultType="member">
+	select * from member
+	where mID = #{mID} </select>
+
+	<update parameterType="String" id="updateMember">
+	update member
+	set mNAME = #{mNAME}, mPW = #{mPW}, mEMAIL = #{mEMAIL}, mPHONE = #{mPHONE} where mID = #{mID} 
+	</update>
+
+	<delete parameterType="String" id="deleteMember">
+	delete from member 
+	where mID= #{mID} </delete>
+
    
 </mapper>

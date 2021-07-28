@@ -9,8 +9,11 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.perfume.service.MemberService;
 import com.perfume.domain.MemberVO;;
@@ -40,6 +43,21 @@ public class MemberController {
 		return mv;
 	}
 	
+	//회원가입시 중복 아이디 체크
+	@ResponseBody
+	@RequestMapping("idCheck1.do")
+	public String idCheck1(String mID) throws Exception {
+		int result = memberService.idCheck1(mID);
+		System.out.println("result =" + result);
+		return String.valueOf(result);
+		
+	}
+	
+	
+	
+	
+	
+	
 	
 	//로그인 페이지에 들어왔을 때
 	@RequestMapping("login.do")
@@ -60,11 +78,15 @@ public class MemberController {
 			return "login";
 		}else {
 			//로그인 성공
-			session.setAttribute("member", result);
+			session.setAttribute("member",result);
 			session.setAttribute("userName", result.getmID());
+			session.setAttribute("mPW", result.getmPW());
+			session.setAttribute("mNAME", result.getmNAME());
+			session.setAttribute("mEMAIL", result.getmEMAIL());
+			session.setAttribute("mPHONE", result.getmPHONE());
 			session.setAttribute("sessionTime", new Date());
 			return "home";
-		}
+		}	
 		
 	}
 	
@@ -77,34 +99,87 @@ public class MemberController {
 	}
 	
 	//memberInfo (마이페이지) 요청이 들어왔을 때
-	@RequestMapping("memberInfo.do")
-	public void memberInfo() {
+		@RequestMapping("memberInfo")
+		public void memberInfo(HttpSession session, Model model)throws Exception {
+			//세션안에있는 객체 ID 정보저장
+			String userName = (String) session.getAttribute("userName");
+			session.getAttribute("mEMAIL");
+			session.getAttribute("mPHONE");
+			memberService.readMember(userName);
+			System.out.println("controller값 가져오는중");
+			//서비스의 회원정보보기 메소드 호출
+			MemberVO vo = memberService.readMember(userName);
+			//정보 저장후 페이지 이동
+			model.addAttribute("userName",vo);
+			model.addAttribute("mPW",vo);
+			model.addAttribute("mNAME",vo);
+			model.addAttribute("mEMAIL",vo);
+			model.addAttribute("mPHONE",vo);
+			System.out.println("vo == "+vo.getmEMAIL());
+			System.out.println("vo == "+vo.getmNAME());
+			System.out.println("vo == "+vo.getmPHONE());
+			System.out.println("controller입니다.");
+			
+		}	
+		
+		
+		
+		@RequestMapping(value="userUpdateView")
+		public String userUpdateView() throws Exception {
+			return "userUpdate";
+		}
+		
+		//회원정보수정
+		@RequestMapping(value="userUpdate")
+		public String userUpdate(HttpSession session,MemberVO vo)throws Exception {
+			memberService.updateMember(vo);
+			session.invalidate(); //세션 초기화
+			//		model.addAttribute("userName",memberService.readMember((String)session.getAttribute("mID")));
+			System.out.println("update컨트롤임");
+			return "userUpdate";	
+		}
+		//회원정보삭제
+		@RequestMapping(value="userDelete")
+		public String userDelete(MemberVO vo,HttpSession session,RedirectAttributes rttr)throws Exception {
+			System.out.println("11111111111111111111"); //값 확인
+			MemberVO member = (MemberVO) session.getAttribute("member");
+			System.out.println("11111111111111111112");
+			String userName = (String)session.getAttribute("userName");
+			//세션에있는 비밀번호
+			System.out.println("11111111111111111113");
+			String sessionPass = member.getmPW();
+			System.out.println("11111111111111111114");
+			System.out.println("sessionPass == "+sessionPass);
+			System.out.println("11111111111111111115");//값 확인
+			MemberVO vo1 = memberService.readMember(userName);
+			System.out.println("vo1.pw =="+vo1.getmPW());
+			//vo로 들어오는 비밀번호
+			String voPass = vo.getmPW();
+			System.out.println(voPass); //값 확인
+			if(!(sessionPass.equals(voPass))) { //비밀번호가 같지않을경우 리턴
+				rttr.addFlashAttribute("msg",false); 
+				return "memberInfo";
+			}
+			memberService.deleteMember(vo);
+			session.invalidate(); //세션 초기화 
+			return "userDelete";
+		}
 	
-	}
-	
+		
+		
+		
+		
+		
+		
+		
 	@RequestMapping("register.do")
 	public void register() {
 	
 	}
 	
-	@RequestMapping("cart.do")
-	public void cart() {
 	
-	}
 	
-	@RequestMapping("productdetails.do")
-	public void productdetails() {
 	
-	}
-	
-	@RequestMapping("shop.do")
-	public void shop() {
-	
-	}
-	@RequestMapping("login2.do")
-	public void login2() {
-		
-	}
 	
 	
 	

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="ShopDAO">
+  
+  
+  <!-- 상품 목록 -->
+  <select id ="getProductList" resultType="product">
+  	SELECT * FROM PRODUCT ORDER BY pID
+  </select>
+  
+  <!-- 상품 상세 내역 -->
+  <select id ="getProduct" parameterType="product" resultType="product">
+  	SELECT * FROM PRODUCT WHERE pID= #{pID}
+  </select>
+  
+  <!-- 장바구니 Insert -->
+  
+  <insert id="addCart" parameterType="cart">
+  	insert into cart(cartNUM, mID, pID, cartSTOCK)
+  		values(cart_seq.nextval, #{mID},#{pID},#{cartSTOCK})
+  </insert>
+  
+  
+  </mapper>
+  

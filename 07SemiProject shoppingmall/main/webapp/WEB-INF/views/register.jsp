@@ -7,7 +7,30 @@
 <html>
 <head>
 <title>회원가입</title>
-
+<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+<script>
+$(function(){
+	$("#mID").blur(function(){
+		//AJAX
+		$.ajax({
+		url:"idCheck1.do",
+		type:"post",
+		data:{"mID":$("#mID").val() },
+		success:function(result){
+			alert(result);
+			if(parseInt(result)==1){
+				$(".msg2").show();
+				$(".msg1").hide();
+			}else{
+				$(".msg1").show();
+				$(".msg2").hide();
+			}
+		}
+		
+		});
+	});
+});
+</script>
 </head>
 <body>
 <div id = "root"> <!-- S: Index(Home).jsp 의 div 총괄 시작 -->
@@ -44,8 +67,14 @@
                             <!-- Start Single Content -->
                             <!--  회원가입폼 -->
                             <div id="register" role="tabpanel" class="single__tabs__panel tab-pane fade in active">
-                                <form class="login" method="post" action="userInsert.do" name="userinsert" id=""userinsert"">
-                                    <input type="text" name="mID" id="mID" placeholder="아이디" required="required">
+                                <form class="login" method="post" action="userInsert.do" name="userinsert" id="">
+                                    <input type="text" name="mID" id="mID" class="id_input" placeholder="아이디" required="required">
+                                    <span class="msg1">
+									사용가능한 아이디 입니다.
+									</span>
+									<span class="msg2">
+									이미 사용중인 아이디입니다.
+									</span>
                                     <input type="password" name="mPW" id="mPW" placeholder="비밀번호" required="required">
                                     <input type="text" name="mNAME" id="mNAME" placeholder="이름" required="required">
                                     <input type="email" name="mEMAIL" id="mEMAIL" placeholder="이메일" required="required">

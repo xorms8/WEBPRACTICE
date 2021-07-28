@@ -62,6 +62,17 @@ a {
   padding: 0;
 }
 
+/* 중복아이디 존재하지 않는경우 */
+.msg1{
+	color:blue;
+	display:none;
+}
+	/* 중복아이디 존재하는 경우 */
+.msg2{
+	color:red;
+	display:none;
+}
+	
 /*----------------------
   02. Helper Classes
 ------------------------*/
