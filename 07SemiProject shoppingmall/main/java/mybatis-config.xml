@@ -8,6 +8,7 @@
 	<typeAlias alias="member" type="com.perfume.domain.MemberVO"/>
 	<typeAlias alias="product" type="com.perfume.domain.ProductVO"/>
 	<typeAlias alias="cart" type="com.perfume.domain.CartVO"/>
+	<typeAlias alias="cartList" type="com.perfume.domain.CartListVO"/>
 </typeAliases>
 
 

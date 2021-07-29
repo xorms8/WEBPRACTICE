@@ -17,7 +17,6 @@ $(function(){
 		type:"post",
 		data:{"mID":$("#mID").val() },
 		success:function(result){
-			alert(result);
 			if(parseInt(result)==1){
 				$(".msg2").show();
 				$(".msg1").hide();

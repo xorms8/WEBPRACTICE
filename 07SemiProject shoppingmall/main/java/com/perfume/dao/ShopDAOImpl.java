@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.perfume.domain.CartListVO;
 import com.perfume.domain.CartVO;
 import com.perfume.domain.ProductVO;
 
@@ -31,5 +32,11 @@ public class ShopDAOImpl implements ShopDAO {
 	public void addCart(CartVO vo) {
 		mybatis.insert("ShopDAO.addCart", vo);
 	}
-
+	
+	@Override
+	public List<CartListVO> CartList(String mID) {
+		System.out.println("==>Mybatis ShopDAO CartList()호출");
+		return mybatis.selectList("ShopDAO.cartList", mID);
+	}
+	
 }

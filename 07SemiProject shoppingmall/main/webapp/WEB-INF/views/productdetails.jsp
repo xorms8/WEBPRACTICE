@@ -17,12 +17,15 @@
 		
 		$(".plus").click(function(){
 				
+		
 			   var num = $(".numBox").val();
-			   var plusNum = Number(num) + 1;
-
+			   var plusNum = Number(num) + 1; 
+ 
 			   
 			   if(plusNum >= ${product.pSTOCK}) {
-			    $(".numBox").val(num);
+
+				    
+			    $(".numBox").val(num); 
 			   }else {
 			    $(".numBox").val(plusNum);          
 			   }
@@ -34,14 +37,14 @@
 			   
 			   if(minusNum <= 0) {
 			    $(".numBox").val(num);
-			   } else {
+			   } else { 
 			    $(".numBox").val(minusNum);          
 			   }
 			  });
 			  
 		//카트담기 Jquery
 			
-			$(".cart_btn").click(function(){
+			$("#cart_btn").click(function(){
 				
 				var pID = $("#testProductID").val();
 				var cartSTOCK = $(".numBox").val();
@@ -52,7 +55,7 @@
 				};
 				
  				$.ajax({
-					url : "cart.do",
+					url : "addCart.do",
 					contentType : "application/x-www-form-urlencoded;charset=UTF-8",
 					type : "post",
 					data : data,
@@ -62,7 +65,7 @@
 				}); 
 				
 				
-			})  
+			});  
 			  
 			  
 		
@@ -227,7 +230,8 @@
 									좋은 원료로 만든 다양한 향수를, 더 쉽게 경험할 수 있도록. 가장 '나다운 향'을 찾기 위한 여정을 함께합니다.</p>
 							</div>
 							<ul class="pro__dtl__prize">
-								<li><input type="text" readonly id="testProductID" value="${product.pID }"></li>
+								<li><input type="hidden" readonly id="testProductID"
+									value="${product.pID }"></li>
 							</ul>
 							<ul class="pro__dtl__prize">
 								<li><fmt:formatNumber value="${product.pPRICE}"
@@ -248,30 +252,21 @@
 											<button type="button" class="minus">
 												<span class="ti-minus"></span>
 											</button>
-											<ul class="pro__dtl__btn">
-												<li class="buy__now__btn"><a href="order.do">바로 구매</a></li>
-												<li class="cart_btn"><span>장바구니담기</span></a></li>
-			
-											</ul>
+
 										</div>
 
 									</form>
 								</div>
 							</div>
 
+							<ul class="pro__dtl__btn">
+								<li class="buy__now__btn" id="order_btn">
+								<a href="order.do">바로 구매</a></li>
+								
+								<li class="buy__now__btn" id="cart_btn">
+								<a href="#">장바구니</a></li>
+							</ul>
 
-
-
-
-							<div class="pro__social__share">
-								<h2>Share :</h2>
-								<ul class="pro__soaial__link">
-									<li><a href="#"><i class="zmdi zmdi-twitter"></i></a></li>
-									<li><a href="#"><i class="zmdi zmdi-instagram"></i></a></li>
-									<li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li>
-									<li><a href="#"><i class="zmdi zmdi-google-plus"></i></a></li>
-								</ul>
-							</div>
 						</div>
 					</div>
 				</div>

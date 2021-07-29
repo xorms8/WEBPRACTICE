@@ -19,8 +19,13 @@
   
   <insert id="addCart" parameterType="cart">
   	insert into cart(cartNUM, mID, pID, cartSTOCK)
-  		values(cart_seq.nextval, #{mID},#{pID},#{cartSTOCK})
+  		values(cart_seq.nextval, #{mID}, #{pID}, #{cartSTOCK})
   </insert>
+  
+  <select id="cartList" resultType="cartList">
+select row_number() over(order by c.cartNUM desc) as num, c.cartNUM, c.mID, c.pID, c.cartSTOCK, c.addDATE, p.pNAME, p.pPRICE, p.pFname
+from cart c inner join PRODUCT p on c.pID = p.pID where c.mID = #{mID}
+</select>
   
   
   </mapper>

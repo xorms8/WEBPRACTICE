@@ -1,5 +1,7 @@
 package com.perfume.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -31,18 +33,32 @@ public class ShopController {
 		model.addAttribute("product", shopService.getProduct(vo));
 	}
 	
-	//장바구니 -> cart.do 페이지 요청
+	//장바구니 추가 요청이 들어올때 ->addCart
 	@ResponseBody
-	@RequestMapping(value="cart.do",produces="application/text;charset=UTF-8")
-	public String cart(Model model, CartVO vo, HttpSession session) throws Exception {
+	@RequestMapping(value="addCart.do",produces="application/text;charset=UTF-8")
+	public String addCart(CartVO vo,HttpSession session) throws Exception{
 		String message="카트 담기 실패";
-		MemberVO member = (MemberVO)session.getAttribute("member");
-		System.out.println(vo.getCartSTOCK());
-		System.out.println(vo.getpID());
+		
+		MemberVO member= (MemberVO)session.getAttribute("member");
 		vo.setmID(member.getmID());
+		
 		shopService.addCart(vo);
+		
 		message ="카트 담기 성공";
 		return message;
+	}
+
+	
+	//장바구니 -> cart.do 페이지 요청, CartVo에 담긴 DB 값 List를 뿌려줘야함
+	@RequestMapping("cart.do")
+	public void cart(Model model, HttpSession session) throws Exception {
+		
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		String mID = member.getmID();
+		
+		List<CartListVO> cartList = shopService.cartList(mID);
+		
+		model.addAttribute("cartList", cartList);
 	}
 	
 	

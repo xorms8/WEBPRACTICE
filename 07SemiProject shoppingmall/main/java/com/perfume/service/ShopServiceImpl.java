@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.perfume.dao.ShopDAOImpl;
+import com.perfume.domain.CartListVO;
 import com.perfume.domain.CartVO;
 import com.perfume.domain.ProductVO;
 
@@ -30,6 +31,11 @@ public class ShopServiceImpl implements ShopService {
 	public void addCart(CartVO vo) {
 		shopDAO.addCart(vo);
 		
+	}
+
+	@Override
+	public List<CartListVO> cartList(String mID) {
+		return shopDAO.CartList(mID);
 	}
 
 }

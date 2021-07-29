@@ -138,7 +138,13 @@ public class MemberController {
 			System.out.println("update컨트롤임");
 			return "userUpdate";	
 		}
-		//회원정보삭제
+		
+		
+		
+		
+		
+		
+		//회원탈퇴
 		@RequestMapping(value="userDelete")
 		public String userDelete(MemberVO vo,HttpSession session,RedirectAttributes rttr)throws Exception {
 			System.out.println("11111111111111111111"); //값 확인
