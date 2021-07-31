@@ -46,7 +46,7 @@
 					<div class="col-md-2 col-lg-2 col-sm-3 col-xs-3">
 						<div class="logo">
 							<a href="index.jsp"> <img
-								src="resources/images/logo/logo.png" alt="logo">
+								src="resources/images/logo/logo0730.png" alt="logo">
 							</a>
 						</div>
 					</div>

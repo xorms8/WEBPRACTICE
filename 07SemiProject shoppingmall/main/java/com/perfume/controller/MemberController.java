@@ -5,12 +5,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -171,6 +173,34 @@ public class MemberController {
 			return "userDelete";
 		}
 	
+	
+		
+		// 아이디찾기
+	      @RequestMapping("userFindId.do")
+	      public String userFindId(HttpServletResponse response,@RequestParam(defaultValue = "null") String mEMAIL,Model model) throws Exception{
+	         model.addAttribute("mID",memberService.userFindId(response, mEMAIL));
+	         return "userFindId";
+	      }
+	      // 아이디 찾기 뷰페이지
+	      @RequestMapping(value="userFindIdView")
+	      public void userFindIdView() {
+	         
+	      }
+	      
+	      // 비밀번호찾기
+	      @RequestMapping("userFindPw.do")
+	      public String userFindPw(HttpServletResponse response,@RequestParam(defaultValue = "null") String mID, String mEMAIL , Model model) throws Exception {
+	         model.addAttribute("mVO",memberService.userFindPw(response, mID, mEMAIL));
+	         //model.addAttribute("mEMAIL",memberService.userFindPw(response, mID, mEMAIL));
+	         return "userFindPw";
+	      }
+	      // 비밀번호 찾기 뷰페이지
+	      @RequestMapping(value="userFindPwView")
+	      public void userFindPwView() {
+	         
+	      }
+		
+		
 		
 		
 		
@@ -181,6 +211,11 @@ public class MemberController {
 	@RequestMapping("register.do")
 	public void register() {
 	
+	}
+	
+	@RequestMapping("about.do")
+	public void about() {
+		
 	}
 	
 	

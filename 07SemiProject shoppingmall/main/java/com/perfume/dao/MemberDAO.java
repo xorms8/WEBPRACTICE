@@ -28,4 +28,10 @@ public interface MemberDAO {
 	//회원탈퇴
 	public void deleteMember(MemberVO vo)throws Exception;
 	
+	
+	//아이디찾기
+    public String userFindId(String mEMAIL) throws Exception;
+    //비밀번호찾기
+    public MemberVO userFindPw(String mID,String mEMAIL) throws Exception;
+    
 }

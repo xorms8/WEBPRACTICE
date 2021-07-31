@@ -3545,6 +3545,11 @@ blockquote::before {
 .table-content table td.product-price {
     width: 130px;
 }
+.table-content table td.product-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: black;
+}
 .table-content table td.product-name a:hover,
 .buttons-cart a:hover {
     color: #ff4136

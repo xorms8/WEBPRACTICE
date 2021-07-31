@@ -1,5 +1,6 @@
 package com.perfume.service;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.perfume.domain.MemberVO;
@@ -25,5 +26,9 @@ public interface MemberService {
 		
 	//회원정보 삭제
 	public void deleteMember(MemberVO vo) throws Exception;
-
+	
+	//아이디 찾기
+    public String userFindId(HttpServletResponse response,String mEMAIL) throws Exception;
+    //비밀번호 찾기
+    public MemberVO userFindPw(HttpServletResponse response, String mID,String mEMAIL) throws Exception;
 }

@@ -44,5 +44,18 @@
 	delete from member 
 	where mID= #{mID} </delete>
 
+   	<!-- 아이디 비밀번호 찾기 -->
+   
+   <!-- 아이디 찾기 -->
+   <select id="userFindId" parameterType="String" resultType="String">
+      select mID from member
+      where mEMAIL = #{mEMAIL}
+   </select>
+   <!-- 비밀번호 찾기 -->
+   <select id="userFindPw" parameterType="hashmap" resultType="member">
+      select * from member 
+      where mID = #{mID} and
+      mEMAIL = #{mEMAIL}
+   </select>
    
 </mapper>

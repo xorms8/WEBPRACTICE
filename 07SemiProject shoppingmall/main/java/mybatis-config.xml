@@ -9,6 +9,9 @@
 	<typeAlias alias="product" type="com.perfume.domain.ProductVO"/>
 	<typeAlias alias="cart" type="com.perfume.domain.CartVO"/>
 	<typeAlias alias="cartList" type="com.perfume.domain.CartListVO"/>
+	<typeAlias alias="order" type="com.perfume.domain.OrderVO"/>
+	<typeAlias alias="orderDetails" type="com.perfume.domain.OrderDetailsVO"/>
+	<typeAlias alias="review" type="com.perfume.domain.ReviewVO"/>
 </typeAliases>
 
 

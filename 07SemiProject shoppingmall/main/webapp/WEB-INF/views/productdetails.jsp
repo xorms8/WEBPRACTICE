@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
 <html>
 <head>
@@ -66,10 +67,14 @@
 				
 				
 			});  
-			  
-			  
-		
-		
+			
+			//리뷰 ajax
+			$("#iR").click(function () {
+	          document.getElementById("review-form").submit();
+	     	 });
+			
+	
+		 
 	})
 	
 	
@@ -261,7 +266,7 @@
 
 							<ul class="pro__dtl__btn">
 								<li class="buy__now__btn" id="order_btn">
-								<a href="order.do">바로 구매</a></li>
+								<a href="orderForm.do">바로 구매</a></li>
 								
 								<li class="buy__now__btn" id="cart_btn">
 								<a href="#">장바구니</a></li>
@@ -279,7 +284,7 @@
 				<div class="row">
 					<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
 						<ul class="product__deatils__tab mb--60" role="tablist">
-							<li role="presentation"><a href="#reviews" role="tab"
+							<li role="presentation"><a href="getReviewList.do" role="tab"
 								data-toggle="tab">Reviews</a></li>
 						</ul>
 					</div>
@@ -291,71 +296,54 @@
 							<div role="tabpanel" id="description"
 								class="product__tab__content fade in active">
 								<!-- Start Single Review -->
-								<div class="pro__review">
-									<div class="review__thumb">
-										<img src="images/review/1.jpg" alt="review images">
-									</div>
-									<div class="review__details">
-										<div class="review__info">
-											<h4>
-												<a href="#">Gerald Barnes</a>
-											</h4>
-											<div class="rating__send">
-												<a href="#"><i class="zmdi zmdi-mail-reply"></i></a> <a
-													href="#"><i class="zmdi zmdi-close"></i></a>
-											</div>
-										</div>
-										<div class="review__date">
-											<span>27 Jun, 2016 at 2:30pm</span>
-										</div>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing
-											elit. Integer accumsan egestas elese ifend. Phasellus a felis
-											at estei to bibendum feugiat ut eget eni Praesent et messages
-											in con sectetur posuere dolor non.</p>
-									</div>
-								</div>
-								<!-- End Single Review -->
-								<!-- Start Single Review -->
-								<div class="pro__review ans">
-									<div class="review__thumb">
-										<img src="images/review/2.jpg" alt="review images">
-									</div>
-									<div class="review__details">
-										<div class="review__info">
-											<h4>
-												<a href="#">Gerald Barnes</a>
-											</h4>
-											<div class="rating__send">
-												<a href="#"><i class="zmdi zmdi-mail-reply"></i></a> <a
-													href="#"><i class="zmdi zmdi-close"></i></a>
-											</div>
-										</div>
-										<div class="review__date">
-											<span>27 Jun, 2016 at 2:30pm</span>
-										</div>
-										<p>Lorem ipsum dolor sit amet, consectetur adipiscing
-											elit. Integer accumsan egestas elese ifend. Phasellus a felis
-											at estei to bibendum feugiat ut eget eni Praesent et messages
-											in con sectetur posuere dolor non.</p>
-									</div>
-								</div>
-								<!-- End Single Review -->
+                        <c:choose>
+                        <c:when test="${reviewList != null }">
+                        <c:forEach  items="${reviewList}" var="list">
+                        
+                        
+                        <div class="pro__review">
+                           <div class="review__thumb">
+                              <span>${list.mID }</span>
+                           </div>
+                           <div class="review__details">
+                              <div class="review__info">
+                                 <h4>
+                                    <a href="readReview.do" name="rTITLE" id="rTITLE" value="${list.rTITLE }">${list.rTITLE }</a>
+                                 </h4>
+                                 <!-- 수정 삭제 버튼 -->
+                                 <div class="rating__send">
+                                    <a href="readReview.do" name="updateReview" ><i class="zmdi zmdi-mail-reply"></i></a> <a
+                                       href="deleteReview.do" name="deleteReview"><i class="zmdi zmdi-close"></i></a>
+                                 </div>
+                              </div>
+                              <div class="review__date">
+                                 <span>${list.rRDATE }</span>
+                              </div>
+                              <p name="rCONTENT" id="rCONTENT" value="rCONTENT">${list.rCONTENT }</p>
+                           </div>
+                        </div>
+                        </c:forEach>
+                        </c:when>
+                        </c:choose>
+                        <!-- End Single Review -->
+								
 							</div>
 							<div class="review__box">
-								<form id="review-form">
+								<form id="review-form" action ="insertReview.do">
+								<!-- vo 인자로 넘겨주기위해 hidden -->
+                        		<input type="hidden" name="pID" value="${product.pID }" />
 									<div class="single-review-form">
 										<div class="review-box name">
-											<input type="text" placeholder="Type your name"> <input
-												type="email" placeholder="Type your email">
+											<input type="text" name ="rTITLE" placeholder="리뷰  제목">
 										</div>
 									</div>
 									<div class="single-review-form">
 										<div class="review-box message">
-											<textarea placeholder="Write your review"></textarea>
+											<textarea name = "rCONTENT" placeholder="리뷰 내용"></textarea>
 										</div>
 									</div>
 									<div class="review-btn">
-										<a class="fv-btn" href="#">submit review</a>
+										<a class="fv-btn" href="#" id="iR">submit review</a>
 									</div>
 								</form>
 							</div>

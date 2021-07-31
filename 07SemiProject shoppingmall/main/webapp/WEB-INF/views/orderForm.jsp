@@ -6,8 +6,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>cart</title>
-
+<title>orderForm</title>
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -73,14 +72,66 @@
 			<div id="header_box">
 				<jsp:include page="/WEB-INF/views/include/header.jsp" />
 			</div>
-			<h1 style="text-align: center;">Cart</h1>
+			<h1 style="text-align: center;">주문서</h1>
+			<div class="-subtitle" style="text-align: center;">주문하실 상품명 및
+				수량을 정확하게 확인해 주세요.</div>
 		</header>
 		<!-- E: 헤더 부분 끝 -->
-		
+
 
 		<!-- S: 본문 영역 시작 -->
-		<!-- cart-main-area start -->
-		
+
+		<!-- S: 카트 정보 -->
+		<br/><br/><br/>
+		<div class="container">
+			<h3 style="text-align: center;">배송지</h3>
+			<form class="form-horizontal" method="post" action="payment.do">
+			<input type="hidden" name="oAMOUNT" value="${totalPrice}"/>
+			<%-- <input type="hidden" name="mID" value="${mID}"/> --%>
+				<div class="form-group">
+					<label class="control-label col-sm-1" for="oNAME">받는사람 </label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="oNAME" name="oNAME">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-1" for="oPHONE">연락처</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="oPHONE"
+							placeholder="연락처" name="oPHONE">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-1" for="oADDRESS1">우편번호</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="oADDRESS1"
+							placeholder="우편번호" name="oADDRESS1">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-1" for="oADDRESS2">1차주소</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="oADDRESS2"
+							placeholder="1차주소" name="oADDRESS2">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-1" for="oADDRESS3">2차주소</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="oADDRESS3"
+							placeholder="2차주소" name="oADDRESS3">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-1 col-sm-10">
+						<button type="submit" class="btn btn-default">주문</button>
+					</div>
+				</div>
+			</form>
+		</div>
+
+
+
 		<div class="cart-main-area ptb--120 bg__white">
 			<div class="container">
 				<div class="row">
@@ -91,10 +142,11 @@
 									<thead>
 										<tr>
 											<th>
-											<div class ="allCheck">
-											<input type="checkbox" name ="allCheck" id = "allCheck"/><label for ="allCheck">모두선택</label>
-											
-											</div>
+												<div class="allCheck">
+													<input type="checkbox" name="allCheck" id="allCheck" /><label
+														for="allCheck">모두선택</label>
+
+												</div>
 											</th>
 											<th class="product-thumbnail">상품</th>
 											<th class="product-name">상품 이름</th>
@@ -105,38 +157,41 @@
 										</tr>
 									</thead>
 									<tbody>
-									<c:forEach items="${cartList}" var="cartList">
-										<tr>
-											<td>
-											<div class="checkBox">
-											<input type="checkbox" name="chBox" class="chBox" data-cartNum="${cartList.cartNUM }"/>
-											</div>
-											</td>
-											
-											<td class="product-thumbnail"><img
-													src="/zSemiProject/resources/upload/${cartList.pFname }"  alt="product img" /></td>
-											<td class="product-name">${cartList.pNAME}</td>
-											<td class="product-price"><span class="amount">
-											<fmt:formatNumber pattern="###,###,###" 
-											value="${cartList.pPRICE}" /></span></td>
-											<td class="product-quantity"><input type="number"
-												value="${cartList.cartSTOCK}" readonly /></td>
+										<c:forEach items="${cartList}" var="cartList">
+											<tr>
+												<td>
+													<div class="checkBox">
+														<input type="checkbox" name="chBox" class="chBox"
+															data-cartNum="${cartList.cartNUM }" />
+													</div>
+												</td>
+
+												<td class="product-thumbnail"><img
+													src="/zSemiProject/resources/upload/${cartList.pFname }"
+													alt="product img" /></td>
+												<td class="product-name">${cartList.pNAME}</td>
+												<td class="product-price"><span class="amount">
+														<fmt:formatNumber pattern="###,###,###"
+															value="${cartList.pPRICE}" />
+												</span></td>
+												<td class="product-quantity"><input type="number"
+													value="${cartList.cartSTOCK}" readonly /></td>
 												<%-- <td class="product-quantity">${cartList.cartSTOCK}개</td> --%>
-											<td class="product-subtotal"><fmt:formatNumber pattern="###,###,###" 
-											value="${cartList.pPRICE * cartList.cartSTOCK}" /></td>
-											<td class="product_${cartList.cartNUM}_remove" data-cartNum="${cartList.cartNUM }"><a href="#"></a></td>
-										</tr>
+												<td class="product-subtotal"><fmt:formatNumber
+														pattern="###,###,###"
+														value="${cartList.pPRICE * cartList.cartSTOCK}" /></td>
+												<td class="product_${cartList.cartNUM}_remove"
+													data-cartNum="${cartList.cartNUM }"><a href="#"></a></td>
+											</tr>
 										</c:forEach>
 									</tbody>
 								</table>
 							</div>
 							<div class="row">
-								<div class="col-md-8 col-sm-7 col-xs-12">
-									
-								</div>
+								<div class="col-md-8 col-sm-7 col-xs-12"></div>
 								<div class="col-md-4 col-sm-5 col-xs-12">
 									<div class="cart_totals">
-										<h2>Cart Totals</h2>
+										<h2>결제정보</h2>
 										<br/>
 										<table>
 											<tbody>
@@ -150,7 +205,7 @@
 										</table>
 										<br/><br/>
 										<div class="wc-proceed-to-checkout">
-											<a href="orderForm.do">주문하기</a>
+											<a href="payment.do">결제하기</a>
 										</div>
 									</div>
 								</div>
@@ -160,7 +215,9 @@
 				</div>
 			</div>
 		</div>
-		<!-- cart-main-area end -->
+
+
+		<!-- E: 카트 영역 끝 -->
 		<!-- E: 본문 영역 끝 -->
 
 

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.perfume.dao.ShopDAOImpl;
 import com.perfume.domain.CartListVO;
 import com.perfume.domain.CartVO;
+import com.perfume.domain.OrderDetailsVO;
+import com.perfume.domain.OrderVO;
 import com.perfume.domain.ProductVO;
 
 @Service("shopService")
@@ -38,4 +40,28 @@ public class ShopServiceImpl implements ShopService {
 		return shopDAO.CartList(mID);
 	}
 
+	@Override
+	public int TotalPrice(String mID) {
+		
+		return shopDAO.TotalPrice(mID);
+	}
+
+	@Override
+	public void deleteCart(CartVO vo) {
+		shopDAO.deleteCart(vo);
+	}
+
+	@Override
+	public void orderInfo(OrderVO vo) {
+		shopDAO.orderInfo(vo);
+		
+	}
+
+	@Override
+	public void orderInfo_Details(OrderDetailsVO orderDetail) {
+		shopDAO.orderInfo_Details(orderDetail);
+	}
+	
+	
+	
 }

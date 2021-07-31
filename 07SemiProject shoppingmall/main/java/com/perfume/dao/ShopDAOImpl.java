@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.perfume.domain.CartListVO;
 import com.perfume.domain.CartVO;
+import com.perfume.domain.OrderDetailsVO;
+import com.perfume.domain.OrderVO;
 import com.perfume.domain.ProductVO;
 
 @Repository("shopDAO")
@@ -38,5 +40,32 @@ public class ShopDAOImpl implements ShopDAO {
 		System.out.println("==>Mybatis ShopDAO CartList()호출");
 		return mybatis.selectList("ShopDAO.cartList", mID);
 	}
+
+	@Override
+	public int TotalPrice(String mID) { 
+		System.out.println("==>Mybatis ShopDAO TotalPrice()호출");
+		return mybatis.selectOne("ShopDAO.TotalPrice", mID);
+	}
+
+	@Override
+	public void deleteCart(CartVO vo) {
+		
+		System.out.println("Mybatis deleteCart 호출");
+		mybatis.delete("ShopDAO.deleteCart", vo);
+		
+	}
+
+	@Override
+	public void orderInfo(OrderVO vo) {
+		mybatis.insert("ShopDAO.orderInfo", vo);
+	}
+
+	@Override
+	public void orderInfo_Details(OrderDetailsVO orderDetail) {
+		mybatis.insert("ShopDAO.orderInfo_Details", orderDetail);
+	}
+
+	
+	
 	
 }

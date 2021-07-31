@@ -1,5 +1,7 @@
 package com.perfume.dao;
 
+import java.util.HashMap;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -57,6 +59,22 @@ public class MemberDAOImpl implements MemberDAO{
 		mybatis.delete("member.deleteMember",vo);
 		
 	}
+	
+	@Override
+	   public String userFindId(String mEMAIL) throws Exception {
+	      System.out.println("아디찾기 DAO");
+	      return mybatis.selectOne("member.userFindId",mEMAIL);
+	   }
+
+	   @Override
+	   public MemberVO userFindPw(String mID, String mEMAIL) throws Exception {
+	      System.out.println("비번찾기 DAO");
+	      HashMap map = new HashMap();
+	      map.put("mID", mID);
+	      map.put("mEMAIL", mEMAIL);
+	      System.out.println("비번찾기 DAO  = " + map );
+	      return mybatis.selectOne("member.userFindPw", map); 
+	   }
 	
 	
 	

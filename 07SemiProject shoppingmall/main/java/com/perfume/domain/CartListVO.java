@@ -24,7 +24,6 @@ public class CartListVO {
 	private int pPRICE;
 	private String pFname;
 	
-	
 	public int getNum() {
 		return num;
 	}

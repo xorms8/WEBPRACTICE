@@ -1,6 +1,9 @@
 package com.perfume.service;
 
 
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,4 +79,44 @@ public class MerberServiceImpl implements MemberService{
 		
 	}
 	   
+	@Override
+	   public String userFindId(HttpServletResponse response, String mEMAIL) throws Exception {
+	      response.setContentType("text/html;charset=utf-8");
+	      PrintWriter out = response.getWriter();
+	      String mID = memberDAO.userFindId(mEMAIL);
+	      System.out.println(mID + " = mID 값 (서비스)");
+	      
+	      if(mID == null) {
+	         out.print("<script>");
+	         out.print("alert('가입된 아이디가 없습니다.');");
+	         out.print("</script>");
+	         System.out.println(mID);
+	         out.close();
+	         return null;
+	      }else {
+	         return mID;
+	      }
+	   }
+
+
+	   @Override
+	   public MemberVO userFindPw(HttpServletResponse response, String mID, String mEMAIL) throws Exception {
+	      response.setContentType("text/html;charset=utf-8");
+	      PrintWriter out = response.getWriter();
+	      MemberVO mVO = memberDAO.userFindPw(mID,mEMAIL);
+	      System.out.println("비번찾기 서비스 =" + mVO);
+	      if(mVO == null) {
+	         out.print("<script>");
+	         out.print("alert('가입된 아이디가 없습니다.');");
+	         out.print("</script>");
+	         System.out.println(mVO);
+	         out.close();
+	         return null;
+	      }else {
+	         return mVO;
+	      }
+	   }
+	
+	
+	
 }
