@@ -45,8 +45,8 @@
                         <div class="col-md-3 col-lg-3 col-sm-6">
                             <div class="ft__widget">
                                 <div class="ft__logo">
-                                    <a href="index.html">
-                                        <img src="images/logo/logo.png" alt="footer logo">
+                                    <a href="index.jsp">
+                                        <img src="resources/images/logo/logo-large.png" alt="footer logo">
                                     </a>
                                 </div>
                                 <div class="footer-address">
@@ -117,7 +117,7 @@
                         <!-- Start Single Footer Widget -->
                         <div class="col-md-3 col-lg-3 col-lg-offset-1 col-sm-6 smt-30 xmt-30">
                             <div class="ft__widget">
-                                <h2 class="ft__title">Newsletter</h2>
+                                <h2 class="ft__title">고객센터</h2>
                                 <div class="newsletter__form">
                                     <p>Subscribe to our newsletter and get 10% off your first purchase .</p>
                                     <div class="input__box">
@@ -148,13 +148,13 @@
                         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                             <div class="copyright__inner">
                                 <div class="copyright">
-                                    <p>© 2017 <a href="https://freethemescloud.com/">Free themes Cloud</a>
-                                    All Right Reserved.</p>
+                                    <p>© 2021 <a href="https://github.com/xorms8/SemiShopping">Created by KOSMO 6 TEAM </a>
+                                   F2TPERFUME All right reserved.</p>
                                 </div>
                                 <ul class="footer__menu">
-                                    <li><a href="index.html">Home</a></li>
-                                    <li><a href="shop.html">Product</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a href="index.jsp">Home</a></li>
+                                    <li><a href="shop.do">Shop</a></li>
+                                    <li><a href="about.do">About</a></li>
                                 </ul>
                             </div>
                         </div>

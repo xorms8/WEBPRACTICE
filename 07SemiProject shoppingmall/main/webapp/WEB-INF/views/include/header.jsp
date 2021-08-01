@@ -46,7 +46,7 @@
 					<div class="col-md-2 col-lg-2 col-sm-3 col-xs-3">
 						<div class="logo">
 							<a href="index.jsp"> <img
-								src="resources/images/logo/logo0730.png" alt="logo">
+								src="resources/images/logo/test2.png" alt="logo">
 							</a>
 						</div>
 					</div>
@@ -110,7 +110,7 @@
 								<!-- 로그인 상태 이면서 verify 값이 9가 아닌 (일반 유저) -->
 								<!-- 마이페이지가 보이게 구분 한 코드 -->
 								<c:if test="${member.verify != 9 && member.verify == 0}">
-									<li><a href="memberInfo.do?mID=${sessionScope.userName}"><span class="ti-id-badge"></span></a></li>
+									<li><a href="myPage.do"><span class="ti-id-badge"></span></a></li>
 								</c:if>
 
 							</c:if>

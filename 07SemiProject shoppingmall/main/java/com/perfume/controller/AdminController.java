@@ -96,7 +96,7 @@ public class AdminController {
 	@RequestMapping("productDelete.do")
 	public String productDelete(ProductVO vo) {
 		adminService.deleteProduct(vo);
-		return "redirect:productList";
+		return "productList";
 	}
 	
 	

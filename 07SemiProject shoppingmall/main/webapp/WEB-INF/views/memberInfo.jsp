@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>회원가입</title>
+<title>회원정보수정 페이지</title>
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script>
 $(document).ready(function(){

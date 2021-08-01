@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.perfume.service.ReviewService;
 import com.perfume.service.ShopService;
 import com.perfume.domain.*;
 
@@ -23,6 +24,8 @@ public class ShopController {
 
 	@Autowired
 	private ShopService shopService;
+	@Autowired
+	private ReviewService reviewService;
 
 	// Shop 페이지 요청
 	@RequestMapping("shop.do")
@@ -31,9 +34,12 @@ public class ShopController {
 	}
 
 	// Shop -> 상품 상세 페이지 요청
-	@RequestMapping("productdetails")
+	@RequestMapping("productdetails.do")
 	public void productDetalis(ProductVO vo, Model model) {
+		ReviewVO vo1 = new ReviewVO();
+		vo1.setpID(vo.getpID());
 		model.addAttribute("product", shopService.getProduct(vo));
+		model.addAttribute("reviewList", reviewService.getReviewList(vo1));
 	}
 
 	// 장바구니 추가 요청이 들어올때 ->addCart
@@ -146,15 +152,55 @@ public class ShopController {
 
 		order.setoID(orderId);
 		order.setmID(mID);
-		
-		
+
 		shopService.orderInfo(order);
 		orderDetail.setoID(orderId);
 		shopService.orderInfo_Details(orderDetail);
 
-		return "home";
+		return "resultPayment";
 	}
 
+	// 특정 유저의 주문내역 페이지 요청
+	@RequestMapping("orderList.do")
+	public String orderList(OrderVO order,Model model , HttpServletRequest req, HttpServletResponse res) {
+		
+		HttpSession session = req.getSession();
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		
+		
+		if(member == null) {
+			return "login";
+		}
+		String mID = member.getmID();
+		order.setmID(mID);
+		
+		List<OrderVO> orderList = shopService.orderList(order);
+		model.addAttribute("orderList", orderList);
+		
+		return "orderList";
+	}
+	
+	// 주문 상세 목록 
+	@RequestMapping("orderView.do")
+	public String orderView(HttpServletRequest req, HttpServletResponse res, @RequestParam("n") String oID, OrderVO order, Model model) {
+		HttpSession session = req.getSession();
+		MemberVO member = (MemberVO)session.getAttribute("member");
+		
+		if(member == null) {
+			return "login";
+		}
+		
+		String mID = member.getmID();
+		order.setmID(mID);
+		order.setoID(oID);
+		
+		List<OrderListVO> orderView = shopService.orderView(order);
+		model.addAttribute("orderView", orderView);
+		
+		
+		return "orderView";
+	}
+	
 	// 총합을 출력하는 값
 	/*
 	 * @RequestMapping("TotalPrice.do") public void TotalPrice(Model m) { int result

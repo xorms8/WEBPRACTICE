@@ -5,6 +5,7 @@ import java.util.List;
 import com.perfume.domain.CartListVO;
 import com.perfume.domain.CartVO;
 import com.perfume.domain.OrderDetailsVO;
+import com.perfume.domain.OrderListVO;
 import com.perfume.domain.OrderVO;
 import com.perfume.domain.ProductVO;
 
@@ -31,4 +32,10 @@ public interface ShopService {
 	
 	// 주문 상세 정보
 	void orderInfo_Details(OrderDetailsVO orderDetail);
+	
+	// 특정 회원의 주문 내역 리스트
+	List<OrderVO> orderList(OrderVO order);
+	
+	// 특정 주문 목록
+	List<OrderListVO> orderView(OrderVO order);
 }

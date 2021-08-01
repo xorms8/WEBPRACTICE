@@ -12,6 +12,7 @@
 	<typeAlias alias="order" type="com.perfume.domain.OrderVO"/>
 	<typeAlias alias="orderDetails" type="com.perfume.domain.OrderDetailsVO"/>
 	<typeAlias alias="review" type="com.perfume.domain.ReviewVO"/>
+	<typeAlias alias="orderView" type="com.perfume.domain.OrderListVO"/>
 </typeAliases>
 
 

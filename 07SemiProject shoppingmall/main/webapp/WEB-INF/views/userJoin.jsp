@@ -30,7 +30,7 @@
                         <ul class="login__register__menu" role="tablist">
                             <li role="presentation" class="login active"><a href="#login" role="tab" data-toggle="tab">
                             	회원가입이 <br/>완료 되었습니다.</a></li>
-                          	<li><a href="index.jsp"><button type="button" class="btn btn-dark">Home</button></a></li>
+                          	<li><a href="index.jsp"><button type="button" class="btn btn-default">Home</button></a></li>
                         </ul>
                     </div>
                 </div>

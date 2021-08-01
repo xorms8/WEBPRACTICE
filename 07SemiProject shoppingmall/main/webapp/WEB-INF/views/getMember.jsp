@@ -126,9 +126,8 @@ aside ul li a:hover {
 						<li><h2>MENU</h2></li>
 						<li><a href="productInsert.do">상품 등록</a></li>
 						<li><a href="productList.do">상품 목록</a></li>
-						<li><a href="#">상품 리뷰</a></li>
 						<li><a href="memberList.do">회원 목록</a></li>
-						<li><a href="saleList.do">판매 목록</a></li>
+						<li><a href="orderList.do">판매 목록</a></li>
 					</ul>
 				</aside>
 			</div>

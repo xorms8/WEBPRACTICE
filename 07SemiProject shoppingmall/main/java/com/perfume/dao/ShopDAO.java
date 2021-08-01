@@ -7,6 +7,7 @@ import com.perfume.domain.ProductVO;
 import com.perfume.domain.CartListVO;
 import com.perfume.domain.CartVO;
 import com.perfume.domain.OrderDetailsVO;
+import com.perfume.domain.OrderListVO;
 import com.perfume.domain.OrderVO;
 
 public interface ShopDAO {
@@ -29,5 +30,9 @@ public interface ShopDAO {
 	public void orderInfo(OrderVO vo);
 
 	public void orderInfo_Details(OrderDetailsVO orderDetail);
+	
+	public List<OrderVO> orderList(OrderVO order);
+	
+	public List<OrderListVO> orderView(OrderVO order);
 
 }

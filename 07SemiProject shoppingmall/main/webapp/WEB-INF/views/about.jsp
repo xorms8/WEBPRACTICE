@@ -7,6 +7,15 @@
 <head>
     <meta charset="utf-8">
 <title>about</title>
+<style>
+#videoContent{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    margin:0 0;
+}
+</style>
 </head>
 <body>
 <div id = "root"> <!-- S: Index(Home).jsp 의 div 총괄 시작 -->
@@ -22,15 +31,25 @@
    <!-- S: 본문 영역 시작 -->
    
    <section id = "container">
+    <div id="video">
+  	<video autoplay="autoplay" id = "videoContent" muted="muted" loop="loop" >
+  	<source src="resources/images/about/about1.mp4" type="video/mp4">
+  	</video>
+   </div>
       <div id = "container_box">
      <!-- Start Our Team Area -->
         <section class="htc__team__area bg__white ptb--120">
             <div class="container">
                 <div class="row">
+                
                     <div class="col-md-12">
+                    <div class="section__title section__title--2 text-center">
+                           
+                        </div>
+                   
                         <div class="section__title section__title--2 text-center">
-                            <h2 class="title__line">Our Staff</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod tempor incididunt ut labo.</p>
+                            <h2 class="title__line">Better but different</h2>
+                            <p>내가 좋아하는 향기를 마음 편하게 사용하세요.</p>
                         </div>
                     </div>
                 </div>
@@ -41,19 +60,13 @@
                             <div class="team foo">
                                 <div class="team__thumb">
                                     <a href="#">
-                                        <img src="images/team/1.jpg" alt="team images">
+                                        <img src="resources/images/about/about2.jpg" width="300px" height="300px" alt="team images">
                                     </a>
                                 </div>
                                 <div class="team__bg__color"></div>
                                 <div class="team__hover__info">
                                     <div class="team__hover__action">
-                                        <h2><a href="#">Robiul siddikee</a></h2>
-                                        <ul class="social__icon">
-                                            <li><a href="#"><i class="zmdi zmdi-twitter"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-instagram"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-google-plus"></i></a></li>
-                                        </ul>
+                                        <h2>동물실험을 하지 않으며, <br />동물성 원료를 사용하지 않습니다.</h2>                            
                                     </div>
                                 </div>
                             </div>
@@ -64,19 +77,13 @@
                             <div class="team foo">
                                 <div class="team__thumb">
                                     <a href="#">
-                                        <img src="images/team/2.jpg" alt="team images">
+                                        <img src="resources/images/about/about3.PNG" width="300px" height="300px" alt="team images">
                                     </a>
                                 </div>
                                 <div class="team__bg__color"></div>
                                 <div class="team__hover__info">
                                     <div class="team__hover__action">
-                                        <h2><a href="#">Robiul siddikee</a></h2>
-                                        <ul class="social__icon">
-                                            <li><a href="#"><i class="zmdi zmdi-twitter"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-instagram"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-google-plus"></i></a></li>
-                                        </ul>
+                                        <h2>FSC인증이 완료된 종이를 사용하며, <br /> 비닐을 사용하지 않습니다.</h2>                 
                                     </div>
                                 </div>
                             </div>
@@ -87,19 +94,13 @@
                             <div class="team foo">
                                 <div class="team__thumb">
                                     <a href="#">
-                                        <img src="images/team/4.jpg" alt="team images">
+                                        <img src="resources/images/about/about4.PNG" width="300px" height="300px" alt="team images">
                                     </a>
                                 </div>
                                 <div class="team__bg__color"></div>
                                 <div class="team__hover__info">
                                     <div class="team__hover__action">
-                                        <h2><a href="#">Robiul siddikee</a></h2>
-                                        <ul class="social__icon">
-                                            <li><a href="#"><i class="zmdi zmdi-twitter"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-instagram"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li>
-                                            <li><a href="#"><i class="zmdi zmdi-google-plus"></i></a></li>
-                                        </ul>
+                                        <h2>파펨의 향기와 패키지는 <br /> 특정 성별을 타깃으로 디자인되지 않았습니다.</h2>
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +120,7 @@
                             <!-- Start Single Testimonial -->
                             <div class="testimonial">
                                 <div class="testimonial__thumb">
-                                    <img src="images/test/client/1.png" alt="testimonial images">
+                                    <img src="resources/images/about/about5.jpg" alt="testimonial images" width="100%" height="100%">
                                 </div>
                                 <div class="testimonial__details">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod teincidi dunt ut labore et dolore gna aliqua. Ut enim ad minim veniam,</p>
@@ -134,7 +135,7 @@
                             <!-- Start Single Testimonial -->
                             <div class="testimonial">
                                 <div class="testimonial__thumb">
-                                    <img src="images/test/client/2.png" alt="testimonial images">
+                                    <img src="resources/images/about/about6.jpg" width="100%" height="100%" alt="testimonial images">
                                 </div>
                                 <div class="testimonial__details">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod teincidi dunt ut labore et dolore gna aliqua. Ut enim ad minim veniam,</p>
@@ -149,7 +150,7 @@
                             <!-- Start Single Testimonial -->
                             <div class="testimonial">
                                 <div class="testimonial__thumb">
-                                    <img src="images/test/client/3.png" alt="testimonial images">
+                                    <img src="resources/images/about/about7.png" width="100%" height="100%" alt="testimonial images">
                                 </div>
                                 <div class="testimonial__details">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod teincidi dunt ut labore et dolore gna aliqua. Ut enim ad minim veniam,</p>
@@ -167,6 +168,13 @@
             </div>
         </div>
         <!-- End Testimonial Area -->
+        <div class="row">
+                    <div class="col-md-12">
+                        <div class="section__title section__title--2 text-center">
+                            <h2 class="title__line">Instagram @F2T</h2>
+                        </div>
+                    </div>
+                </div>
         <!-- Start brand Area -->
         <div class="htc__brand__area bg__white ptb--120">
             <div class="container">
@@ -174,19 +182,19 @@
                     <div class="col-md-12">
                         <ul class="brand__list">
                             <li><a href="#">
-                                <img src="images/brand/1.png" alt="brand images">
+                                <img src="resources/images/about/about8.PNG" alt="brand images">
                             </a></li>
                             <li><a href="#">
-                                <img src="images/brand/2.png" alt="brand images">
+                                <img src="resources/images/about/about9.PNG" alt="brand images">
                             </a></li>
                             <li><a href="#">
-                                <img src="images/brand/3.png" alt="brand images">
+                                <img src="resources/images/about/about10.PNG" alt="brand images">
                             </a></li>
                             <li><a href="#">
-                                <img src="images/brand/4.png" alt="brand images">
+                                <img src="resources/images/about/about11.PNG" alt="brand images">
                             </a></li>
                             <li class="hidden-sm"><a href="#">
-                                <img src="images/brand/5.png" alt="brand images">
+                                <img src="resources/images/about/about12.PNG" alt="brand images">
                             </a></li>
                         </ul>
                     </div>

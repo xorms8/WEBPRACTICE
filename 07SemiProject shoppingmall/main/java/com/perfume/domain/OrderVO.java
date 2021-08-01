@@ -12,7 +12,7 @@ public class OrderVO {
 	private String oADDRESS1; //배송 우편번호
 	private String oADDRESS2; //배송 주소
  	private String oADDRESS3; // 배송 상세주소
- 	private int oAMOUNT; //갯수
+ 	private int oAMOUNT; //합계
 	
 	
 	public String getoID() {

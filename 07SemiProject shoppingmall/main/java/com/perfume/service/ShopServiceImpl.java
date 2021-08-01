@@ -9,6 +9,7 @@ import com.perfume.dao.ShopDAOImpl;
 import com.perfume.domain.CartListVO;
 import com.perfume.domain.CartVO;
 import com.perfume.domain.OrderDetailsVO;
+import com.perfume.domain.OrderListVO;
 import com.perfume.domain.OrderVO;
 import com.perfume.domain.ProductVO;
 
@@ -60,6 +61,18 @@ public class ShopServiceImpl implements ShopService {
 	@Override
 	public void orderInfo_Details(OrderDetailsVO orderDetail) {
 		shopDAO.orderInfo_Details(orderDetail);
+	}
+
+	@Override
+	public List<OrderVO> orderList(OrderVO order) {
+		
+		return shopDAO.orderList(order);
+	}
+
+	@Override
+	public List<OrderListVO> orderView(OrderVO order) {
+		
+		return shopDAO.orderView(order);
 	}
 	
 	

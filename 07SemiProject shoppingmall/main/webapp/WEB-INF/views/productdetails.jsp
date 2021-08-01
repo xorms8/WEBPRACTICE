@@ -296,12 +296,9 @@
 							<div role="tabpanel" id="description"
 								class="product__tab__content fade in active">
 								<!-- Start Single Review -->
-                        <c:choose>
-                        <c:when test="${reviewList != null }">
-                        <c:forEach  items="${reviewList}" var="list">
-                        
                         
                         <div class="pro__review">
+                        <c:forEach items="${reviewList}" var="list" >
                            <div class="review__thumb">
                               <span>${list.mID }</span>
                            </div>
@@ -313,7 +310,7 @@
                                  <!-- 수정 삭제 버튼 -->
                                  <div class="rating__send">
                                     <a href="readReview.do" name="updateReview" ><i class="zmdi zmdi-mail-reply"></i></a> <a
-                                       href="deleteReview.do" name="deleteReview"><i class="zmdi zmdi-close"></i></a>
+                                       href="deleteReview.do?pID=${list.pID }" name="deleteReview"><i class="zmdi zmdi-close"></i></a>
                                  </div>
                               </div>
                               <div class="review__date">
@@ -321,10 +318,9 @@
                               </div>
                               <p name="rCONTENT" id="rCONTENT" value="rCONTENT">${list.rCONTENT }</p>
                            </div>
+                            </c:forEach>
                         </div>
-                        </c:forEach>
-                        </c:when>
-                        </c:choose>
+                       
                         <!-- End Single Review -->
 								
 							</div>

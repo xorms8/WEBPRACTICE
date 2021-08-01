@@ -130,7 +130,7 @@ h6,
     font-weight: 400;
     font-variant-ligatures: common-ligatures;
     margin-top: 0;
-    margin-bottom: 20px;
+    margin-bottom: 0;
 }
 h1, .h1 {
     font-size: 30px;
@@ -143,6 +143,7 @@ h2, .h2 {
 h3, .h3 {
     font-size: 20px;
     font-weight: 400;
+    margin-bottom: 15px;
 }
 h4, .h4 {
     font-size: 14px;
@@ -465,7 +466,6 @@ body {
 }
 
 [data--black__overlay]:before {
-    position: absolute;
     content: '';
     background: #000;
     width: 100%;

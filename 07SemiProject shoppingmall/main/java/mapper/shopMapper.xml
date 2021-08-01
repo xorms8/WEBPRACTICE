@@ -55,6 +55,31 @@ from cart c inner join PRODUCT p on c.pID = p.pID where c.mID = #{mID})
 	from cart
 </insert>
 
+<!-- 특정 유저의 주문 목록(리스트) -->
+<select id="orderList" resultType="order">
+	SELECT oID, mID, oNAME, oADDRESS1, oADDRESS2, oADDRESS3, oPHONE, oAMOUNT, oRDATE
+	from ORDERS
+	where mID = #{mID}
+	order by oID desc
+</select>	
+
+<!-- 특정 유저의 주문목록 총 모음 3중 조인 쿼리 (주문번호 클릭시 상세 정보)-->
+<!-- orders table + orders details table + product table  -->
+<select id="orderView" resultType="orderView">
+
+select
+    o.oID, o.mID, o.oNAME, o.oADDRESS1, o.oADDRESS2, o.oADDRESS3, o.oPHONE, o.oAMOUNT, o.oRDATE,
+    d.orderDetailsNum, d.pID, d.cartSTOCK,
+    p.pNAME, p.pFname, p.pPRICE
+from orders o 
+    inner join orders_details d
+    on o.oID = d.oID
+    inner join product p
+    on d.pID = p.pID
+where o.mID = #{mID}
+    and o.oID= #{oID}
+
+</select>
 
   </mapper>
   

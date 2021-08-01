@@ -112,25 +112,31 @@ aside ul li a:hover {
 
 
 		<!-- S: 본문 영역 시작 -->
-		<div class="row content">
-			<h1 style="text-align: center;">F2T Perfume 관리자 페이지</h1>
-			<div class="col-sm-2">
-				왼쪽 사이드
+
+
+			<h1 style="text-align: center;">Mypage</h1>
+			<h2 style="text-align: center;">향기로운 날입니다, ${sessionScope.mNAME}님 :)</h2>
+			<hr />
+			<div class="col-sm-1">
 				<aside>
 					<ul class="list-group">
+						<li><h2>MENU</h2></li>
 						<li><a href="productInsert.do">상품 등록</a></li>
 						<li><a href="productList.do">상품 목록</a></li>
-						<li><a href="#">상품 리뷰</a></li>
-						<li><a href="memberList.do">유저 목록</a></li>
-						<li><a href="saleList.do">판매 목록</a></li>
+						<li><a href="memberList.do">회원 목록</a></li>
+						<li><a href="orderList.do">판매 목록</a></li>
 					</ul>
 				</aside>
 			</div>
-			<div class="col-sm-6 text-left"></div>
+			<!-- S :본문   -->
 
-			<div class="col-sm-2">오른쪽 사이드</div>
-		</div>
-		<!-- E: 본문 영역 끝 -->
+				<div class="container">
+					<div class="jumbotron">
+						<img src="/zSemiProject/resources/images/myPage.png"/>
+						<p>F2T PERFUME</p>
+					</div>
+				</div>
+			<!-- E :본문 목록  -->
 
 
 		<!-- S: 푸터 영역 시작 -->
