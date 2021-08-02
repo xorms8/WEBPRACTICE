@@ -51,6 +51,11 @@ public class ShopServiceImpl implements ShopService {
 	public void deleteCart(CartVO vo) {
 		shopDAO.deleteCart(vo);
 	}
+	
+	@Override
+	public void cartAllDelete(String mID) {
+		shopDAO.cartAllDelete(mID);
+	}
 
 	@Override
 	public void orderInfo(OrderVO vo) {
@@ -74,6 +79,8 @@ public class ShopServiceImpl implements ShopService {
 		
 		return shopDAO.orderView(order);
 	}
+
+	
 	
 	
 	

@@ -13,8 +13,16 @@ public class OrderVO {
 	private String oADDRESS2; //배송 주소
  	private String oADDRESS3; // 배송 상세주소
  	private int oAMOUNT; //합계
+	private String delivery; //배송정보
 	
 	
+	
+	public String getDelivery() {
+		return delivery;
+	}
+	public void setDelivery(String delivery) {
+		this.delivery = delivery;
+	}
 	public String getoID() {
 		return oID;
 	}

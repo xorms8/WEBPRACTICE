@@ -7,15 +7,6 @@
 <head>
     <meta charset="utf-8">
 <title>about</title>
-<style>
-#videoContent{
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    margin:0 0;
-}
-</style>
 </head>
 <body>
 <div id = "root"> <!-- S: Index(Home).jsp 의 div 총괄 시작 -->
@@ -26,30 +17,82 @@
       </div>
    </header>
    <!-- E: 헤더 부분 끝 -->
-   
-   
-   <!-- S: 본문 영역 시작 -->
-   
-   <section id = "container">
-    <div id="video">
-  	<video autoplay="autoplay" id = "videoContent" muted="muted" loop="loop" >
-  	<source src="resources/images/about/about1.mp4" type="video/mp4">
-  	</video>
    </div>
-      <div id = "container_box">
-     <!-- Start Our Team Area -->
+ <!-- Start Our Store Area -->
+        <section class="htc__store__area ptb--120 bg__white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section__title section__title--2 text-center">
+                            <h2 class="title__line">Welcome To F2T Store</h2>
+                            <p>우리는 남들과는 다른, 더 나은 것들을 만듭니다</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Our Store Area -->
+        <!-- Start Choose Us Area -->
+        <section class="htc__choose__us__ares bg__white">
+            <div class="container-fluid">
+                
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                        <div class="htc__choose__wrap bg__cat--4">
+                            <h2 class="choose__title">우리 F2T 는?</h2>
+                            <div class="choose__container">
+                                <div class="single__chooose">
+                                    <div class="choose__us">
+                                        <div class="choose__icon">
+                                            <span class="ti-heart"></span>
+                                        </div>
+                                        <div class="choose__details">
+                                            <h4>Free Gift Box</h4>
+                                            <p>향수배송중에 손상되지 않도록 무료로 하드케이스에 담아드립니다.</p>
+                                        </div>
+                                    </div>
+                                    <div class="choose__us">
+                                        <div class="choose__icon">
+                                            <span class="ti-truck"></span>
+                                        </div>
+                                        <div class="choose__details">
+                                            <h4>Free Delivery</h4>
+                                            <p>배송비는 저희가 부담합니다.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="single__chooose">
+                                    <div class="choose__us">
+                                        <div class="choose__icon">
+                                            <span class="ti-reload"></span>
+                                        </div>
+                                        <div class="choose__details">
+                                            <h4>Money Back</h4>
+                                            <p>상품 구매시 10% 마일리지로 전환해드립니다.</p>
+                                        </div>
+                                    </div>
+                                    <div class="choose__us">
+                                        <div class="choose__icon">
+                                            <span class="ti-time"></span>
+                                        </div>
+                                        <div class="choose__details">
+                                            <h4>Support 24/7</h4>
+                                            <p>12시간 고객센터를 운영하여 신속하게 응대하겠습니다.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        </section>
+        <!-- End Choose Us Area -->
+        <!-- Start Our Team Area -->
         <section class="htc__team__area bg__white ptb--120">
             <div class="container">
                 <div class="row">
-                
                     <div class="col-md-12">
-                    <div class="section__title section__title--2 text-center">
-                           
-                        </div>
-                   
                         <div class="section__title section__title--2 text-center">
-                            <h2 class="title__line">Better but different</h2>
-                            <p>내가 좋아하는 향기를 마음 편하게 사용하세요.</p>
+                            <h2 class="title__line" style="margin-top:15px;">Our Project Team</h2>                         
                         </div>
                     </div>
                 </div>
@@ -60,13 +103,13 @@
                             <div class="team foo">
                                 <div class="team__thumb">
                                     <a href="#">
-                                        <img src="resources/images/about/about2.jpg" width="300px" height="300px" alt="team images">
+                                        <img src="resources/images/about/github.png" alt="team images">
                                     </a>
                                 </div>
                                 <div class="team__bg__color"></div>
                                 <div class="team__hover__info">
                                     <div class="team__hover__action">
-                                        <h2>동물실험을 하지 않으며, <br />동물성 원료를 사용하지 않습니다.</h2>                            
+                                        <h2><a href="https://github.com/xorms8">임태근</a></h2>                                      
                                     </div>
                                 </div>
                             </div>
@@ -77,13 +120,13 @@
                             <div class="team foo">
                                 <div class="team__thumb">
                                     <a href="#">
-                                        <img src="resources/images/about/about3.PNG" width="300px" height="300px" alt="team images">
+                                       <img src="resources/images/about/github.png" alt="team images">
                                     </a>
                                 </div>
                                 <div class="team__bg__color"></div>
                                 <div class="team__hover__info">
                                     <div class="team__hover__action">
-                                        <h2>FSC인증이 완료된 종이를 사용하며, <br /> 비닐을 사용하지 않습니다.</h2>                 
+                                        <h2><a href="https://github.com/Youngseok2">장영석</a></h2>                                       
                                     </div>
                                 </div>
                             </div>
@@ -94,13 +137,13 @@
                             <div class="team foo">
                                 <div class="team__thumb">
                                     <a href="#">
-                                        <img src="resources/images/about/about4.PNG" width="300px" height="300px" alt="team images">
+                                        <img src="resources/images/about/github.png" alt="team images">
                                     </a>
                                 </div>
                                 <div class="team__bg__color"></div>
                                 <div class="team__hover__info">
                                     <div class="team__hover__action">
-                                        <h2>파펨의 향기와 패키지는 <br /> 특정 성별을 타깃으로 디자인되지 않았습니다.</h2>
+                                        <h2><a href="https://github.com/taehyun14">김태현</a></h2>                                       
                                     </div>
                                 </div>
                             </div>
@@ -111,108 +154,13 @@
             </div>
         </section>
         <!-- End Our Team Area -->
-        <!-- Start Testimonial Area -->
-        <div class="htc__testimonial__area ptb--120" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;" data--black__overlay="6">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-                        <div class="testimonial__wrap owl-carousel owl-theme clearfix">
-                            <!-- Start Single Testimonial -->
-                            <div class="testimonial">
-                                <div class="testimonial__thumb">
-                                    <img src="resources/images/about/about5.jpg" alt="testimonial images" width="100%" height="100%">
-                                </div>
-                                <div class="testimonial__details">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod teincidi dunt ut labore et dolore gna aliqua. Ut enim ad minim veniam,</p>
-                                    <div class="test__info">
-                                        <span><a href="#">Robiul siddikee</a></span>
-                                        <span> - </span>
-                                        <span>Customer</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Testimonial -->
-                            <!-- Start Single Testimonial -->
-                            <div class="testimonial">
-                                <div class="testimonial__thumb">
-                                    <img src="resources/images/about/about6.jpg" width="100%" height="100%" alt="testimonial images">
-                                </div>
-                                <div class="testimonial__details">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod teincidi dunt ut labore et dolore gna aliqua. Ut enim ad minim veniam,</p>
-                                    <div class="test__info">
-                                        <span><a href="#">Robiul siddikee</a></span>
-                                        <span> - </span>
-                                        <span>Customer</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Testimonial -->
-                            <!-- Start Single Testimonial -->
-                            <div class="testimonial">
-                                <div class="testimonial__thumb">
-                                    <img src="resources/images/about/about7.png" width="100%" height="100%" alt="testimonial images">
-                                </div>
-                                <div class="testimonial__details">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do eiusmod teincidi dunt ut labore et dolore gna aliqua. Ut enim ad minim veniam,</p>
-                                    <div class="test__info">
-                                        <span><a href="#">Robiul siddikee</a></span>
-                                        <span> - </span>
-                                        <span>Customer</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Single Testimonial -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- End Testimonial Area -->
-        <div class="row">
-                    <div class="col-md-12">
-                        <div class="section__title section__title--2 text-center">
-                            <h2 class="title__line">Instagram @F2T</h2>
-                        </div>
-                    </div>
-                </div>
         <!-- Start brand Area -->
-        <div class="htc__brand__area bg__white ptb--120">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <ul class="brand__list">
-                            <li><a href="#">
-                                <img src="resources/images/about/about8.PNG" alt="brand images">
-                            </a></li>
-                            <li><a href="#">
-                                <img src="resources/images/about/about9.PNG" alt="brand images">
-                            </a></li>
-                            <li><a href="#">
-                                <img src="resources/images/about/about10.PNG" alt="brand images">
-                            </a></li>
-                            <li><a href="#">
-                                <img src="resources/images/about/about11.PNG" alt="brand images">
-                            </a></li>
-                            <li class="hidden-sm"><a href="#">
-                                <img src="resources/images/about/about12.PNG" alt="brand images">
-                            </a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End brand Area -->
-     </div>
-   </section>
-   <!-- E: 본문 영역 끝 -->
-   
-   
-   <!-- S: 푸터 영역 시작 -->
+ <!-- S: 푸터 영역 시작 -->
    <footer id = "footer">
       <div id = "footer_box">
          <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
       </div>
    </footer>
-</div> <!-- E: Index(Home).jsp 의 div 총괄 끝  -->
 </body>
 </html>

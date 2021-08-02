@@ -25,6 +25,7 @@ public class OrderListVO {
 	private String oPHONE;
 	private int oAMOUNT;
 	private Date oRDATE;
+	private String delivery;
 	
 	private int orders_details;
 	private int pID;
@@ -33,6 +34,15 @@ public class OrderListVO {
 	private String pNAME;
 	private String pFname;
 	private String pPRICE;
+	
+	
+	
+	public String getDelivery() {
+		return delivery;
+	}
+	public void setDelivery(String delivery) {
+		this.delivery = delivery;
+	}
 	public String getoID() {
 		return oID;
 	}

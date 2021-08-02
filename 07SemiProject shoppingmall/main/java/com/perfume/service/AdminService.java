@@ -3,6 +3,8 @@ package com.perfume.service;
 import java.util.List;
 
 import com.perfume.domain.MemberVO;
+import com.perfume.domain.OrderListVO;
+import com.perfume.domain.OrderVO;
 import com.perfume.domain.ProductVO;
 
 public interface AdminService {
@@ -37,4 +39,13 @@ public interface AdminService {
 
 	// 회원 삭제
 	void deleteMember(MemberVO vo);
+	
+	// 판매 리스트 (전체 회원)
+	List<OrderVO> orderList();
+	
+	// 판매 상세내역 (전체 회원)
+	List<OrderListVO> orderView(OrderVO order);
+	
+	// 배송정보 변경
+	void delivery(OrderVO order);
 }

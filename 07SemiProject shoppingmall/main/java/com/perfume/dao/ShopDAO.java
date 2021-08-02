@@ -34,5 +34,6 @@ public interface ShopDAO {
 	public List<OrderVO> orderList(OrderVO order);
 	
 	public List<OrderListVO> orderView(OrderVO order);
-
+	
+	public void cartAllDelete (String mID);
 }

@@ -55,6 +55,13 @@ public class ShopDAOImpl implements ShopDAO {
 		mybatis.delete("ShopDAO.deleteCart", vo);
 
 	}
+	
+	@Override
+	public void cartAllDelete(String mID) {
+		
+		System.out.println("Mybatis cartAllDelete 호출");
+		mybatis.delete("ShopDAO.cartAllDelete", mID);
+	}
 
 	@Override
 	public void orderInfo(OrderVO vo) {
@@ -78,5 +85,7 @@ public class ShopDAOImpl implements ShopDAO {
 		System.out.println("==>Mybatis ShopDAO orderView()호출");
 		return mybatis.selectList("ShopDAO.orderView", order);
 	}
+
+	
 
 }

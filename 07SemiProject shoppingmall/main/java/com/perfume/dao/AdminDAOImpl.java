@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.perfume.domain.MemberVO;
+import com.perfume.domain.OrderListVO;
+import com.perfume.domain.OrderVO;
 import com.perfume.domain.ProductVO;
 
 
@@ -83,6 +85,30 @@ public class AdminDAOImpl implements AdminDAO{
 		
 		System.out.println("Mybatis deleteMember() 호출");
 		mybatis.update("AdminDAO.deleteMember", vo);
+	}
+
+
+
+	@Override
+	public List<OrderVO> orderList() {
+		System.out.println("==>Mybatis AdminDAO orderList()호출");
+		return mybatis.selectList("AdminDAO.orderList");
+	}
+
+	@Override
+	public List<OrderListVO> orderView(OrderVO order) {
+
+		System.out.println("==>Mybatis AdminDAO orderView()호출");
+		return mybatis.selectList("AdminDAO.orderView", order);
+	}
+
+
+
+	@Override
+	public void delivery(OrderVO order) {
+		
+		System.out.println("Mybatis delivery() 호출");
+		mybatis.update("AdminDAO.delivery", order);
 	}
 	
 	

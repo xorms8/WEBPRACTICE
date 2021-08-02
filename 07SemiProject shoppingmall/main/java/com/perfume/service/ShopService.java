@@ -27,6 +27,9 @@ public interface ShopService {
 	// 장바구니 삭제
 	void deleteCart(CartVO vo);
 	
+	// 장바구니 전체 데이터 초기화(주문되었을 시)
+	void cartAllDelete(String mID);
+	
 	// 주문 정보
 	void orderInfo(OrderVO vo);
 	
@@ -34,8 +37,8 @@ public interface ShopService {
 	void orderInfo_Details(OrderDetailsVO orderDetail);
 	
 	// 특정 회원의 주문 내역 리스트
-	List<OrderVO> orderList(OrderVO order);
+	public List<OrderVO> orderList(OrderVO order);
 	
 	// 특정 주문 목록
-	List<OrderListVO> orderView(OrderVO order);
+	public List<OrderListVO> orderView(OrderVO order);
 }

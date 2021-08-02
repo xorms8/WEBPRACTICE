@@ -12,7 +12,8 @@
 
 <!-- Place favicon.ico in the root directory -->
 <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
 
 
 <!-- All css files are included here. -->
@@ -45,8 +46,7 @@
 				<div class="row">
 					<div class="col-md-2 col-lg-2 col-sm-3 col-xs-3">
 						<div class="logo">
-							<a href="index.jsp"> <img
-								src="resources/images/logo/test2.png" alt="logo">
+							<a href="index.jsp">F2T PERFUME
 							</a>
 						</div>
 					</div>
@@ -57,7 +57,6 @@
 								<li><a href="index.jsp">Home</a></li>
 								<li><a href="shop.do">Shop</a></li>
 								<li><a href="about.do">about</a></li>
-								<li><a href="contact.do">event</a></li>
 							</ul>
 						</nav>
 						<div class="mobile-menu clearfix visible-xs visible-sm">
@@ -68,10 +67,7 @@
                                                 <li><a href="portfolio-card-box-2.html">portfolio</a></li>
                                                 <li><a href="single-portfolio.html">Single portfolio</a></li>
                                             </ul> --></li>
-									<li><a href="event.do">EVENT</a> <!-- <ul>
-                                                <li><a href="blog.html">blog 3 column</a></li>
-                                                <li><a href="blog-details.html">Blog details</a></li>
-                                            </ul> --></li>
+									
 									<li><a href="about.do">ABOUT</a> <!--  <ul>
                                                 <li><a href="about.html">about</a></li>
                                                 <li><a href="customer-review.html">customer review</a></li>
@@ -84,7 +80,7 @@
                                                 <li><a href="team.html">team</a></li>
                                                 <li><a href="login.do">login & register</a></li>
                                             </ul> --></li>
-									<li><a href="contact.do">contact</a></li>
+							
 								</ul>
 							</nav>
 						</div>

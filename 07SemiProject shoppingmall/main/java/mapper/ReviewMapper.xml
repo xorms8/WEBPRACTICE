@@ -36,7 +36,7 @@
 	
 	<delete id ="deleteReview" parameterType="review">
 	
-		delete review where mID = #{mID} and rID = #{rID}
+		delete review where mID = #{mID}
 		
 	</delete>
 	

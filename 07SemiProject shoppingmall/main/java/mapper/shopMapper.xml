@@ -42,6 +42,12 @@ from cart c inner join PRODUCT p on c.pID = p.pID where c.mID = #{mID})
 	where cartNUM= #{cartNUM} and mID = #{mID}
 </delete>
 
+<!-- 장바구니 비우기 (주문했을시) -->
+
+<delete id ="cartAllDelete">
+	delete cart where mID = #{mID}
+</delete>
+
 <!-- 주문정보 -->
 <insert id ="orderInfo" parameterType="order">
 	insert into ORDERS(oID, mID, oNAME, oADDRESS1,oADDRESS2,oADDRESS3,oPHONE,oAMOUNT)
@@ -57,7 +63,7 @@ from cart c inner join PRODUCT p on c.pID = p.pID where c.mID = #{mID})
 
 <!-- 특정 유저의 주문 목록(리스트) -->
 <select id="orderList" resultType="order">
-	SELECT oID, mID, oNAME, oADDRESS1, oADDRESS2, oADDRESS3, oPHONE, oAMOUNT, oRDATE
+	SELECT oID, mID, oNAME, oADDRESS1, oADDRESS2, oADDRESS3, oPHONE, oAMOUNT, oRDATE, delivery
 	from ORDERS
 	where mID = #{mID}
 	order by oID desc
@@ -68,7 +74,7 @@ from cart c inner join PRODUCT p on c.pID = p.pID where c.mID = #{mID})
 <select id="orderView" resultType="orderView">
 
 select
-    o.oID, o.mID, o.oNAME, o.oADDRESS1, o.oADDRESS2, o.oADDRESS3, o.oPHONE, o.oAMOUNT, o.oRDATE,
+    o.oID, o.mID, o.oNAME, o.oADDRESS1, o.oADDRESS2, o.oADDRESS3, o.oPHONE, o.oAMOUNT, o.oRDATE, o.delivery,
     d.orderDetailsNum, d.pID, d.cartSTOCK,
     p.pNAME, p.pFname, p.pPRICE
 from orders o 

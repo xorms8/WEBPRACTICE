@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.perfume.dao.AdminDAOImpl;
 import com.perfume.domain.MemberVO;
+import com.perfume.domain.OrderListVO;
+import com.perfume.domain.OrderVO;
 import com.perfume.domain.ProductVO;
 
 
@@ -65,6 +67,26 @@ public class AdminServiceImpl implements AdminService {
 	public void deleteMember(MemberVO vo) {
 		adminDAO.deleteMember(vo);
 		
+	}
+
+
+	@Override
+	public List<OrderVO> orderList() {
+		
+		return adminDAO.orderList();
+	}
+
+
+	@Override
+	public List<OrderListVO> orderView(OrderVO order) {
+		
+		return adminDAO.orderView(order);
+	}
+
+
+	@Override
+	public void delivery(OrderVO order) {
+		adminDAO.delivery(order);
 	}
 	
 	

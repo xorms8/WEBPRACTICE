@@ -114,7 +114,7 @@ aside ul li a:hover {
 		<!-- S: 본문 영역 시작 -->
 
 
-			<h1 style="text-align: center;">Mypage</h1>
+			<h1 style="text-align: center;">F2T Perfume 관리자 페이지</h1>
 			<h2 style="text-align: center;">향기로운 날입니다, ${sessionScope.mNAME}님 :)</h2>
 			<hr />
 			<div class="col-sm-1">
@@ -124,7 +124,7 @@ aside ul li a:hover {
 						<li><a href="productInsert.do">상품 등록</a></li>
 						<li><a href="productList.do">상품 목록</a></li>
 						<li><a href="memberList.do">회원 목록</a></li>
-						<li><a href="orderList.do">판매 목록</a></li>
+						<li><a href="salesList.do">판매 목록</a></li>
 					</ul>
 				</aside>
 			</div>

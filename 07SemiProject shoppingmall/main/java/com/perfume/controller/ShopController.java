@@ -137,7 +137,8 @@ public class ShopController {
 
 		MemberVO member = (MemberVO) session.getAttribute("member");
 		String mID = member.getmID();
-
+		
+		//주문번호 날짜 + 난수랜덤 6개 생성
 		Calendar cal = Calendar.getInstance();
 		int year = cal.get(Calendar.YEAR);
 		String ym = year + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);
@@ -156,7 +157,10 @@ public class ShopController {
 		shopService.orderInfo(order);
 		orderDetail.setoID(orderId);
 		shopService.orderInfo_Details(orderDetail);
-
+		
+		
+		shopService.cartAllDelete(mID);
+		
 		return "resultPayment";
 	}
 

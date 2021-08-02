@@ -16,8 +16,6 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script
-	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style>
 body {
 	font-family: '맑은 고딕', verdana;
@@ -111,6 +109,8 @@ aside ul li a:hover {
 	margin: 10px 0;
 }
 </style>
+
+
 </head>
 <body>
 	<div id="root">
@@ -127,17 +127,17 @@ aside ul li a:hover {
 		<!-- S: 본문 영역 시작 -->
 
 		<section id="container">
-			<h1 style="text-align: center;">Mypage - 주문목록</h1>
+			<h1 style="text-align: center;">F2T Perfume 관리자 페이지</h1>
 			<h2 style="text-align: center;">향기로운 날입니다, ${sessionScope.mNAME}님 :)</h2>
 			<hr />
 			<div class="col-sm-1">
 				<aside>
 					<ul class="list-group">
 						<li><h2>MENU</h2></li>
-						<li><a href="orderList.do">주문 목록</a></li>
-						<li><a href="memberInfo.do?mID=${sessionScope.userName}">회원
-								정보 관리</a></li>
-
+						<li><a href="productInsert.do">상품 등록</a></li>
+						<li><a href="productList.do">상품 목록</a></li>
+						<li><a href="memberList.do">회원 목록</a></li>
+						<li><a href="salesList.do">판매 목록</a></li>
 					</ul>
 				</aside>
 			</div>
@@ -160,11 +160,11 @@ aside ul li a:hover {
 									<tbody>
 									<c:forEach items="${orderList}" var="orderList">
 										<tr>
-										<td><a href="orderView.do?n=${orderList.oID }">${orderList.oID }</a></td>
+										<td><a href="salesView.do?n=${orderList.oID }">${orderList.oID }</a></td>
 										<td>${orderList.oNAME }</td>
 										<td>${orderList.oADDRESS1 } ${orderList.oADDRESS2 } ${orderList.oADDRESS3 }</td>
 										<td><fmt:formatNumber value="${orderList.oAMOUNT}"
-										pattern="###,###,###" /></td>
+										pattern="###,###,###" />원</td>
 										<td>${orderList.delivery }</td>
 										</tr>
 										</c:forEach>

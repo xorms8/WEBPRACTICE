@@ -10,8 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
     
 	
     <!-- All css files are included here. -->
@@ -44,11 +45,6 @@
                          <!-- Start Single Footer Widget -->
                         <div class="col-md-3 col-lg-3 col-sm-6">
                             <div class="ft__widget">
-                                <div class="ft__logo">
-                                    <a href="index.jsp">
-                                        <img src="resources/images/logo/logo-large.png" alt="footer logo">
-                                    </a>
-                                </div>
                                 <div class="footer-address">
                                     <ul>
                                         <li>
@@ -56,7 +52,7 @@
                                                 <i class="zmdi zmdi-pin"></i>
                                             </div>
                                             <div class="address-text">
-                                                <p>194 Main Rd T, FS Rayed <br> VIC 3057, USA</p>
+                                                <p>서울 금천구 가산디지털2로 123<br>월드메르디앙벤처센터II</p>
                                             </div>
                                         </li>
                                         <li>
@@ -64,7 +60,7 @@
                                                 <i class="zmdi zmdi-email"></i>
                                             </div>
                                             <div class="address-text">
-                                                <a href="#"> info@example.com</a>
+                                                <a href="#">xorms8@gmail.com</a>
                                             </div>
                                         </li>
                                         <li>
@@ -72,7 +68,7 @@
                                                 <i class="zmdi zmdi-phone-in-talk"></i>
                                             </div>
                                             <div class="address-text">
-                                                <p>+012 345 678 102 </p>
+                                                <p>+010 333 777 222 </p>
                                             </div>
                                         </li>
                                     </ul>
@@ -91,12 +87,7 @@
                             <div class="ft__widget">
                                 <h2 class="ft__title">Categories</h2>
                                 <ul class="footer-categories">
-                                    <li><a href="shop-sidebar.html">Men</a></li>
-                                    <li><a href="shop-sidebar.html">Women</a></li>
-                                    <li><a href="shop-sidebar.html">Accessories</a></li>
-                                    <li><a href="shop-sidebar.html">Shoes</a></li>
-                                    <li><a href="shop-sidebar.html">Dress</a></li>
-                                    <li><a href="shop-sidebar.html">Denim</a></li>
+                                    <li><a href="shop.do">Shop</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -105,12 +96,7 @@
                             <div class="ft__widget">
                                 <h2 class="ft__title">Infomation</h2>
                                 <ul class="footer-categories">
-                                    <li><a href="about.html">About Us</a></li>
-                                    <li><a href="contact.html">Contact Us</a></li>
-                                    <li><a href="#">Terms & Conditions</a></li>
-                                    <li><a href="#">Returns & Exchanges</a></li>
-                                    <li><a href="#">Shipping & Delivery</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="about.do">About Us</a></li>
                                 </ul>
                             </div>
                         </div>

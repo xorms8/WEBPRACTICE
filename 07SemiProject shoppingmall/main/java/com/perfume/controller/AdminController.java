@@ -4,6 +4,7 @@ package com.perfume.controller;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,11 +15,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.perfume.service.AdminService;
 import com.perfume.service.MemberService;
 import com.perfume.domain.MemberVO;
+import com.perfume.domain.OrderListVO;
+import com.perfume.domain.OrderVO;
 import com.perfume.domain.ProductVO;;
 
 @Controller
@@ -163,6 +167,67 @@ public class AdminController {
 			
 			return returnData;
 		}
+		
+		//판매 리스트
+		@RequestMapping("salesList.do")
+		public String salesList(Model model,HttpServletRequest req, HttpServletResponse res) {
+			
+			//관리자 세션 관리
+			HttpSession session = req.getSession();
+			MemberVO member = (MemberVO)session.getAttribute("member");
+			
+			if(member == null || member.getVerify() != 9) {
+				return "login";
+			}
+			
+			List<OrderVO> orderList = adminService.orderList();
+			model.addAttribute("orderList", orderList);
+			
+			return "salesList";
+		}
+		
+		
+		
+		
+		//판매 상세 조회
+		@RequestMapping("salesView.do")
+		public String salesView(HttpServletRequest req, HttpServletResponse res, @RequestParam("n") String oID, OrderVO order, Model model) {
+			
+			//관리자 세션 관리
+			HttpSession session = req.getSession();
+			MemberVO member = (MemberVO)session.getAttribute("member");
+			
+			if(member == null || member.getVerify() != 9) {
+				return "login";
+			}
+			
+			order.setoID(oID);
+			List<OrderListVO> orderView = adminService.orderView(order);
+			model.addAttribute("orderView", orderView);
+			
+			
+			return "salesView";
+			
+			
+		}
+		
+		//배송 정보 (배송중 , 배송 완료) 버튼 요청시
+		@RequestMapping(value="deliveryUpdate.do")
+		public String delivery(HttpServletRequest req, HttpServletResponse res,OrderVO order) throws Exception {
+			//관리자 세션 관리
+			HttpSession session = req.getSession();
+			MemberVO member = (MemberVO)session.getAttribute("member");
+			
+			if(member == null || member.getVerify() != 9) {
+				return "login";
+			}
+			adminService.delivery(order);
+			return "redirect:salesView.do?n=" +order.getoID();
+			//return "salesView.do?n="+order.getoID();
+//		return "salesView?n=" + order.getoID();
+		}
+		
+		
 		
 		
 }

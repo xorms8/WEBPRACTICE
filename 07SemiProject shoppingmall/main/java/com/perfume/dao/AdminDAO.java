@@ -3,6 +3,8 @@ package com.perfume.dao;
 import java.util.List;
 
 import com.perfume.domain.MemberVO;
+import com.perfume.domain.OrderListVO;
+import com.perfume.domain.OrderVO;
 import com.perfume.domain.ProductVO;
 
 public interface AdminDAO {
@@ -26,4 +28,14 @@ public interface AdminDAO {
 	public void updateMember(MemberVO vo);
 	
 	public void deleteMember(MemberVO vo);
+	
+	//관리자의 판매 내역 확인
+	
+	public List<OrderVO> orderList();
+	
+	public List<OrderListVO> orderView(OrderVO order);
+	
+	//배송정보 변경
+	
+	public void delivery(OrderVO order);
 }

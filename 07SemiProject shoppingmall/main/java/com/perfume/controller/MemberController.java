@@ -147,7 +147,7 @@ public class MemberController {
 		session.invalidate(); // 세션 초기화
 		// model.addAttribute("userName",memberService.readMember((String)session.getAttribute("mID")));
 		System.out.println("update컨트롤임");
-		return "userUpdate";
+		return "home"; //0802 수정
 	}
 
 	// 회원탈퇴
@@ -174,7 +174,7 @@ public class MemberController {
 		}
 		memberService.deleteMember(vo);
 		session.invalidate(); // 세션 초기화
-		return "userDelete";
+		return "home";
 	}
 
 	// 아이디찾기

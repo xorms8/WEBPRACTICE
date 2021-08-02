@@ -75,6 +75,39 @@
   WHERE mID = #{mID}
   </delete>
   
+  <!-- 주문 리스트 -->
+  <!-- 유저의 주문 목록(리스트) -->
+<select id="orderList" resultType="order">
+	SELECT oID, mID, oNAME, oADDRESS1, oADDRESS2, oADDRESS3, oPHONE, oAMOUNT, oRDATE, delivery
+	from ORDERS
+	order by oID desc
+</select>	
+
+<!-- 유저의 주문목록 총 모음 3중 조인 쿼리 (주문번호 클릭시 상세 정보)-->
+<!-- orders table + orders details table + product table  -->
+<select id="orderView" resultType="orderView">
+
+select
+    o.oID, o.mID, o.oNAME, o.oADDRESS1, o.oADDRESS2, o.oADDRESS3, o.oPHONE, o.oAMOUNT, o.oRDATE, o.delivery,
+    d.orderDetailsNum, d.pID, d.cartSTOCK,
+    p.pNAME, p.pFname, p.pPRICE
+from orders o 
+    inner join orders_details d
+    on o.oID = d.oID
+    inner join product p
+    on d.pID = p.pID
+where o.oID= #{oID}
+
+</select>
   
+  
+  <!-- 배송정보 업데이트 -->
+  
+  <update id="delivery">
+  	update orders
+  		set delivery = #{delivery}
+  	where oID = #{oID}
+  
+  </update>
   
   </mapper>

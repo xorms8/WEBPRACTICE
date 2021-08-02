@@ -143,7 +143,9 @@ aside ul li a:hover {
 			</div>
 			<!-- S :본문   -->
 			<div id="container_box">
-
+			
+		<!-- S: 넘어온 주문 번호의 배송 정보 -->
+		
 		<div class="container">
 		<div class="orderInfo">
 			<form class="form-horizontal" method="post" action="#">
@@ -159,15 +161,19 @@ aside ul li a:hover {
 					<label class="control-label col-sm-1" for="oPHONE">주소</label>
 					<div class="col-sm-6">
 						<input type="text" class="form-control" id="oPHONE"
-							name="oADDRESS1" value="${orderView.oADDRESS1} ${orderView.oADDRESS2}
-									${orderView.oADDRESS3}">
+							name="oADDRESS1" value="${orderView.oADDRESS1} ${orderView.oADDRESS2} ${orderView.oADDRESS3}" readonly>
 					</div>
 				</div>	
 				<div class="form-group">
-					<label class="control-label col-sm-1" for="oNAME">결제 금액</label>
+					<label class="control-label col-sm-1" for="oNAME">결제금액</label>
 					<div class="col-sm-6">
 						<input type="text" class="form-control" id="oNAME" name="oNAME" value=<fmt:formatNumber pattern="###,###,###"
 										value="${orderView.oAMOUNT}" /> readonly>
+					</div>
+				</div>	<div class="form-group">
+					<label class="control-label col-sm-1" for="delivery">주문상태</label>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" id="delivery" name="delivery" value="${orderView.delivery }" readonly>
 					</div>
 				</div>	
 					
@@ -178,31 +184,38 @@ aside ul li a:hover {
 		</div>
 		</div>
 
+		<!-- E: 넘어온 주문 번호의 배송 정보 -->
 
+		<!-- S: 넘어온 주문 번호의 주문 상세 내역 (제품과 갯수들) -->
 
-					<ul class="orderView">
-						<c:forEach items="${orderView}" var="orderView">
-							<li>
-								<div class="thumb">
-									<img src="/zSemiProject/resources/upload/${orderView.pFname}" />
-								</div>
-								<div class="gdsInfo">
-									<p>
-										<span>상품명</span>${orderView.pNAME}<br /> <span>개당 가격</span>
-										<fmt:formatNumber pattern="###,###,###"
-											value="${orderView.pPRICE}" />
-										원<br /> <span>구입 수량</span>${orderView.cartSTOCK} 개<br /> <span>최종
-											가격</span>
-										<fmt:formatNumber pattern="###,###,###"
-											value="${orderView.pPRICE * orderView.cartSTOCK}" />
-										원
-									</p>
-								</div>
-							</li>
-						</c:forEach>
-					</ul>
+		<div class="table-content table-responsive">
+								<table border="1">
+									<thead>
+										<tr>
+											<th class="product-thumbnail">상품사진</th>
+											<th class="product-name">상품명</th>
+											<th class="product-price">가격</th>
+											<th class="product-stock">수량</th>
+											<th class="product-subtotal">합계 금액</th>
+										</tr>
+									</thead>
+									<tbody>
+									<c:forEach items="${orderView}" var="orderView"> 
+										<tr>
+										<td><img src="/zSemiProject/resources/upload/${orderView.pFname}" /></td>
+										<td>${orderView.pNAME}</td>
+										<td><fmt:formatNumber pattern="###,###,###"
+											value="${orderView.pPRICE}" />원</td>
+										<td>${orderView.cartSTOCK}개</td>
+										<td><fmt:formatNumber pattern="###,###,###"
+											value="${orderView.pPRICE * orderView.cartSTOCK}" />원</td>
+										</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
+			<!-- E: 넘어온 주문 번호의 주문 상세 내역 (제품과 갯수들) -->
 			</div>
-			<!-- E :본문 목록  -->
 	</div>
 </div>
 	<!-- E: 본문 영역 끝 -->
