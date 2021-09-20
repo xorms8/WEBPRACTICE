@@ -6,11 +6,11 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>CMIS MY PAGE</title>
+<title>showBoard</title>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript">
 	$(function() {
-		$('.nav-link active').hover(function() {
+		$('#navList').hover(function() {
 			$(this).css("color", "gray");
 		}, function() {
 			$(this).css("color", "white");
@@ -73,10 +73,10 @@ body {
 							<h3 style="text-align:center">Menu</h3>
 							<ul class="nav nav-pills flex-column">
 								<li class="nav-item"><a class="nav-link active" id="navList"
-									href="modifyMember.do">회원정보수정</a></li>
+									href="modifyMember.do">회원 정보 수정</a></li>
 								<li class="nav-item"><a class="nav-link active" id="navList" href="showBoard.do">등록글
 										조회</a></li>
-								<li class="nav-item"><a class="nav-link active" id="navList" href="showReply.do">등록댓글보기</a>
+								<li class="nav-item"><a class="nav-link active" id="navList" href="showReply.do">등록 댓글 보기</a>
 								</li>
 								<li class="nav-item"><a class="nav-link active" id="navList" href="wishList.do">관심 물품</a>
 								</li>
@@ -84,7 +84,7 @@ body {
 							<hr class="d-sm-none">
 						</div>
 						<div class="col-sm-8">
-							<h2>TITLE HEADING</h2>
+							<h2>등록글 조회</h2>
 							<h5>Title description, Dec 7, 2017</h5>
 							<div class="fakeimg">Fake Image</div>
 							<p>Some text..</p>

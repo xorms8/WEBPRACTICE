@@ -28,7 +28,6 @@ public class ProductVO {
 	private int product_capacity_division;
 	private String product_capacity_division_code;
 	
-
 	private String product_unit_quantity;
 	private String product_unit_seperate_code;
 	
