@@ -1,95 +1,111 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!doctype html>
 <html>
 <head>
-    <meta charset="utf-8">
+<meta charset="utf-8">
 <title>제목</title>
 </head>
 <body>
-<div id = "root"> <!-- S: Index(Home).jsp 의 div 총괄 시작 -->
-<!-- S: 헤더 부분 시작 -->
-   <header id= "header">
-      <div id = "header_box">
-         <jsp:include page="/WEB-INF/views/include/header.jsp"/>
-         <link rel="stylesheet" href="resources/css/map.css">
-         <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-         <link rel="stylesheet" href="resources/css/slider.css">
-		<link rel="stylesheet" href="resources/css/material-design-iconic-font.min.css">
-      </div>
-   </header>
-   <!-- E: 헤더 부분 끝 -->
-   
-   
-   <!-- S: 본문 영역 시작 -->
-   
-   <section id = "container">
-      <div id = "container_box">
-     <main>
-    <!--? Hero Area Start-->
-    <div class="slider-area hero-bg2 hero-overly">
-        
+	<div id="root">
+		<!-- S: Index(Home).jsp 의 div 총괄 시작 -->
+		<!-- S: 헤더 부분 시작 -->
+		<header id="header">
+			<div id="header_box">
+				<jsp:include page="/WEB-INF/views/include/header.jsp" />
+				<link rel="stylesheet" href="resources/css/map.css">
+				<link rel="stylesheet"
+					href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+				<link rel="stylesheet" href="resources/css/slider.css">
+				<link rel="stylesheet"
+					href="resources/css/material-design-iconic-font.min.css">
+			</div>
+		</header>
+		<!-- E: 헤더 부분 끝 -->
+
+
+		<!-- S: 본문 영역 시작 -->
+
+		<div class="container-fluid"> <!-- 전체 Container -->
+  <div class="row">
+    <div class="col-sm-3 col-md-6 col-lg-4"> <!-- 왼쪽 컨테이너 구조 -->
+      <div class="float">
+							<form name="search_form" id="search_form" class="form"
+								onsubmit="return false">
+								<input type="hidden" name="lat" id="lat" value=""> <input
+									type="hidden" name="lng" id="lng" value="">
+								<h3 style="color: black">매장찾기</h3>
+								<div class="shop_search">
+									<input type="text" name="search_text" id="search_text" value="">
+									<button type="button" onclick="textSearch();return false;"
+										style="display: block; position: absolute; right: 0; top: 0; overflow: visible; padding: 0px; border: 0px; font-weight: normal; cursor: pointer; outline: none; background-color: transparent;">
+										<img src="resources/img/map/btn_shop_search.gif" alt="검색"
+											style="border: none; vertical-align: middle;">
+									</button>
+								</div>
+								<p class="ex">- 롯데마트, 이마트, GS</p>
+							</form>
+							<div class="shop_sort" style="overflow: hidden; outline: none;">
+
+								<div class="area on" id="shopArea1" style="outline: none;"
+									tabindex="1">
+									<c:forEach items="${storeList}" var="storeList">
+
+
+										<a href="#" class="box"
+											onclick="storeMarker(${storeList.lon},${storeList.lat });return false;">
+											<p class="subject">${storeList.shopName }</p>
+											<p class="add">${storeList.address }</p> <c:if test="${not empty storeList.shopTelnum}">
+												<p class="tel">${storeList.shopTelnum }</p>
+										</a>
+										</c:if>
+										</a>
+
+
+									</c:forEach>
+								</div>
+
+							</div>
+						</div>
     </div>
-   
-
-
-  <!-- listing Area Start -->
-  
-        
-                <!--? Popular Directory Start -->
-              <!-- 지도를 출력할 div 선언 -->
-              <section class="section section-shop">
-<div id="map" style=" width:100%;height:350px;"></div>
-<!-- 매장 위도 경도 찍는 임시 버튼 -->
-<div class="float">
-<form name="search_form" id="search_form" class="form" onsubmit="return false">
-					<input type="hidden" name="lat" id="lat" value="">
-					<input type="hidden" name="lng" id="lng" value="">
-					<h3 style="color:white">매장찾기</h3>
-					<div class="shop_search">
-						<input type="text" name="search_text" id="search_text" value="">
-						<button type="button" onclick="textSearch();return false;" style="display: block;
-    position: absolute; right: 0; top: 0; overflow: visible; padding: 0px; border: 0px; font-weight: normal;
-    cursor: pointer;
-    outline: none;
-    background-color: transparent;"><img src="resources/img/map/btn_shop_search.gif" alt="검색" style="border: none;
-    vertical-align: middle;"></button>
-					</div>
-					<p class="ex">- 롯데마트, 이마트, GS</p>
-				</form>
-<div class="shop_sort" style="overflow: hidden;outline: none;">
-
-					<div class="area on" id="shopArea1" style="outline: none;" tabindex="1">
-					<c:forEach items="${storeList}" var="storeList">
-					
-					
-					<a href="#" class="box" onclick="storeMarker(${storeList.lon},${storeList.lat });return false;">
-					<p class="subject">${storeList.shopName }</p>
-					<p class="add">${storeList.address }</p>
-					<c:if test="${not empty storeList.shopTelnum}" >
-					<p class="tel">${storeList.shopTelnum }</p></a>
-					</c:if>
-					</a>
-					
-					
-					</c:forEach>
-					</div>
-
+    <div class="col-sm-9 col-md-6 col-lg-8"> <!-- 오른쪽 컨테이너 -->
+      <div id="map" style="width: 100%; height: 350px;"></div>
+     
+    </div>
+ 	
+ 	
+ 	
+ 	<!-- 상품 목록 출력 컨테이너 -->
+ 		<div class="col-sm-12" style="margin-top:15px">
+ 		 <hr/>
+ 		<div class="col-sm-12" style="text-align:center; margin-bottom:15px">
+ 		<h1>상품 목록</h1>
+		</div>
+ 		<div class="container productlist">
+ 		</div>
+ 		</div>
+ 	
+ 	
+ 	
+ 
+  </div>
 </div>
-</div>
-
-</section>
-   <!-- E: 본문 영역 끝 -->
-
-   
-
-</div> <!-- E: Index(Home).jsp 의 div 총괄 끝  -->
+					<!-- E: 본문 영역 끝 -->
+			</div>
+			<!-- E: Index(Home).jsp 의 div 총괄 끝  -->
+			
+			<footer id = "footer">
+      <div id = "footer_box">
+         <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
+      </div>
+   </footer>
 </body>
 </html>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f8a16e73608a4a6a4fe93cd542e3eb76"></script>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f8a16e73608a4a6a4fe93cd542e3eb76"></script>
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
@@ -215,26 +231,23 @@ function storeMarker(lat,lng) {
 
 </script>
 
-                <!--? Popular Directory End -->
-                <!--Pagination Start  -->
-                <!--Pagination End  -->
+<!--? Popular Directory End -->
+<!--Pagination Start  -->
+<!--Pagination End  -->
 
 </div>
 <!-- listing-area Area End -->
 
-    <!--? Want To work 02-->
+<!--? Want To work 02-->
 
-    <!-- Want To work End -->
-    <!--? Want To work 01-->
-   <!-- E: 본문 영역 끝 -->
-   
-   
-   <!-- S: 푸터 영역 시작 -->
-</div> <!-- E: Index(Home).jsp 의 div 총괄 끝  -->
-    <section class="container productlist">
-    
+<!-- Want To work End -->
+<!--? Want To work 01-->
+<!-- E: 본문 영역 끝 -->
 
-		
-    </section>
+
+<!-- S: 푸터 영역 시작 -->
+</div>
+<!-- E: Index(Home).jsp 의 div 총괄 끝  -->
+
 </body>
 </html>

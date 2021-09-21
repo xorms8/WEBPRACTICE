@@ -93,6 +93,9 @@ $(document).ready(function(){
                                     </select>
                                 </div>
                             </div>
+                            
+                            <!--<div class="align-self-center">A</div> 검색 버튼 라인가운데-->
+                            
                             <div class="search-form">
                             <input type = "submit" value="search">
                                <!--  <a href="#"><i class="ti-search"></i>Search</a> -->
