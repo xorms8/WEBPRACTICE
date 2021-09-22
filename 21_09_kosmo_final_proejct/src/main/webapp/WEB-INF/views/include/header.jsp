@@ -69,7 +69,6 @@
                            <li><a href="productList.do">데이터 센터</a>
                               <ul class="submenu">
                                  <li><a href="productList.do">상품 목록</a></li>
-                                 <li><a href="listing.html">상품 상세 정보 </a></li>
                               </ul></li>
                            <li><a href="#">커뮤니티</a>
                               <ul class="submenu">
@@ -80,8 +79,9 @@
                               </ul></li>
                            <li><a href="myPage.do">마이페이지</a>
                               <ul class="submenu">
-                                 <li><a href="blog.html">회원 정보 수정</a></li>
-                                 <li><a href="blog_details.html">등록글 조회</a></li>
+                                 <li><a href="modifyMember.do">회원 정보 수정</a></li>
+                                 <li><a href="showBoard.do">등록글 조회</a></li>
+                                 <li><a href="showReply.do">등록댓글 조회</a></li>
                                  <li><a href="elements.html">관심물품 조회</a></li>
                               </ul></li>
                            <li><a href="contact.html">Contact</a></li>
@@ -135,7 +135,7 @@
 
    <!-- Jquery Slick , Owl-Carousel Plugins -->
    <script src="./resources/js/owl.carousel.min.js"></script>
-   <script src="./resources/js/slick.min.js"></script>
+   <script src="./\\resources/js/slick.min.js"></script>
    <!-- One Page, Animated-HeadLin -->
    <script src="./resources/js/wow.min.js"></script>
    <script src="./resources/js/animated.headline.js"></script>
@@ -165,6 +165,6 @@
    <!-- Jquery Plugins, main Jquery -->
    <script src="./resources/js/plugins.js"></script>
    <script src="./resources/js/main.js"></script>
-	<script src="./resources/js/map.js"></script>
+   <script src="./resources/js/map.js"></script>
 </body>
 </html>

@@ -28,80 +28,76 @@
 
 
 		<!-- S: 본문 영역 시작 -->
-
-		<div class="container-fluid"> <!-- 전체 Container -->
-  <div class="row">
-    <div class="col-sm-3 col-md-6 col-lg-4"> <!-- 왼쪽 컨테이너 구조 -->
-      <div class="float">
-							<form name="search_form" id="search_form" class="form"
-								onsubmit="return false">
-								<input type="hidden" name="lat" id="lat" value=""> <input
-									type="hidden" name="lng" id="lng" value="">
-								<h3 style="color: black">매장찾기</h3>
-								<div class="shop_search">
-									<input type="text" name="search_text" id="search_text" value="">
-									<button type="button" onclick="textSearch();return false;"
-										style="display: block; position: absolute; right: 0; top: 0; overflow: visible; padding: 0px; border: 0px; font-weight: normal; cursor: pointer; outline: none; background-color: transparent;">
-										<img src="resources/img/map/btn_shop_search.gif" alt="검색"
-											style="border: none; vertical-align: middle;">
-									</button>
+		<div class="container-fluid">
+			<!-- 전체 Container -->
+			<h1 class="display-1" style="text-align: center; margin: 15px;">최저가
+				찾기</h1>
+			<hr />
+			<div class="row">
+				<div class="col-sm-3 col-md-6 col-lg-4">
+					<!-- 왼쪽 컨테이너 구조 -->
+					<div class="float" style="height: 350px">
+						<form name="search_form" id="search_form" class="form"
+							onsubmit="return false">
+							<input type="hidden" name="lat" id="lat" value=""> <input
+								type="hidden" name="lng" id="lng" value="">
+							<h2 style="color: black; text-align: center">매장찾기</h2>
+							<div class="input-group mb-3">
+								<input type="text" class="form-control" id="search_text" placeholder="매장명" style="height: 50px">
+								<div class="input-group-append">
+									<button class="btn btn-outline-secondary" type="button"
+										onclick="textSearch(); return false;" id="button-addon2">Search</button>
 								</div>
-								<p class="ex">- 롯데마트, 이마트, GS</p>
-							</form>
-							<div class="shop_sort" style="overflow: hidden; outline: none;">
-
-								<div class="area on" id="shopArea1" style="outline: none;"
-									tabindex="1">
-									<c:forEach items="${storeList}" var="storeList">
-
-
-										<a href="#" class="box"
-											onclick="storeMarker(${storeList.lon},${storeList.lat });return false;">
-											<p class="subject">${storeList.shopName }</p>
-											<p class="add">${storeList.address }</p> <c:if test="${not empty storeList.shopTelnum}">
-												<p class="tel">${storeList.shopTelnum }</p>
-										</a>
+							</div>
+							<p class="ex">- 롯데마트, 이마트, GS</p>
+						</form>
+						<div class="shop_sort" style="overflow: hidden; outline: none;">
+							<div class="area on" id="shopArea1" style="outline: none;overflow:scroll;height: 231.4px;"
+								tabindex="1">
+								<c:forEach items="${storeList}" var="storeList">
+									<a href="#" class="box"
+										onclick="storeMarker(${storeList.lon},${storeList.lat });return false;">
+										<p class="subject">${storeList.shopName }</p>
+										<p class="add">${storeList.address }</p> <c:if
+											test="${not empty storeList.shopTelnum}">
+											<p class="tel">${storeList.shopTelnum }</p>
 										</c:if>
-										</a>
-
-
-									</c:forEach>
-								</div>
-
+										<hr/>
+									</a>
+								</c:forEach>
 							</div>
 						</div>
-    </div>
-    <div class="col-sm-9 col-md-6 col-lg-8"> <!-- 오른쪽 컨테이너 -->
-      <div id="map" style="width: 100%; height: 350px;"></div>
-     
-    </div>
- 	
- 	
- 	
- 	<!-- 상품 목록 출력 컨테이너 -->
- 		<div class="col-sm-12" style="margin-top:15px">
- 		 <hr/>
- 		<div class="col-sm-12" style="text-align:center; margin-bottom:15px">
- 		<h1>상품 목록</h1>
-		</div>
- 		<div class="container productlist">
- 		</div>
- 		</div>
- 	
- 	
- 	
- 
-  </div>
-</div>
-					<!-- E: 본문 영역 끝 -->
+					</div>
+				</div>
+				<div class="col-sm-9 col-md-6 col-lg-8">
+					<!-- 오른쪽 컨테이너 -->
+					<div id="map" style="width: 100%; height: 350px;"></div>
+
+				</div>
+				<!-- 상품 목록 출력 컨테이너 -->
+				<div class="col-sm-12" style="margin-top: 15px">
+					<hr />
+					<div class="col-sm-12"
+						style="text-align: center; margin-bottom: 15px">
+						<h1>상품 목록</h1>
+					</div>
+					<div class="container productlist"></div>
+				</div>
+
+
+
+
 			</div>
-			<!-- E: Index(Home).jsp 의 div 총괄 끝  -->
-			
-			<footer id = "footer">
-      <div id = "footer_box">
-         <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
-      </div>
-   </footer>
+		</div>
+		<!-- E: 본문 영역 끝 -->
+	</div>
+	<!-- E: Index(Home).jsp 의 div 총괄 끝  -->
+
+	<footer id="footer">
+		<div id="footer_box">
+			<jsp:include page="/WEB-INF/views/include/footer.jsp" />
+		</div>
+	</footer>
 </body>
 </html>
 <script type="text/javascript"

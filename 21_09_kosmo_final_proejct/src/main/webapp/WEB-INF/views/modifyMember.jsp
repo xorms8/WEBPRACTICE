@@ -162,11 +162,10 @@ body {
 			
 			var name = document.getElementById("member_name");
 	        var id = document.getElementById("user_id");
-	        var pw = document.getElementById("member_pw");
-	        var pw2 = document.getElementById("member_pw1");
+	        var pw = document.getElementById("member_pw").value;
+	        var pw2 = document.getElementById("member_pw1").value;
 	        var phone = document.getElementById("member_phone");
 	        
-	    	
 	 
 	        // 비밀번호 유효성 검사
 	        if (!check(idPassExp, pw, "패스워드는 5~12자의 영문 대소문자와 숫자로만 입력해주세요")) {
@@ -176,7 +175,7 @@ body {
 	        // 비밀번호 확인 유효성 검사
 	        if (pw != pw2) {
 	            alert("비밀번호가 다릅니다. 다시 확인해 주세요.");
-	            member_pw1.focus();
+	            pw.focus();
 	            return false;
 	        } 
 	 

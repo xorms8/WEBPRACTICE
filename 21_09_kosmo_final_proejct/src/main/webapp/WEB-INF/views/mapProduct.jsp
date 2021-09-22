@@ -1,83 +1,82 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!doctype html>
 <html>
 <head>
-    <meta charset="utf-8">
+<meta charset="utf-8">
 <title>제목</title>
 </head>
 <body>
-<div id = "root"> <!-- S: Index(Home).jsp 의 div 총괄 시작 -->
-<!-- S: 헤더 부분 시작 -->
-   <header id= "header">
-      <div id = "header_box">
-         <jsp:include page="/WEB-INF/views/include/header.jsp"/>
-         <link rel="stylesheet" href="resources/css/map.css">
-         <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-         <link rel="stylesheet" href="resources/css/slider.css">
-		<link rel="stylesheet" href="resources/css/material-design-iconic-font.min.css">
-		<script src="./resources/js/map_product.js"></script>
-      </div>
-   </header>
-   <!-- E: 헤더 부분 끝 -->
-   
-   
-   <!-- S: 본문 영역 시작 -->
-   
-   <section id = "container">
-      <div id = "container_box">
-     <main>
-    <!--? Hero Area Start-->
-    <div class="slider-area hero-bg2 hero-overly">
-        
-    </div>
-   
+	<div id="root">
+		<!-- S: Index(Home).jsp 의 div 총괄 시작 -->
+		<!-- S: 헤더 부분 시작 -->
+		<header id="header">
+			<div id="header_box">
+				<jsp:include page="/WEB-INF/views/include/header.jsp" />
+				<link rel="stylesheet" href="resources/css/map.css">
+				<link rel="stylesheet"
+					href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+				<link rel="stylesheet" href="resources/css/slider.css">
+				<link rel="stylesheet"
+					href="resources/css/material-design-iconic-font.min.css">
+				<script src="./resources/js/map_product.js"></script>
+			</div>
+		</header>
+		<!-- E: 헤더 부분 끝 -->
 
 
-  <!-- listing Area Start -->
-  
-        
-                <!--? Popular Directory Start -->
-              <!-- 지도를 출력할 div 선언 -->
-              <section class="section section-shop">
-<div id="map" style="height: 564px; position: relative; overflow: hidden;"></div>
-<div class="float">
-<form name="search_form" id="search_form" class="form" onsubmit="return false">
-					<input type="hidden" name="lat" id="lat" value="">
-					<input type="hidden" name="lon" id="lon" value="">
-					<h3 style="color:white">상품검색</h3>
-					<div class="shop_search">
-						<input type="text" name="productName" id="productName" value="">
-						<button type="button" id="searchProduct" onclick="return false;" style="display: block;
-    position: absolute; right: 0; top: 0; overflow: visible; padding: 0px; border: 0px; font-weight: normal;
-    cursor: pointer;
-    outline: none;
-    background-color: transparent;"><img src="resources/img/map/btn_shop_search.gif" alt="검색" style="border: none;
-    vertical-align: middle;"></button>
+		<!-- S: 본문 영역 시작 -->
+
+		<div class="container-fluid">
+			<!-- 전체 Container -->
+			<h1 class="display-1" style="text-align: center; margin: 15px;">최저가
+				찾기</h1>
+			<hr />
+			<div class="row">
+				<div class="col-sm-3 col-md-6 col-lg-4">
+					<!-- 왼쪽 컨테이너 구조 -->
+					<div class="float" style="height: 350px">
+						<form name="search_form" id="search_form" class="form"
+							onsubmit="return false">
+							<input type="hidden" name="lat" id="lat" value=""> <input
+								type="hidden" name="lon" id="lon" value="">
+							<h2 style="color: black; text-align: center;">상품검색</h3>
+							<div class="input-group mb-3">
+								<input type="text" name="productName" id="productName" value="" placeholder="상품명" style="height: 50px;" class="form-control">
+								<div class="input-group-append">
+								<button type="button" id="searchProduct" onclick="return false;" class="btn btn-outline-secondary">Search</button>
+								</div>
+							</div>
+							<p class="ex">- 새우깡, 왕뚜껑, 참이슬</p>
+						</form>
+						<div class="shop_sort" style="overflow: hidden; outline: none;">
+
+							<div class="area on" id="shopArea1" style="outline: none;overflow: scroll;height: 231.4px;"
+								tabindex="1">
+								<a class='box'><p class='subject'>조회할 상품을 검색해주세요</p></a>
+							</div>
+
+						</div>
 					</div>
-					<p class="ex">- 새우깡, 왕뚜껑, 참이슬</p>
-				</form>
-<div class="shop_sort" style="overflow: hidden;outline: none;">
-
-					<div class="area on" id="shopArea1" style="outline: none;" tabindex="1">
-						<a class='box'><p class='subject'>조회할 상품을 검색해주세요</p></a>
+					</div>
+					<div class="col-sm-9 col-md-6 col-lg-8">
+					<!-- 지도를 출력할 div 선언 -->
+					<div id="map" style="width: 100%; height: 350px;"></div>
 					</div>
 
-</div>
-</div>
+					<!-- E: 본문 영역 끝 -->
 
-</section>
-   <!-- E: 본문 영역 끝 -->
 
-   
 
-</div> <!-- E: Index(Home).jsp 의 div 총괄 끝  -->
+				</div>
+				<!-- E: Index(Home).jsp 의 div 총괄 끝  -->
 </body>
 </html>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f8a16e73608a4a6a4fe93cd542e3eb76"></script>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f8a16e73608a4a6a4fe93cd542e3eb76"></script>
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
@@ -186,21 +185,22 @@ function storeMarker(lat,lng) {
 
 </script>
 
-                <!--? Popular Directory End -->
-                <!--Pagination Start  -->
-                <!--Pagination End  -->
+<!--? Popular Directory End -->
+<!--Pagination Start  -->
+<!--Pagination End  -->
 
 </div>
 <!-- listing-area Area End -->
 
-    <!--? Want To work 02-->
+<!--? Want To work 02-->
 
-    <!-- Want To work End -->
-    <!--? Want To work 01-->
-   <!-- E: 본문 영역 끝 -->
-   
-   
-   <!-- S: 푸터 영역 시작 -->
-</div> <!-- E: Index(Home).jsp 의 div 총괄 끝  -->
+<!-- Want To work End -->
+<!--? Want To work 01-->
+<!-- E: 본문 영역 끝 -->
+
+
+<!-- S: 푸터 영역 시작 -->
+</div>
+<!-- E: Index(Home).jsp 의 div 총괄 끝  -->
 </body>
 </html>

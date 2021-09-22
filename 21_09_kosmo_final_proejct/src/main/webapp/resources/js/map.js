@@ -43,12 +43,16 @@ $(document).ready(function(){
              $(".productlist").empty();
              
              // 슬라이드 선언
-             var content = "<div class='popular-directorya-area fix'><div class='row owl-carousel owl-theme'>";
+             var content = "<div class='popular-directorya-area fix' style='justify-content: center;display: flex;'><div class='row owl-carousel owl-theme'>";
              
              // 해당 매장 상품 반복하여 입력
              for(var i = 0; i < data.length; i++){
-                   
-                    content += "<div class='col-lg-6 item'>";
+                 
+                var price = data[i].salePrice.toString();
+                
+                price = price.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                
+                   content += "<div class='col-lg-6 item'>";
                    content += "<div class='properties properties2 mb-30'>";
                    content += "<div class='properties__card'>";
                    content += "<div class='properties__img overlay1'>";
@@ -60,7 +64,7 @@ $(document).ready(function(){
                    content += "<p>" + data[i].productDetail + "</p></div>";
                    content += "<div class='properties__footer d-flex justify-content-between align-items-center'>";
                    content += "<div class='restaurant-name'>";
-                   content += "<h3>매장가격 : " + data[i].salePrice + "원</h3>";
+                   content += "<h3>매장가격 : " + price + "원</h3>";
                    content += "</div><div class='heart'><img src='resources/img/gallery/heart1.png' alt=''>";
                    content += "</div></div></div></div></div>";
 

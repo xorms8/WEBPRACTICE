@@ -243,7 +243,7 @@ a{color:inherit;text-decoration:none}
 													<div class="valid">핸드폰 번호를 입력하세요 (숫자만)</div>
 												</div>
 												<div class="group">
-													<input type="submit" class="button" value="Sign Up"
+													<input type="submit" class="button" value="Sign Up" id="submitButton"
 														style="cursor: pointer">
 												</div>
 											</div>
@@ -265,17 +265,28 @@ a{color:inherit;text-decoration:none}
 				}); */
 				
 				function getIdCheck() {
-					$.ajax({
-						url:"idCheck.do", 
-						type:"post", 
-						contentType:"application/x-www-form-urlencoded;charset=UTF-8",
-						data:{user_id:$('#user_id').val()}, 
-						success:function(result){
-							$('#msg1').html(result);
-							$('#msg1').css('display','block');
-						}
-					})
-				}
+		               $.ajax({
+		                  url:"idCheck.do", 
+		                  type:"post", 
+		                  contentType:"application/x-www-form-urlencoded;charset=UTF-8",
+		                  data:{user_id:$('#user_id').val()}, 
+		                  success:function(result){
+		                     $('#msg1').html(result);
+		                     $('#msg1').css('display','block');
+		                     
+		                     if(result == "이미 사용중인 아이디입니다") {
+		                        $('#submitButton').attr('disabled', true);
+		                       	$('#submitButton').click(function(){
+		                       		alert("아이디 중복을 확인 해주세요.");
+		                       });
+		                       	
+		                     } else if(result == "사용가능한 아이디입니다") {
+		                        $('#submitButton').removeAttr('disabled');
+		                       
+		                     }
+		                  }
+		               })
+		            }
 				
 			});
 				function validate() {
