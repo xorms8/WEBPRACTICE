@@ -29,6 +29,10 @@
 <link rel="stylesheet" href="resources/css/slick.css">
 <link rel="stylesheet" href="resources/css/nice-select.css">
 <link rel="stylesheet" href="resources/css/style.css">
+
+<style media="(min-width:512px)">
+.hideDesk{display:none;}
+</style>
 </head>
 <body>
 
@@ -77,14 +81,28 @@
                                  <li><a href="listing.html">실시간 채팅</a></li>
                                  <li><a href="qnaBoard.do">Q/A</a></li>
                               </ul></li>
-                           <li><a href="myPage.do">마이페이지</a>
+                          <!--  <li><a href="myPage.do">마이페이지</a>
                               <ul class="submenu">
                                  <li><a href="modifyMember.do">회원 정보 수정</a></li>
                                  <li><a href="showBoard.do">등록글 조회</a></li>
                                  <li><a href="showReply.do">등록댓글 조회</a></li>
                                  <li><a href="elements.html">관심물품 조회</a></li>
-                              </ul></li>
-                           <li><a href="contact.html">Contact</a></li>
+                              </ul></li> -->
+                           <li><a href="error.do">Contact</a></li>
+                           
+                           <li class="hideDesk">
+                           <c:if test="${sessionScope.userId == null }">
+                           <a href="loginPage.do" class="mr-40"><i class="ti-user"></i>로그인</a>
+                           </c:if>
+                           </li>
+                           
+                           <li class="hideDesk">
+                           <c:if test="${sessionScope.userId != null }">
+                              <a href="logout.do" class="mr-40"><i class="ti-shift-right"></i>로그아웃</a>   
+                              </c:if>
+                           </li>
+                           
+                           
                         </ul>
                      </nav>
                   </div>
@@ -96,19 +114,22 @@
                                   <a href="wishList.do" class="btn">관심 물품</a>
                         </c:when>
                       
-                        <c:when test="${sessionScope.userId != null}"> <!-- 회원 세션이 있으면서 일반 회원인 경우 -->
+                        <c:when test="${sessionScope.userId != null && sessionScope.memberLv == 1}"> <!-- 회원 세션이 있으면서 일반 회원인 경우 -->
                            <a href="myPage.do" class="mr-40"><i class="ti-user"></i>${sessionScope.memberName } 님</a>
                            <a href="logout.do" class="mr-40"><i class="ti-shift-right"></i>로그아웃</a>   
                            <a href="wishList.do" class="btn">관심 물품</a>
                         </c:when>
                      
                         <c:when test="${sessionScope.userId != null && sessionScope.memberLv == 9 }"> <!-- 회원 세션이 있으면서 관리자인 경우  -->
-                                <!-- <a href="#" class="mr-40"><i class="ti-user"></i>관리자 님</a> -->
+                           <a href="adminMemberList.do" class="mr-40"><i class="ti-crown"></i>${sessionScope.memberName } 님</a>
                            <a href="logout.do" class="mr-40"><i class="ti-shift-right"></i>로그아웃</a>   
-                           <a href="wishList.do" class="btn">관심 물품</a>
+                           <a href="adminPage.do" class="btn">Only Admin</a>
                         </c:when>
+                        
                      </c:choose>
+                     
                         </div>
+                        
                   <!-- Mobile Menu -->
                   <div class="col-12">
                      <div class="mobile_menu d-block d-lg-none">

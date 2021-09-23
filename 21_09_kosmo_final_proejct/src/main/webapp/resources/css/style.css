@@ -2735,6 +2735,10 @@ keyframes zoom { 0%{
 	z-index: 1
 }
 
+@media(min-width:512px){
+	.header-area .menu-wrapper .main-menu ul li.hideDesk {display:none;}
+}
+
 .header-area .menu-wrapper .main-menu ul li a {
 	color: black;
 	font-weight: 400;

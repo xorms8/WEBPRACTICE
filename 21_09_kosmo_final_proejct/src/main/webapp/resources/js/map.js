@@ -23,7 +23,7 @@ $(document).ready(function(){
     $('a.box').click(function(){
        
        // 매장명
-       var shopName = $(this).children().first().text();
+       var shopName = $(this).children('.storeName').val();
        
        // 상품 리스트 출력하는 div 내용 삭제
        $(".productlist").empty();

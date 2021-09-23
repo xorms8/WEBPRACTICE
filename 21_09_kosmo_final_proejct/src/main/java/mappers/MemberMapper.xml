@@ -6,8 +6,8 @@
 	
 	<insert id="insertMember" parameterType="member">
 		<![CDATA[
-		INSERT INTO CMIS_MEM(member_name, user_id, member_pw, member_sex, member_age, member_phone, member_address, member_sns, member_lv) 
-		VALUES(#{member_name}, #{user_id}, #{member_pw}, #{member_sex}, #{member_age}, #{member_phone}, #{member_address}, #{member_sns}, #{member_lv})
+		INSERT INTO CMIS_MEM(member_name, user_id, member_pw, member_sex, member_age, member_phone, member_address, member_sns, member_lv, regdate) 
+		VALUES(#{member_name}, #{user_id}, #{member_pw}, #{member_sex}, #{member_age}, #{member_phone}, #{member_address}, #{member_sns}, #{member_lv}, DATE_ADD(current_timestamp(), INTERVAL 9 HOUR))
 		]]>
 	</insert>
 	

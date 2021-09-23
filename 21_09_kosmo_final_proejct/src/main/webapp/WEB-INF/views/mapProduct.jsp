@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>제목</title>
+<title>상품별 최저가</title>
 </head>
 <body>
 	<div id="root">
@@ -73,6 +73,13 @@
 
 				</div>
 				<!-- E: Index(Home).jsp 의 div 총괄 끝  -->
+				
+				<footer id="footer">
+		<div id="footer_box">
+			<jsp:include page="/WEB-INF/views/include/footer.jsp" />
+		</div>
+	</footer>
+				
 </body>
 </html>
 <script type="text/javascript"

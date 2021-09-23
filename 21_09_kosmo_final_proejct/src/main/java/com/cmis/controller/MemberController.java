@@ -1,5 +1,7 @@
 package com.cmis.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -76,7 +78,8 @@ public class MemberController {
 			session.setAttribute("memberName", result.getMember_name());
 			session.setAttribute("memberLv", result.getMember_lv());
 			session.setAttribute("loginTime", new Date());
-
+			
+			System.out.println("일반:1 / 관리자 :9 ->" + result.getMember_lv());
 			return "redirect:/test.do";
 		} else {
 			return "redirect:/loginPage.do";
@@ -178,5 +181,7 @@ public class MemberController {
 		}
 
 	}
+	
+	
 
 }
