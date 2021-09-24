@@ -85,6 +85,37 @@ body {
 						</div>
 						<div class="col-sm-8">
 							<h2>TITLE HEADING</h2>
+							<button onclick="calculate()">calculate</button>
+ 
+    <script type="text/javascript">
+        window.onload = function () {
+            if (window.Notification) {
+                Notification.requestPermission();
+            }
+        }
+ 
+        function calculate() {
+            setTimeout(function () {
+                notify();
+            }, 1000);
+        }
+ 
+        function notify() {
+            if (Notification.permission !== 'granted') {
+                alert('notification is disabled');
+            }
+            else {
+                var notification = new Notification('Notification title', {
+                    icon: 'http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png',
+                    body: 'Notification text',
+                });
+ 
+                notification.onclick = function () {
+                    window.open('http://localhost:8000/zFinalProejct/index.jsp');//링크
+                };
+            }
+        }
+    </script>
 							<h5>Title description, Dec 7, 2017</h5>
 							<div class="fakeimg">Fake Image</div>
 							<p>Some text..</p>
@@ -115,6 +146,8 @@ body {
 			<div id="footer_box">
 				<jsp:include page="/WEB-INF/views/include/footer.jsp" />
 			</div>
+			
+			
 		</footer>
 	</div>
 	<!-- E: Index(Home).jsp 의 div 총괄 끝  -->

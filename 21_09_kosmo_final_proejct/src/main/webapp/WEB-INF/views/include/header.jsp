@@ -91,16 +91,24 @@
                            <li><a href="error.do">Contact</a></li>
                            
                            <li class="hideDesk">
+                           <c:if test="${sessionScope.userId != null && sessionScope.memberLv == 1}">
+                           <a href="myPage.do" class="mr-40"><i class="ti-user"></i>${sessionScope.memberName } 님</a>
+                           <a href="logout.do" class="mr-40"><i class="ti-shift-right"></i>로그아웃</a>   
+                           <a href="wishList.do" class="btn">관심 물품</a>
+                           </c:if>
+                           </li>
+                           
+                           <li class="hideDesk">
                            <c:if test="${sessionScope.userId == null }">
                            <a href="loginPage.do" class="mr-40"><i class="ti-user"></i>로그인</a>
                            </c:if>
                            </li>
                            
-                           <li class="hideDesk">
+                           <%-- <li class="hideDesk">
                            <c:if test="${sessionScope.userId != null }">
                               <a href="logout.do" class="mr-40"><i class="ti-shift-right"></i>로그아웃</a>   
                               </c:if>
-                           </li>
+                           </li> --%>
                            
                            
                         </ul>
@@ -187,5 +195,29 @@
    <script src="./resources/js/plugins.js"></script>
    <script src="./resources/js/main.js"></script>
    <script src="./resources/js/map.js"></script>
+   
+   <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDzY2mBhNbIggaoDccNblTUQodHLRWVOUE",
+    authDomain: "cmis-430ec.firebaseapp.com",
+    projectId: "cmis-430ec",
+    storageBucket: "cmis-430ec.appspot.com",
+    messagingSenderId: "636226969812",
+    appId: "1:636226969812:web:608e8311e0ff2754781b41",
+    measurementId: "G-BFS844XTQ1"
+  };
+ 
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>;
 </body>
 </html>

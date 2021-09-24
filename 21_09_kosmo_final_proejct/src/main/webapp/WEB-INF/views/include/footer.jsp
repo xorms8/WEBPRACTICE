@@ -209,7 +209,8 @@ https://bit.ly/3m9avif
 
 
 <!-- JS here -->
-
+	<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./resources/js/vendor/modernizr-3.5.0.min.js"></script>
     <!-- Jquery, Popper, Bootstrap -->
     <script src="./resources/js/vendor/jquery-1.12.4.min.js"></script>

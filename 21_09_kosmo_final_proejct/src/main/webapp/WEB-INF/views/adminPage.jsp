@@ -770,10 +770,36 @@ $(document).on('click', 'a.scroll-to-top', function(event) {
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
             <a class="btn btn-primary" href="login.html">Logout</a>
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyDzY2mBhNbIggaoDccNblTUQodHLRWVOUE",
+    authDomain: "cmis-430ec.firebaseapp.com",
+    projectId: "cmis-430ec",
+    storageBucket: "cmis-430ec.appspot.com",
+    messagingSenderId: "636226969812",
+    appId: "1:636226969812:web:608e8311e0ff2754781b41",
+    measurementId: "G-BFS844XTQ1"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>;
+
+            <!--<script src="resources/js/adminPage.js"></script> -->
           </div>
         </div>
       </div>
     </div>
   </div>
-</body>
+  </body>
 </html>

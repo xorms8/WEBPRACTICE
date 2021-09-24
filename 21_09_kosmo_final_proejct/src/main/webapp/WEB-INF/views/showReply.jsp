@@ -116,6 +116,8 @@ body {
 				<jsp:include page="/WEB-INF/views/include/footer.jsp" />
 			</div>
 		</footer>
+		
+		
 	</div>
 	<!-- E: Index(Home).jsp 의 div 총괄 끝  -->
 </body>
