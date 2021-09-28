@@ -87,7 +87,6 @@ a{color:inherit;text-decoration:none}
 .login-form .group .input,
 .login-form .group .button{
   border:none;
-  padding:15px 20px;
   border-radius:25px;
   background:rgba(255,255,255,.1);
 }
@@ -157,7 +156,48 @@ a{color:inherit;text-decoration:none}
 .foot-lnk{
   text-align:center;
 }
+
+#mail_check_input_box_false{
+    background-color:#ebebe4;
+}
+ 
+#mail_check_input_box_true{
+    background-color:white;
+}
+
+.correct{
+    color : green;
+}
+.incorrect{
+    color : red;
+}
+
+#mail_check_input{
+	color:black;
+}
+
+span{
+	color:white;
+}
+
 </style>
+<!-- 구글 Platform 라이브러리 -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="382620650636-bd2g83csqijookq39iqpe90ie0dqkplg.apps.googleusercontent.com">
+<!-- 카카오 로그인 --> 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js" charset="utf-8"></script>
+
+<script type="text/javascript"> //초기화 시키기. 
+
+$(document).ready(function(){ Kakao.init('8863e3abb3c060c0a88afb8840b2e6f5'); Kakao.isInitialized(); }); 
+
+
+function loginWithKakao() { Kakao.Auth.authorize({ redirectUri: 'http://localhost:8080/loginpage_kakao_callback' }); }
+
+
+
+</script>
 
 </head>
 <body>
@@ -173,6 +213,8 @@ a{color:inherit;text-decoration:none}
 		<!-- S: 본문 영역 시작 -->
 		<section id="container">
 			<div id="container_box">
+			<h1 class="display-1" style="text-align: center;">로그인 / 회원가입</h1>
+			<hr/>
 				<main>
 					<!--? Hero Area Start-->
 					<div class="slider-area hero-bg1 hero-overly">
@@ -208,10 +250,62 @@ a{color:inherit;text-decoration:none}
 												<div class="hr"></div>
 												<div class="foot-lnk">
 													<a href="#forgot">Forgot Password?</a>
+													<label>로그인</label> <br>
+													<div class="g-signin2" onclick="init();" id="google_login" class="circle google" ></div>
+												<!-- google signin api -->
+<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+<script>
+// google signin API
+var googleUser = {};
+function init() {
+	 gapi.load('auth2', function() {
+	  console.log("init()시작");
+	  auth2 = gapi.auth2.init({
+	        client_id: '382620650636-bd2g83csqijookq39iqpe90ie0dqkplg.apps.googleusercontent.com',
+	        cookiepolicy: 'single_host_origin',
+	      });
+	      attachSignin(document.getElementById('google_login'));
+	 });
+}
+
+//google signin API2
+function attachSignin(element) {
+    auth2.attachClickHandler(element, {},
+        function(googleUser) {
+    	var profile = googleUser.getBasicProfile();
+    	var id_token = googleUser.getAuthResponse().id_token;
+	  	  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+	  	  console.log('ID토큰: ' + id_token);
+	  	  console.log('Name: ' + profile.getName());
+	  	  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+			$(function() {
+				$.ajax({
+				    url: 'loginGoogle.do',
+				    type: 'post',
+				    data: { 
+						"user_id" : "",
+						"member_pw" : "",
+				        "member_name": profile.getName(),
+						"member_email": profile.getEmail()
+					    },
+				    success: function (data) {
+				            alert("구글아이디로 로그인 되었습니다");
+				            location.href="test.do";
+				        }
+				});
+			})
+        }, function(error) {
+        	alert("error");
+          alert(JSON.stringify(error, undefined, 2));
+        });
+    console.log("구글API 끝");
+  }
+</script>
 													<!-- 비밀번호 찾기 기능. 추가해야함 -->
 												</div>
 											</div>
 										</form>
+										
 										<form onsubmit="return validate();" name="join" action="signUpDo.do" method="post">
 											<div class="sign-up-htm">
 												<div class="group">
@@ -221,26 +315,45 @@ a{color:inherit;text-decoration:none}
 												</div>
 												<div class="group">
 													<label for="user_id" class="label">Userid</label> <input
-														id="user_id" name="user_id" type="text" class="input" required="required" maxlength="12">
-													<div class='valid'>아이디를 입력하세요<br/> (영문 대소문자, 숫자만 입력 가능)</div>
+														id="user_id" name="user_id" type="text" class="input" required="required" maxlength="12"
+														placeholder="아이디를 입력하세요">
+													<div class='valid'></div>
 													<span id="msg1" class="msg1"></span>
+												</div>
+												<div class="group">
+													<label for="member_email" class="label">Email</label> 
+													<input id="member_email" name="member_email" type="text" class="input" required="required" maxlength="30">
+													
+													<span class="mail_input_box_warn"></span>
+													
+													<div class="mail_check_wrap">
+														<div class="mail_check_input_box" id="mail_check_input_box_false">
+														
+															<input id="mail_check_input" class="input" disabled="disabled">
+														</div>
+														<div class="mail_check_button">
+															<span style="border:solid">인증번호 전송</span>
+														</div>
+														<div class="clearfix"></div>
+														<span id="mail_check_input_box_warn"></span>
+													</div>
 												</div>
 												<div class="group">
 													<label for="member_pw" class="label">Password</label> <input
 														id="member_pw" name="member_pw" type="password"
-														class="input" data-type="password" required="required" maxlength="12">
-													<div class="valid">비밀번호를 입력하세요<br/> (영문 대소문자, 숫자만 입력 가능)</div>
+														class="input" data-type="password" required="required" maxlength="12" placeholder="비밀번호를 입력하세요">
+													<div class="valid"></div>
 												</div>
 												<div class="group">
 													<label for="member_pw2" class="label">Password Check</label>
 													<input id="member_pw2" name="member_pw2" type="password"
-														class="input" data-type="password" required="required" maxlength="12">
-													<div class="valid">비밀번호를 다시 입력하세요</div>
+														class="input" data-type="password" required="required" maxlength="12" placeholder="비밀번호를 다시 입력하세요">
+													<div class="valid"></div>
 												</div>
 												<div class="group">
-													<label for="member_phone" class="label">Userphone</label>
-													<input id="member_phone" name="member_phone" type="text" class="input" required="required" maxlength="11">
-													<div class="valid">핸드폰 번호를 입력하세요 (숫자만)</div>
+													<label for="member_phone" class="label">PhoneNumber</label>
+													<input id="member_phone" name="member_phone" type="text" class="input" required="required" maxlength="11" placeholder="핸드폰 번호를 입력하세요 ">
+													<div class="valid"></div>
 												</div>
 												<div class="group">
 													<input type="submit" class="button" value="Sign Up" id="submitButton"
@@ -257,6 +370,62 @@ a{color:inherit;text-decoration:none}
 					</div>
 			</main>
 			
+			<script>
+			
+			var code =""; //이메일전송 인증번호 저장을 위한 코드
+			
+			/* 인증번호 이메일 전송 */
+			$(".mail_check_button").click(function(){
+			    
+			    var email = $("#member_email").val();		//입력한 이메일
+			    var checkBox = $('#mail_check_input'); 		//인증번호 입력한
+			    var boxWrap = $('.mail_check_input_box');	//인증번호 입력란 박스
+			    var warnMsg = $(".mail_input_box_warn");    // 이메일 입력 경고글
+			    
+			    if(mailFormCheck(email)){
+			        warnMsg.html("이메일이 전송 되었습니다. 이메일을 확인해주세요.");
+			        warnMsg.css("display", "inline-block");
+			    } else {
+			        warnMsg.html("올바르지 못한 이메일 형식입니다.");
+			        warnMsg.css("display", "inline-block");
+			        return false;
+			    }
+			    
+			    
+			    $.ajax({
+			    	
+			        type:"GET",
+			        url:"mailCheck.do?email=" + email,
+			        success:function(data){
+			        	//console.log("data : " +data);
+			        	
+			        	checkBox.attr("disabled",false);
+			        	boxWrap.attr("id", "mail_check_input_box_true");
+			        	code = data;
+			        }
+			    });
+			    
+			});
+			
+			/* 인증번호 비교 */
+			$("#mail_check_input").blur(function(){
+			    
+				var inputCode = $('#mail_check_input').val(); //입력코드
+				var checkResult = $('#mail_check_input_box_warn'); //비교결과
+				var emailCheck = $('member_email');
+				if(inputCode == code){ //일치할 경우
+					checkResult.html("인증번호가 일치합니다.");
+					checkResult.attr('class','correct');
+					emailCheck.attr('disabled',true);
+				}else{					//일치하지 않을 경우
+					checkResult.html("인증번호를 다시 확인해주세요.");
+					checkResult.attr("class","incorrect");
+					emailCheck.attr('disabled',false);
+				}
+			    
+			});
+			</script>
+			
 			<script type="text/javascript">
 			$(function(){
 				$('#user_id').blur(getIdCheck);
@@ -264,6 +433,7 @@ a{color:inherit;text-decoration:none}
 					alert($('#user_id').val());
 				}); */
 				
+				//아이디 중복 검사
 				function getIdCheck() {
 		               $.ajax({
 		                  url:"idCheck.do", 
@@ -293,12 +463,18 @@ a{color:inherit;text-decoration:none}
 					var idPassExp = /^[a-zA-Z0-9]{5,12}$/; // 아이디,비밀번호 유효성 검사식
 					var nameExp = /^[가-힣|a-z|A-Z]{3,20}$/; // 이름 유효성 검사식
 					var phoneExp = /^[0-9]{11,11}$/g; // 휴대폰 유효성 검사식
+					var emailExp = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i; //이메일 유효성 검사식
 					
 					var name = document.getElementById("member_name");
 			        var id = document.getElementById("user_id");
 			        var pw = document.getElementById("member_pw");
 			        var pw2 = document.getElementById("member_pw2");
 			        var phone = document.getElementById("member_phone");
+			        var email = $("#member_email").val();
+			       	
+			       	
+			       	//var emailCheck = $('member_email');
+			        var warnMsg = $(".mail_input_box_warn"); //이메일 입력 경고글
 			        
 			    	// 이름 유효성 검사
 			        if(nameExp.test(name.value) == false){
@@ -310,7 +486,7 @@ a{color:inherit;text-decoration:none}
 			        if (!check(idPassExp, id, "아이디는 5~12자의 영문 대소문자와 숫자로만 입력해주세요")) {
 			            return false;
 			        }
-			 
+			 		
 			        // 비밀번호 유효성 검사
 			        if (!check(idPassExp, pw, "패스워드는 5~12자의 영문 대소문자와 숫자로만 입력해주세요")) {
 			            return false;
@@ -321,25 +497,48 @@ a{color:inherit;text-decoration:none}
 			            alert("비밀번호가 다릅니다. 다시 확인해 주세요.");
 			            join.member_pw2.focus();
 			            return false;
-			        } 
-			 
+			        }
 			     	// 휴대폰 유효성 검사
 			        if(phoneExp.test(phone.value) == false){
 			         alert("휴대폰번호 11자리만 입력해주세요");
 			         return false;
-			        } 
-				}
+			        }
+			       // 이메일 유효성 검사 실패버전
+			        if(emailExp.test(email) == false){
+			        alert("email주소를 확인해주세요");
+			        return false;
+			        }
+			       
+				    //이메일 유효성 검사 고친버전
+				   /*  if(!mailFormCheck(email)){ //올바른 이메일 형식일때
+				    	alert("email주소를 확인해주세요");
+				        return false;
+				    } */
+			       
+			       
+			        
+			     }
+			     
+			
 				
+				 /* 입력 이메일 형식 유효성 검사 */
+				 function mailFormCheck(email){
+				    var form = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+				    return form.test(email);
+				}
+	
+				/* test 체크 */
 				function check(test1, what, message) {
 			        if (test1.test(what.value)) {
 			            return true;
 			        }
-			        alert(message);
+			        //alert(message);
 			        what.focus();
 			    }
 			
-			
+				
 			</script>
+			
 			<!--Hero Area End-->
 	</div>
 	</section>
@@ -348,6 +547,7 @@ a{color:inherit;text-decoration:none}
 	<footer id="footer">
 		<div id="footer_box">
 			<jsp:include page="/WEB-INF/views/include/footer.jsp" />
+			
 		</div>
 	</footer>
 	

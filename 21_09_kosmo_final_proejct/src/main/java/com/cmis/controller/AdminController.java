@@ -37,21 +37,21 @@ public class AdminController {
 	@RequestMapping("adminPage.do")
 	public String adminPage(HttpSession session, Model model) throws Exception{
 				//세션 IF문으로 세션 보안 처리
-		String returPage = "";
-		if(session.getAttribute("memberLv")!=null) {
-			if (session.getAttribute("userId") == null && Integer.parseInt((String) session.getAttribute("memberLv"))== 1)  {
-				returPage = "loginPage";
-			} else {
+		String returnPage = "";
+		if (session.getAttribute("memberLv") != null) {
+	         if ((Integer)session.getAttribute("memberLv") == 1) {
+	            returnPage = "loginPage";
+	         } else {
 				System.out.println("adminPage 세션 통과");
 			
-				returPage =  "adminPage";
+				returnPage =  "adminPage";
 				
 			}
 		}
 		else {
-			returPage = "error";
+			returnPage = "error";
 		}
-			return returPage;
+			return returnPage;
 	}
 	
 	
@@ -61,10 +61,10 @@ public class AdminController {
 	public String memberList(MemberVO vo,Model model, HttpSession session) {
 		//관리자 세션 IF문으로 세션 보안 처리
 		String returnPage = "";
-		if(session.getAttribute("memberLv")!=null) {
-			if (session.getAttribute("userId") == null && Integer.parseInt((String) session.getAttribute("memberLv"))== 1)  {
-				returnPage = "loginPage";
-			} else {
+		if (session.getAttribute("memberLv") != null) {
+	         if ((Integer)session.getAttribute("memberLv") == 1) {
+	            returnPage = "loginPage";
+	         }  else {
 				System.out.println("adminMemberList 세션 통과");
 				model.addAttribute("memberList", adminService.getMemberList(vo));
 				returnPage =  "adminMemberList";
@@ -83,10 +83,10 @@ public class AdminController {
 	public String adminGetMember(MemberVO vo, Model model, HttpSession session) {
 		//관리자 세션 IF문으로 세션 보안 처리
 		String returnPage = "";
-		if(session.getAttribute("memberLv")!=null) {
-			if (session.getAttribute("userId") == null && Integer.parseInt((String) session.getAttribute("memberLv"))== 1)  {
-				returnPage = "loginPage";
-			} else {
+		if (session.getAttribute("memberLv") != null) {
+	         if ((Integer)session.getAttribute("memberLv") == 1) {
+	            returnPage = "loginPage";
+	         } else {
 				System.out.println("adminGetMember 세션 통과");
 				model.addAttribute("member", adminService.getMember(vo));
 				returnPage =  "adminGetMember";
@@ -102,11 +102,11 @@ public class AdminController {
 	@RequestMapping("adminMemberUpdate.do")
 	public String adminMemberUpdate(@ModelAttribute("member") MemberVO vo, Model model, HttpSession session) {
 		//관리자 세션 IF문으로 세션 보안 처리
-				String returnPage = "";
-				if(session.getAttribute("memberLv")!=null) {
-					if (session.getAttribute("userId") == null && Integer.parseInt((String) session.getAttribute("memberLv"))== 1)  {
-						returnPage = "loginPage";
-					} else {
+		String returnPage = "";
+		if (session.getAttribute("memberLv") != null) {
+	         if ((Integer)session.getAttribute("memberLv") == 1) {
+	            returnPage = "loginPage";
+	         } else {
 						System.out.println("adminMemberUpdate 세션 통과");
 						adminService.updateMember(vo);
 						System.out.println("adminMemberUpdate Service Success");

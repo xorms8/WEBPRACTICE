@@ -29,10 +29,9 @@
 <link rel="stylesheet" href="resources/css/slick.css">
 <link rel="stylesheet" href="resources/css/nice-select.css">
 <link rel="stylesheet" href="resources/css/style.css">
+<link rel="stylesheet" href="resources/css/custom.css">
 
-<style media="(min-width:512px)">
-.hideDesk{display:none;}
-</style>
+
 </head>
 <body>
 
@@ -95,6 +94,7 @@
                            <a href="myPage.do" class="mr-40"><i class="ti-user"></i>${sessionScope.memberName } 님</a>
                            <a href="logout.do" class="mr-40"><i class="ti-shift-right"></i>로그아웃</a>   
                            <a href="wishList.do" class="btn">관심 물품</a>
+                           
                            </c:if>
                            </li>
                            
@@ -195,7 +195,11 @@
    <script src="./resources/js/plugins.js"></script>
    <script src="./resources/js/main.js"></script>
    <script src="./resources/js/map.js"></script>
+   <script src="./resources/js/wish.js"></script>
    
+   
+   
+<!-- S: Google FireBase & Analytics -->
    <script type="module">
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js";
@@ -218,6 +222,29 @@
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
-</script>;
+</script>
+<!-- E: Google FireBase & Analytics -->
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N9JKC4D');</script>
+<!-- End Google Tag Manager -->
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BFS844XTQ1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-BFS844XTQ1');
+</script>
+
 </body>
 </html>

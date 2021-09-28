@@ -2,6 +2,11 @@
 	url("https://fonts.googleapis.com/css2?family=Alex+Brush&family=Roboto&family=Rubik:wght@300;400;500;700;900&family=Titillium+Web:wght@300;400;600;700&display=swap")
 	;
 
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Han+Sans&family=Noto+Sans+KR&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Black+Han+Sans&family=Nanum+Gothic:wght@700&family=Noto+Sans+KR&display=swap');
+
 .white-bg {
 	background: #ffffff
 }
@@ -51,7 +56,7 @@
 	color: #B367FF !important;
 	display: inline-block;
 	padding: 18px 44px;
-	font-family: "Rubik", sans-serif;
+	font-family: 'Nanum Gothic', sans-serif;
 	font-size: 14px;
 	font-weight: 400;
 	border: 0;
@@ -130,14 +135,14 @@
 }
 
 body {
-	font-family: "Rubik", sans-serif;
+	font-family: 'Nanum Gothic', sans-serif;
 	font-weight: normal;
 	font-style: normal;
 	font-size: 16px
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: "Rubik", sans-serif;
+	font-family: 'Nanum Gothic', sans-serif;
 	color: #140C40;
 	margin-top: 0px;
 	font-style: normal;
@@ -146,7 +151,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 p {
-	font-family: "Rubik", sans-serif;
+	font-family: 'Nanum Gothic', sans-serif;
 	color: #10285d;
 	font-size: 16px;
 	line-height: 30px;
@@ -207,7 +212,7 @@ a {
 }
 
 a:hover {
-	color: #fff
+	color: #AAB8B0
 }
 
 a:focus, a:hover, .portfolio-cat a:hover, .footer -menu li a:hover {
@@ -349,7 +354,7 @@ hr {
 
 .btn {
 	background: #B367FF;
-	font-family: "Rubik", sans-serif;
+	font-family: 'Nanum Gothic', sans-serif;
 	text-transform: capitalize;
 	padding: 25px 38px;
 	color: #fff;
@@ -2745,7 +2750,7 @@ keyframes zoom { 0%{
 	padding: 39px 19px;
 	display: block;
 	font-size: 16px;
-	font-family: "Rubik", sans-serif;
+	font-family: 'Nanum Gothic', sans-serif;
 	-webkit-transition: .3s;
 	-moz-transition: .3s;
 	-o-transition: .3s;
@@ -3217,7 +3222,7 @@ keyframes zoom { 0%{
 	padding: 15px;
 	border-radius: 0px;
 	text-transform: capitalize;
-	font-family: "Rubik", sans-serif;
+	font-family: 'Nanum Gothic', sans-serif;
 	line-height: 31px;
 	font-size: 17px
 }

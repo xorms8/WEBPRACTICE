@@ -36,6 +36,25 @@ public class MemberServiceImpl implements MemberService {
 	public void updateMember(MemberVO vo) {
 		memberDAO.updateMember(vo);
 	}
+
+	@Override
+	public void joinMemberByGoogle(MemberVO vo) {
+		memberDAO.userReg(vo);
+		
+	}
+
+	@Override
+	public MemberVO loginMemberByGoogle(MemberVO vo) {
+		MemberVO returnVO = null;
+		try {
+			returnVO = memberDAO.userLogin(vo);
+			System.out.println("S: 로그인 아디: "+vo.getUser_id()+" 비번: "+vo.getMember_pw()+" 이름: "+vo.getMember_name());
+		} catch (Exception e) {
+			e.printStackTrace();
+			returnVO = null; //실행하다 문제가 생겼을때 해당 데이터를 보내지않겠다는 의미 = 예외처리
+		}
+		return returnVO;
+	}
 	
 	
 }
