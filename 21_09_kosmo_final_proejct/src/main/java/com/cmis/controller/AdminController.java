@@ -43,7 +43,9 @@ public class AdminController {
 	            returnPage = "loginPage";
 	         } else {
 				System.out.println("adminPage 세션 통과");
-			
+				
+				
+				
 				returnPage =  "adminPage";
 				
 			}

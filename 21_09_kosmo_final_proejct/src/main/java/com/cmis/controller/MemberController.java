@@ -74,7 +74,7 @@ public class MemberController {
        
        /* 인증번호 난수 생성*/
        Random random = new Random(); // 새로운 Random 객체 생성
-       int checkNum = random.nextInt(888888) + 111111; 
+       int checkNum = random.nextInt(888888) + 111111;
        System.out.println("인증번호 : " + checkNum);
        
        /* 이메일 보내기*/
@@ -129,7 +129,8 @@ public class MemberController {
 			session.setAttribute("memberName", result.getMember_name());
 			session.setAttribute("memberLv", result.getMember_lv());
 			session.setAttribute("loginTime", new Date());
-
+			session.setAttribute("loginSns", result.getMember_sns());
+			System.out.println("sns로그인 값" + result.getMember_sns());
 			System.out.println("일반:1 / 관리자 :9 ->" + result.getMember_lv());
 			return "redirect:/test.do";
 		} else {
@@ -138,7 +139,7 @@ public class MemberController {
 	}
 	
 	
-
+	
 	// 로그아웃 작동
 	@RequestMapping("logout.do")
 	public String logout(HttpSession session) {
@@ -157,13 +158,15 @@ public class MemberController {
 		
 		if(returnVO == null) { //아이디가 DB에 존재하지 않는 경우
 			//구글 회원가입
-			System.out.println("아이디가 DB에 존재하지 않는 경우 실행되는 회원가입");
-			vo.setMember_sns("test");
-			vo.setMember_lv(Integer.parseInt("1"));
+			System.out.println("아이디가 DB에 존재하지 않는 경우 실행되는 회원가입 진짜 버전");
+			vo.setMember_sns("google"); //회원가입 되면 Member_sns에 google삽입
+			vo.setMember_lv(Integer.parseInt("1")); //일반회원 
 			memberService.userReg(vo);	
 			
 			//구글 로그인
 			returnVO = memberService.userLogin(vo);
+			session.setAttribute("loginSns", returnVO.getMember_sns());
+			
 			session.setAttribute("userId", returnVO.getUser_id());	
 			session.setAttribute("memberName", returnVO.getMember_name());
 			session.setAttribute("memberLv", returnVO.getMember_lv());		
@@ -175,7 +178,7 @@ public class MemberController {
 		if(mvo_ajaxid.equals(returnVO.getUser_id())){ //아이디가 DB에 존재하는 경우
 			//구글 로그인
 			memberService.userLogin(vo);
-			session.setAttribute("userId", returnVO.getUser_id());	
+			session.setAttribute("userId", returnVO.getUser_id());
 			session.setAttribute("memberName", returnVO.getMember_name());
 			session.setAttribute("memberLv", returnVO.getMember_lv());
 			rttr.addFlashAttribute("mvo", returnVO);
@@ -185,7 +188,7 @@ public class MemberController {
 			vo.setMember_lv(Integer.parseInt("1"));
 			
 			//구글 회원가입
-			memberService.userReg(vo);	
+			memberService.userReg(vo);
 			
 			//구글 로그인
 			returnVO = memberService.userLogin(vo);
@@ -237,7 +240,6 @@ public class MemberController {
 			// 세션 객체 안에 있는 ID정보 저장
 			String user_id = (String) session.getAttribute("userId");
 			System.out.println("컨트롤러 ID 값 : " + user_id);
-
 			// 서비스안의 회원정보보기 메서드 호출
 			MemberVO vo = memberService.getMember(user_id);
 
@@ -268,7 +270,7 @@ public class MemberController {
 		}
 
 	}
-
+	
 	// 등록 댓글 보기
 	@RequestMapping("showReply.do")
 	public String showReply(HttpSession session) {

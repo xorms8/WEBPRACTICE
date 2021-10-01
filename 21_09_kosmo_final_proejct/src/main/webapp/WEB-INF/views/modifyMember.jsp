@@ -84,6 +84,10 @@ body {
 								<table class="table table-borderless">
 									<tbody>
 										<tr>
+										${sessionScope.loginSns }
+										<c:choose>
+										<c:when test="${sessionScope.loginSns eq 'test'}">
+										
 											<th scope="row">아이디</th>
 											<td>
 											<input type="text" id="user_id" name="user_id" placeholder="아이디"
@@ -91,24 +95,33 @@ body {
 												onblur="this.placeholder = '아이디'" required
 												class="single-input" value="${member.user_id }" readonly>
 												<hr></td>
-												
+										</c:when>
+										</c:choose>
 										</tr>
 										
 										<tr>
+										<c:choose>
+										<c:when test="${sessionScope.loginSns eq 'test'}">
 											<th scope="row">비밀번호</th>
 											<td><input type="password" id="member_pw" name="member_pw" placeholder="비밀번호"
 										onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호'" required
 										class="single-input" >
 										<div class="valid">비밀번호를 입력하세요<br/> (영문 대소문자, 숫자만 입력 가능)</div>
 										<hr></td>
+										</c:when>
+										</c:choose>
 										</tr>
 										<tr>
+										<c:choose>
+										<c:when test="${sessionScope.loginSns eq 'test'}">
 											<th scope="row">비밀번호 확인</th>
 											
 											<td colspan="2"><input type="password" id="member_pw1" name="member_pw2" placeholder="비밀번호 확인"
 										onfocus="this.placeholder = ''" onblur="this.placeholder = '비밀번호 확인'" required
 										class="single-input" >
 										<hr></td>
+										</c:when>
+										</c:choose>
 										</tr>
 										<tr>
 											<th scope="row">이름</th>
@@ -116,7 +129,7 @@ body {
 											<td colspan="2"><input type="text" name="member_name" placeholder="이름"
 										onfocus="this.placeholder = ''" onblur="this.placeholder = '이름'" required
 										class="single-input" value="${member.member_name }" readonly>
-									
+										
 										<hr>
 										</td>
 										</tr>

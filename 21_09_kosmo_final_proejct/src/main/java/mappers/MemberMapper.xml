@@ -24,7 +24,7 @@
 	</insert>
 	
 	<select id="userLogin" parameterType="member" resultType="member">
-		SELECT user_id,member_pw,member_name,member_lv FROM CMIS_MEM WHERE user_id=#{user_id} AND member_pw=#{member_pw}
+		SELECT user_id,member_pw,member_name,member_lv,member_sns FROM CMIS_MEM WHERE user_id=#{user_id} AND member_pw=#{member_pw}
 	</select>
 	
 	<!-- 아이디 중복 체크 -->

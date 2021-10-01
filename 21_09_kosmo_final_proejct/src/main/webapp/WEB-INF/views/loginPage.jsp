@@ -283,8 +283,8 @@ function attachSignin(element) {
 				    url: 'loginGoogle.do',
 				    type: 'post',
 				    data: { 
-						"user_id" : "",
-						"member_pw" : "",
+						"user_id" : "", // 채우거나 방식을바꾸거나
+						"member_pw" : "", //채우거나 방식을 바꾸거나
 				        "member_name": profile.getName(),
 						"member_email": profile.getEmail()
 					    },

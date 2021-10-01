@@ -24,4 +24,16 @@
 	where user_id = #{user_id}
 	</update>
 	<!-- E: 관리자 회원 관리  -->
+	
+	<!-- S: 관리자 통계 -->
+	
+	<!-- /*회원가입 건수*/ -->
+	<select id ="getMemberCount" resultType="member">
+	select count(*) from CMIS_MEM;
+	</select>
+	
+	
+	
+	
+	<!-- E: 관리자 통계 -->
 </mapper>
