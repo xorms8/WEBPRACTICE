@@ -12,7 +12,7 @@
 <body>
 <div class="loaderbase">
 	<div class="loader"></div>
-	<div class="loaderText"><h1 style="color: white;">상품 데이터를 분석중입니다</h4>
+	<div class="loaderText"><h1 style="color: white;">상품 데이터를 분석중입니다</h1>
 	
 	</div>
 </div>
@@ -136,7 +136,7 @@
 										<div class="single-listing">
 											<!-- Select City items start -->
 											<div class="select-job-items2">
-												<select name="select2">
+												<select name="select2"> <!-- 소분류 -->
 													<option value="">City</option>
 													<option value="">Dhaka</option>
 													<option value="">india</option>

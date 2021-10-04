@@ -17,9 +17,6 @@
 			ON CMIS_WISH.product_code = CMIS_PRO.product_code 
 			WHERE member_id = #{value} 
 	</select>
-	
-	
-	
 		
 	<!-- 찜 중복 체크 -->
 	<select id="overlapWish" parameterType="wish" resultType="Integer">

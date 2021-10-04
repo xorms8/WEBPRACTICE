@@ -27,13 +27,80 @@
 	
 	<!-- S: 관리자 통계 -->
 	
-	<!-- /*회원가입 건수*/ -->
-	<select id ="getMemberCount" resultType="member">
-	select count(*) from CMIS_MEM;
+	<!-- /*신규 회원가입 수*/ -->
+	
+	<!-- 신규 회원 가입수 -->
+	<resultMap type="hashmap" id="memberJoinCountMap">
+		<id column="TOT_MEM" property="totMem"/>
+		<id column="YEAR_MEM" property="yaerMem"/>
+		<id column="MONTH_MEM" property="monthMem"/>
+		<id column="YESTER_MEM" property="yesterMem"/>
+	</resultMap>
+	
+	<select id="getMemberJoinCount" resultMap="memberJoinCountMap">
+		select count(*) as tot_mem, count(case when date_format(regdate,'%Y') = (SELECT date_format(DATE_SUB(NOW(), INTERVAL 1 DAY), '%Y') FROM dual) then 1 end) as year_mem,count(case when date_format(regdate, '%Y-%m') = (SELECT date_format(DATE_SUB(NOW(), INTERVAL 1 DAY), '%Y-%m') FROM dual) then 1 end) as month_mem,count(case when regdate = (SELECT date_format(DATE_SUB(NOW(), INTERVAL 1 DAY), '%Y-%m-%d') FROM dual) then 1 end) as yester_mem from CMIS_MEM
+	</select>
+	
+	<!-- 어제 게시판별 작성글 카운트 -->
+	<select id="getAdminBoardCount" resultType="hashmap">
+		select '자유게시판 글' as board_name, count(if(CMIS_BOARD.board_date = (SELECT date_format(DATE_SUB(NOW(), INTERVAL 1 DAY), '%Y-%m-%d') FROM dual), 1, null)) as cnt from CMIS_BOARD
+		union
+		select '자유게시판 댓글' as board_name, count(if(CMIS_COMMENT.comment_date = (SELECT date_format(DATE_SUB(NOW(), INTERVAL 1 DAY), '%Y-%m-%d') FROM dual), 1, null)) as cnt from CMIS_COMMENT
+		union
+		select 'QNA 글' as board_name, count(if(CMIS_QNA_BOARD.qna_board_date = (SELECT date_format(DATE_SUB(NOW(), INTERVAL 1 DAY), '%Y-%m-%d') FROM dual), 1, null)) as cnt from CMIS_QNA_BOARD
+		union
+		select 'QNA 댓글' as board_name, count(if(CMIS_QNA_REPLY.qna_reply_date = (SELECT date_format(DATE_SUB(NOW(), INTERVAL 1 DAY), '%Y-%m-%d') FROM dual), 1, null)) as cnt from CMIS_QNA_REPLY
+	</select>
+	
+	<!-- 상품 최다 조회 5건 출력 -->
+	<select id="getProductViewRank" resultType="hashmap">
+		select product_name, product_views_count as view_count from CMIS_PRO group by product_name order by view_count desc limit 5;
+	</select>
+	
+	<!-- 찜목록 최다 순위 5건 출력 -->
+	<select id="getProductWishRank" resultType="hashmap">
+		SELECT count(member_id) as count, member_id from CMIS_WISH group by member_id order by count desc
+	</select>
+	
+	<!-- 모든 게시판 글/댓글 총합 순위  (clear)-->
+	<select id="getCommunityRank" resultType="hashmap">
+		select user_id, sum(comu.cnt) as cnt_sum from (select board_writer as user_id, count(*) as cnt from CMIS_BOARD group by user_id
+		union all
+		select comment_writer as user_id, count(*) as cnt from CMIS_COMMENT group by user_id
+		union all
+		select user_id, count(*) as cnt from CMIS_QNA_BOARD group by user_id
+		union all
+		select reply_user_id as user_id, count(*) as cnt from CMIS_QNA_REPLY group by user_id
+		) as comu group by user_id order by cnt_sum desc limit 5
+	</select>
+	
+	<!-- 핫딜 상품 많은 매장 순위 (clear) -->
+	<select id="getHotPriceShopRank" resultType="hashmap">
+		select CMIS_PRICES.shop_name, count(CMIS_PRICES.shop_name) as cnt
+from CMIS_PRICES inner join CMIS_PRO on CMIS_PRICES.product_name = CMIS_PRO.product_name 
+where sale_price <![CDATA[<=]]> product_hot_sale_price and research_date = (select max(research_date) from CMIS_PRICES)
+group by CMIS_PRICES.shop_name order by cnt desc limit 5
+	</select>
+	
+	<!-- 회원 연령 분포도 (clear)-->
+	<select id="getMemberAge" resultType="hashmap">
+		select '10대이하' as age, count(if(member_age <![CDATA[<]]> 20, 1, null)) as cnt from CMIS_MEM
+	union
+	select '20대' as age, count(if(member_age <![CDATA[<]]> 29 and member_age  <![CDATA[>=]]> 20 , 1, null)) as cnt from CMIS_MEM
+	union
+	select '30대' as age, count(if(member_age <![CDATA[<]]> 39 and member_age <![CDATA[>=]]> 30, 1, null)) as cnt from CMIS_MEM
+	union
+	select '40대' as age, count(if(member_age <![CDATA[<]]> 49 and member_age <![CDATA[>=]]> 40, 1, null)) as cnt from CMIS_MEM
+	union
+	select '50대' as age, count(if(member_age <![CDATA[<]]> 59 and member_age <![CDATA[>=]]> 50, 1, null)) as cnt from CMIS_MEM
+	union
+	select '60대이상' as age, count(if(member_age <![CDATA[>=]]> 60, 1, null)) as cnt from CMIS_MEM
 	</select>
 	
 	
-	
-	
+	<!-- 플랫폼 별 회원가입 수 -->
+	<select id="getMemberPlatform" resultType="hashmap">
+	select member_sns as platform, count(*) as cnt FROM CMIS_MEM group by platform
+	</select>
 	<!-- E: 관리자 통계 -->
 </mapper>

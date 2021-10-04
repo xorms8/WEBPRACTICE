@@ -44,8 +44,31 @@ public class AdminController {
 	         } else {
 				System.out.println("adminPage 세션 통과");
 				
+				/*통계 뿌리기*/
 				
+				//신규 회원 가입 수 (날짜별)
+				model.addAttribute("memberJoinCount", adminService.getMemberJoinCount());
 				
+				//어제 게시판별 작성글 카운트
+				model.addAttribute("adminBoardCount", adminService.getAdminBoardCount());
+				
+				//상춤 최다 조회 5건
+				model.addAttribute("getProductViewRank", adminService.getProductViewRank());
+				
+				//찜목록 최다 순위 5건
+				model.addAttribute("getProductWishRank", adminService.getProductWishRank());
+				
+				//모든 게시판 글 댓글 총합 순위 (커뮤니티 순위)
+				model.addAttribute("getCommunityRank", adminService.getCommunityRank());
+				
+				//핫딜 상품 많은 매장 순위
+				model.addAttribute("getHotPriceShopRank", adminService.getHotPriceShopRank());
+				
+				//회원 연령 분포도
+				model.addAttribute("getMemberAge", adminService.getMemberAge());
+				
+				//플랫폼 별 회원가입 수
+				model.addAttribute("getMemberPlatform", adminService.getMemberPlatform());
 				returnPage =  "adminPage";
 				
 			}

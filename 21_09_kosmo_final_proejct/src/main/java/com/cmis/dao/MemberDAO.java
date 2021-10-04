@@ -19,5 +19,16 @@ public interface MemberDAO {
 	//회원 정보 수정(update)
 	public void updateMember(MemberVO vo);
 	
-
+	//비밀번호 수정(update)
+	public int resetMember(MemberVO vo);
+	
+	//아이디 찾기
+	public MemberVO idFind(MemberVO vo);
+	
+	//비밀번호 찾기
+	public MemberVO pwFind(MemberVO vo);
+	
+	//회원의 등록 글 조회
+	
+	//회원의 등록 댓글 조회
 }

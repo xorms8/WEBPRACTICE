@@ -57,7 +57,7 @@
                   class="menu-wrapper d-flex align-items-center justify-content-between">
                   <!-- Logo -->
                   <div class="logo">
-                     <a href="index.jsp"><img src="resources/img/logo/logo.png"
+                     <a href="index.jsp"><img src="resources/img/logo/logo1.png" style="height:32px"
                         alt=""></a>
                   </div>
                   <!-- Main-menu -->
@@ -80,13 +80,7 @@
                                  <li><a href="listing.html">실시간 채팅</a></li>
                                  <li><a href="qnaBoard.do">Q/A</a></li>
                               </ul></li>
-                          <!--  <li><a href="myPage.do">마이페이지</a>
-                              <ul class="submenu">
-                                 <li><a href="modifyMember.do">회원 정보 수정</a></li>
-                                 <li><a href="showBoard.do">등록글 조회</a></li>
-                                 <li><a href="showReply.do">등록댓글 조회</a></li>
-                                 <li><a href="elements.html">관심물품 조회</a></li>
-                              </ul></li> -->
+
                            <li><a href="error.do">Contact</a></li>
                            
                            <li class="hideDesk">

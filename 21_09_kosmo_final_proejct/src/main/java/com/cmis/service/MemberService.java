@@ -1,5 +1,9 @@
 package com.cmis.service;
 
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletResponse;
+
 import com.cmis.domain.MemberVO;
 
 public interface MemberService {
@@ -24,4 +28,13 @@ public interface MemberService {
 		
 	//구글로그인
 	public MemberVO loginMemberByGoogle(MemberVO vo);
+	
+	//아이디 찾기
+	public MemberVO idFind(MemberVO vo);
+	
+	//비밀번호 찾기
+	public MemberVO pwFind(MemberVO vo);
+	
+	//비밀번호 변경
+	public int resetMember(MemberVO vo);
 }

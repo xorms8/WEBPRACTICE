@@ -18,7 +18,7 @@
 	
 	<insert id="writeBoard" parameterType="board">
 		INSERT INTO CMIS_BOARD (board_title, board_content, board_writer, board_date, board_img_name, board_hits) 
-		VALUES (#{board_title}, #{board_content}, 'ttester', sysdate(), #{board_img_name}, 0)
+		VALUES (#{board_title}, #{board_content}, #{board_writer}, sysdate(), #{board_img_name}, 0)
 	</insert>
 	
 	<update id="modifyBoard" parameterType="board">

@@ -12,17 +12,19 @@ public class MemberVO {
 	private int member_lv;
 	private String regdate;
 	private String member_email;
-	
-	
+	   
 	public String getMember_email() {
 		return member_email;
 	}
+
 	public void setMember_email(String member_email) {
 		this.member_email = member_email;
 	}
+
 	public String getRegdate() {
-		return regdate;
+	      return regdate;
 	}
+	
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}

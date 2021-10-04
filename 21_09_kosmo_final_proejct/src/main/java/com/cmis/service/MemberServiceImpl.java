@@ -1,5 +1,10 @@
 package com.cmis.service;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,6 +60,29 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return returnVO;
 	}
+	
+	//아이디 찾기
+	@Override
+	public MemberVO idFind(MemberVO vo) {
+		return memberDAO.idFind(vo);
+	}
+
+	@Override
+	public MemberVO pwFind(MemberVO vo) {
+		return memberDAO.pwFind(vo);
+	}
+
+	@Override
+	public int resetMember(MemberVO vo) {
+		System.out.println("서비스 확인 : " + vo.getMember_email());
+		System.out.println("서비스 확인 : " + vo.getMember_pw());
+		return memberDAO.resetMember(vo);
+	}
+	
+	
+	
+		
+		
 	
 	
 }

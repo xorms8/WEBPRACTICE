@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cmis.domain.BoardVO;
 import com.cmis.domain.CommentVO;
+import com.cmis.domain.MemberVO;
 import com.cmis.service.BoardService;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -55,7 +57,7 @@ public class BoardController {
 	
 	// 자유게시판 글쓰기 작동
 	@RequestMapping("boardWriteDo.do")
-	public String boardWriteDo(BoardVO vo, HttpServletRequest request) {
+	public String boardWriteDo(BoardVO vo, MemberVO vo2,HttpServletRequest request, HttpSession session) {
 		System.out.println(request.getSession().getServletContext().getRealPath("/resources/upload/"));
 		// 실제 파일 업로드 경로 : 배운거하고 좀 다르게 함. 프로젝트 안의 resources-upload가 아닌 서버측 컴퓨터 내에 있는 경로 불러와서 거기에 업로드한 이미지 저장함
 		String path = request.getSession().getServletContext().getRealPath("/resources/upload/");
@@ -81,7 +83,7 @@ public class BoardController {
 				e.printStackTrace();
 			}
 		}
-		
+		vo.setBoard_writer((String) session.getAttribute("userId"));
 		boardService.writeBoard(vo);
 		
 		return "redirect:/board.do";

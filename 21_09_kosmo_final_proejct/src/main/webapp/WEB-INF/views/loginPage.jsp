@@ -249,8 +249,7 @@ function loginWithKakao() { Kakao.Auth.authorize({ redirectUri: 'http://localhos
 												</div>
 												<div class="hr"></div>
 												<div class="foot-lnk">
-													<a href="#forgot">Forgot Password?</a>
-													<label>로그인</label> <br>
+													<a href="findId.do" id = "findId">Forgot ID/PASSWORD?</a>
 													<div class="g-signin2" onclick="init();" id="google_login" class="circle google" ></div>
 												<!-- google signin api -->
 <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
@@ -283,13 +282,13 @@ function attachSignin(element) {
 				    url: 'loginGoogle.do',
 				    type: 'post',
 				    data: { 
-						"user_id" : "", // 채우거나 방식을바꾸거나
-						"member_pw" : "", //채우거나 방식을 바꾸거나
+						"user_id" : "", // controller딴 set 적용
+						"member_pw" : "", //공백
 				        "member_name": profile.getName(),
 						"member_email": profile.getEmail()
 					    },
 				    success: function (data) {
-				            alert("구글아이디로 로그인 되었습니다");
+				            alert("구글계정으로 로그인 되었습니다 ^^*");
 				            location.href="test.do";
 				        }
 				});
@@ -328,7 +327,6 @@ function attachSignin(element) {
 													
 													<div class="mail_check_wrap">
 														<div class="mail_check_input_box" id="mail_check_input_box_false">
-														
 															<input id="mail_check_input" class="input" disabled="disabled">
 														</div>
 														<div class="mail_check_button">
@@ -515,8 +513,6 @@ function attachSignin(element) {
 				        return false;
 				    } */
 			       
-			       
-			        
 			     }
 			     
 			
@@ -547,7 +543,6 @@ function attachSignin(element) {
 	<footer id="footer">
 		<div id="footer_box">
 			<jsp:include page="/WEB-INF/views/include/footer.jsp" />
-			
 		</div>
 	</footer>
 	

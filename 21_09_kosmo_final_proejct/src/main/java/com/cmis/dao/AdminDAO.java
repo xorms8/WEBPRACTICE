@@ -1,8 +1,10 @@
 package com.cmis.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.cmis.domain.MemberVO;
+import com.cmis.domain.ProductVO;
 
 public interface AdminDAO {
 
@@ -12,4 +14,24 @@ public interface AdminDAO {
 	public MemberVO getMember(MemberVO vo);
 	
 	public void updateMember(MemberVO vo);
+	
+	//관리자의 통계 확인
+	
+	public HashMap getMemberJoinCount();
+
+	public List<HashMap> getAdminBoardCount();
+
+	public List<ProductVO> getProductViewRank();
+
+	public List<HashMap> getProductWishRank();
+
+	public List<HashMap> getCommunityRank();
+
+	public List<HashMap> getHotPriceShopRank();
+
+	public List<HashMap> getMemberAge();
+
+	public List<HashMap> getCategoryRatio();
+	
+	public List<HashMap> getMemberPlatform();
 }

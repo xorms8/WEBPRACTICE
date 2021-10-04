@@ -44,7 +44,23 @@ public class MemberDAOImpl implements MemberDAO {
 		mybatis.update("MemberDAO.updateMember", vo);
 	}
 
-	
+	//아이디 찾기
+	public MemberVO idFind(MemberVO vo) {
+		System.out.println("Mybatis idFind() 호출");
+		return mybatis.selectOne("MemberDAO.idFind", vo);
+	}
+
+	//비밀번호 찾기
+	public MemberVO pwFind(MemberVO vo) {
+		System.out.println("Mybatis pwFind() 호출");
+		return mybatis.selectOne("MemberDAO.pwFind", vo);
+	}
+
+	//패스워드 변경
+	public int resetMember(MemberVO vo) {
+		System.out.println("Mybatis resetMember() 호출");
+		return mybatis.update("MemberDAO.resetMember", vo);
+	}
 
 	
 

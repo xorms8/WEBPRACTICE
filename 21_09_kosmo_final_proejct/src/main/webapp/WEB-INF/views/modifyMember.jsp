@@ -77,15 +77,14 @@ body {
 						</div>
 						<div class="col-sm-8">
 							<h2>회원이신 고객님의 개인정보를 관리하는 공간입니다.</h2>
-
+							
 							<hr style="height: 5px;">
 
 							<form onsubmit="return validate();" action="updateMember.do" method="post" name="updateMember">
 								<table class="table table-borderless">
 									<tbody>
-										<tr>
-										${sessionScope.loginSns }
-										<c:choose>
+										<tr> <!-- loginSns 값이 test일 때 ID,PASSWORD 값 표시 / google 로그인일 경우 표시 X -->
+										<c:choose> 
 										<c:when test="${sessionScope.loginSns eq 'test'}">
 										
 											<th scope="row">아이디</th>
@@ -126,9 +125,8 @@ body {
 										<tr>
 											<th scope="row">이름</th>
 											
-											<td colspan="2"><input type="text" name="member_name" placeholder="이름"
-										onfocus="this.placeholder = ''" onblur="this.placeholder = '이름'" required
-										class="single-input" value="${member.member_name }" readonly>
+											<td colspan="2"><input type="text" name="member_name" required
+										class="single-input" value="${member.member_name }">
 										
 										<hr>
 										</td>
@@ -137,9 +135,7 @@ body {
 										<tr>
 											<th scope="row">나이</th>
 											<td>
-											<input type="text" name="member_age" placeholder="나이"
-												onfocus="this.placeholder = '나이'"
-												onblur="this.placeholder = '나이'" 
+											<input type="text" name="member_age"
 												class="single-input" value="${member.member_age }">
 												<hr></td>
 												
@@ -147,8 +143,7 @@ body {
 										
 										<tr>
 											<th scope="row">휴대폰</th>
-											<td><input type="text" id="member_phone" name="member_phone" placeholder="휴대폰"
-										onfocus="this.placeholder = ''" onblur="this.placeholder = '휴대폰'" 
+											<td><input type="text" id="member_phone" name="member_phone"
 										class="single-input" value="${member.member_phone }" >
 										<hr></td>
 										</tr>
