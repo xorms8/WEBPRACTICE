@@ -4,6 +4,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.io.PrintWriter;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
@@ -20,9 +21,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.SessionScope;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.cmis.domain.BoardVO;
+import com.cmis.domain.CommentVO;
 import com.cmis.domain.MemberVO;
 import com.cmis.service.MemberService;
 
@@ -355,7 +359,6 @@ public class MemberController {
 			System.out.println("컨트롤러 ID 값 : " + user_id);
 			// 서비스안의 회원정보보기 메서드 호출
 			MemberVO vo = memberService.getMember(user_id);
-
 			// 정보 저장 후 페이지 이동
 			model.addAttribute("member", vo);
 			return "modifyMember";
@@ -374,21 +377,17 @@ public class MemberController {
 
 	// 등록 글 보기
 	@RequestMapping("showBoard.do")
-	public String showBoard(HttpSession session, Model model) {
+	public String showBoard(HttpSession session, Model model,BoardVO vo) {
 		//회원의 등록글 보기 세션 처리
 				String returnPage = "";
 				if (session.getAttribute("memberLv") != null) {
 			         if ((Integer)session.getAttribute("memberLv") == 9) {
 			            returnPage = "loginPage";
 			         } else {
+			        	vo.setBoard_writer((String) session.getAttribute("userId"));
 						System.out.println("showBoard 세션 통과");
-						
-						
-						
-						
-						
-						
-						
+						List<BoardVO> list = memberService.getMemberBoardList(vo);
+						model.addAttribute("boardList", list);
 						returnPage =  "showBoard";
 					}
 				}
@@ -401,14 +400,25 @@ public class MemberController {
 	
 	// 등록 댓글 보기
 	@RequestMapping("showReply.do")
-	public String showReply(HttpSession session) {
-		// 세션 IF문 으로 세션 보안 처리
-		if (session.getAttribute("userId") == null) {
-			return "loginPage";
-		} else {
-			return "showReply";
+	public String showReply(HttpSession session, Model model,CommentVO vo) {
+		//회원의 등록글 보기 세션 처리
+		String returnPage = "";
+		if (session.getAttribute("memberLv") != null) {
+	         if ((Integer)session.getAttribute("memberLv") == 9) {
+	            returnPage = "loginPage";
+	         } else {
+	        	vo.setComment_writer((String) session.getAttribute("userId"));
+	 			System.out.println("showReply 세션 통과");
+	 			List<CommentVO> list = memberService.getMemberComment(vo);
+	 			model.addAttribute("commentList", list);
+	 			returnPage =  "showReply";
+			}
 		}
+		else {
+			returnPage = "error";
+		}
+			return returnPage;
 
-	}
 
+ }
 }

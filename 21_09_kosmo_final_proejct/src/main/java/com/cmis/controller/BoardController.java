@@ -150,7 +150,8 @@ public class BoardController {
 	// 자유게시판 댓글 작성하고 댓글 전체 출력 작동
 	@ResponseBody
 	@RequestMapping(value="boardReplyDo.do", produces="application/text;charset=UTF-8", method=RequestMethod.POST)
-	public String boardReplyDo(CommentVO vo) {
+	public String boardReplyDo(CommentVO vo, HttpSession session) {
+		vo.setComment_writer((String) session.getAttribute("userId"));
 		boardService.writeComment(vo);
 		
 		List<HashMap> result2 = boardService.selectComment(vo);

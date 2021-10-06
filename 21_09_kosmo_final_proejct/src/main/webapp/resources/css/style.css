@@ -10,6 +10,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 
 
+
 .white-bg {
 	background: #ffffff
 }
@@ -138,10 +139,12 @@
 }
 
 body {
+	margin: 0;
 	font-family: 'Jua', sans-serif;
 	font-weight: normal;
 	font-style: normal;
 	font-size: 16px
+	
 }
 
 h1, h2, h3, h4, h5, h6 {

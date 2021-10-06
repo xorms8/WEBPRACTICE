@@ -66,7 +66,7 @@ body {
 				<h2 style="text-align: center;">${sessionScope.memberName}님
 					안녕하세요</h2>
 				<hr />
-
+				</div>
 				<div class="container" style="margin-top: 30px">
 					<div class="row">
 						<div class="col-sm-4">
@@ -84,23 +84,29 @@ body {
 							<hr class="d-sm-none">
 						</div>
 						<div class="col-sm-8">
-							<h2>등록 댓글 보기</h2>
-							<h5>Title description, Dec 7, 2017</h5>
-							<div class="fakeimg">Fake Image</div>
-							<p>Some text..</p>
-							<p>Sunt in culpa qui officia deserunt mollit anim id est
-								laborum consectetur adipiscing elit, sed do eiusmod tempor
-								incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-								veniam, quis nostrud exercitation ullamco.</p>
-							<br>
-							<h2>TITLE HEADING</h2>
-							<h5>Title description, Sep 2, 2017</h5>
-							<div class="fakeimg">Fake Image</div>
-							<p>Some text..</p>
-							<p>Sunt in culpa qui officia deserunt mollit anim id est
-								laborum consectetur adipiscing elit, sed do eiusmod tempor
-								incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-								veniam, quis nostrud exercitation ullamco.</p>
+							<h2>회원이신 고객님의 댓글을 관리하는 공간입니다.</h2>
+
+							<hr style="height: 5px;">
+							<div id="container_box">
+
+				<table class="table">
+					<thead class="thead-dark">
+						<tr>
+							<th>번호</th>
+							<th>댓글 내용</th>
+							<th>작성일자</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${commentList }" var="commentList">
+							<tr>
+								<td class = "board">${commentList.comment_num}</td>
+								<td class = "board">${commentList.comment_content }</td>
+								<td class = "board">${commentList.comment_date}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 						</div>
 					</div>
 				</div>

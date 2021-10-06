@@ -32,6 +32,8 @@
     <link rel="stylesheet" href="resources/css/custom.css">
 	<!-- Theme main style -->
     <link rel="stylesheet" href="resources/css/style.css">
+	
+	
 
     <style>
     /* Subscribe me on Youtube

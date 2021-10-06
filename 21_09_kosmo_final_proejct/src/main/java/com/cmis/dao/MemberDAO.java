@@ -1,5 +1,9 @@
 package com.cmis.dao;
 
+import java.util.List;
+
+import com.cmis.domain.BoardVO;
+import com.cmis.domain.CommentVO;
 import com.cmis.domain.MemberVO;
 
 public interface MemberDAO {
@@ -28,7 +32,9 @@ public interface MemberDAO {
 	//비밀번호 찾기
 	public MemberVO pwFind(MemberVO vo);
 	
-	//회원의 등록 글 조회
+	//회원의 등록 글 목록 조회(리스트)
+	public List<BoardVO> getMemberBoardList(BoardVO vo);
 	
 	//회원의 등록 댓글 조회
+	public List<CommentVO> getMemberComment(CommentVO vo);
 }

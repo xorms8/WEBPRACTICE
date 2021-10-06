@@ -34,7 +34,7 @@
 	
 	<insert id="writeComment" parameterType="comment">
 		INSERT INTO CMIS_COMMENT (board_num, comment_content, comment_writer, comment_date) 
-		VALUES (#{board_num}, #{comment_content}, 'ttester', sysdate())
+		VALUES (#{board_num}, #{comment_content}, #{comment_writer}, sysdate())
 	</insert>
 	
 	<select id="selectComment" parameterType="comment"  resultType="hashmap">

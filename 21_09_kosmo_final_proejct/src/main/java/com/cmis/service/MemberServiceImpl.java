@@ -2,6 +2,7 @@ package com.cmis.service;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cmis.dao.MemberDAOImpl;
+import com.cmis.domain.BoardVO;
+import com.cmis.domain.CommentVO;
 import com.cmis.domain.MemberVO;
 
 @Service("memberService")
@@ -78,6 +81,24 @@ public class MemberServiceImpl implements MemberService {
 		System.out.println("서비스 확인 : " + vo.getMember_pw());
 		return memberDAO.resetMember(vo);
 	}
+	
+	//해당 회원의 목록 글 조회
+	@Override
+	public List<BoardVO> getMemberBoardList(BoardVO vo) {
+		return memberDAO.getMemberBoardList(vo);
+	}
+	
+	
+	//해당 회원의 댓글 목록 조회
+	@Override
+	public List<CommentVO> getMemberComment(CommentVO vo) {
+		return memberDAO.getMemberComment(vo);
+	}
+	
+	
+	
+	
+	
 	
 	
 	

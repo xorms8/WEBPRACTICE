@@ -84,7 +84,7 @@ body {
 							<hr class="d-sm-none">
 						</div>
 						<div class="col-sm-8">
-							<h2>관리자 권한으로 회원의 개인정보를 관리하는 공간입니다.</h2>
+							<h2>회원이신 고객님의 게시글을 관리하는 공간입니다.</h2>
 
 							<hr style="height: 5px;">
 							<div id="container_box">
@@ -99,12 +99,12 @@ body {
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${memberList }" var="member">
+						<c:forEach items="${boardList }" var="boardList">
 							<tr>
-								<td><a href="adminGetMember.do?user_id=${member.user_id}" style="color:black" class="memberListID">${member.user_id}</a></td>
-								<td>${member.member_name}</td>
-								<td>${member.member_age}</td>
-								<td>${member.member_phone}</td>
+								<td class = "board">${boardList.board_num}</td>
+								<td class = "board"><a href="boardDetail.do?board_num=${boardList.board_num}" style="color:black" class="memberListID">${boardList.board_title}</a></td>
+								<td class = "board">${boardList.board_hits}</td>
+								<td class = "board">${boardList.board_date}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
