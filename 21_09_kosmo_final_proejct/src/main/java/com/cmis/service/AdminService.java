@@ -18,11 +18,9 @@ public interface AdminService {
 	
 	//회원 수정
 	void updateMember(MemberVO vo);
-	
-	//관리자의 통계 확인 
-	
+
 	HashMap getMemberJoinCount();
-	
+
 	List<HashMap> getAdminBoardCount();
 
 	List<ProductVO> getProductViewRank();
@@ -36,6 +34,8 @@ public interface AdminService {
 	List<HashMap> getMemberAge();
 
 	List<HashMap> getCategoryRatio();
+
+	List<HashMap> getMemberWeekJoin();
 	
 	List<HashMap> getMemberPlatform();
 	

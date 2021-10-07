@@ -2,6 +2,7 @@ package com.cmis.controller;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 import java.util.List;
@@ -39,6 +40,15 @@ public class MemberController {
 	@Autowired
 	private JavaMailSender mailSender;
 	
+	
+	//메인 페이지 요청 매핑
+	@RequestMapping(value="index.do")
+	public void index() {
+		
+	}
+	
+	
+	
 	// 로그인/회원가입 페이지
 	@RequestMapping("{url}.do")
 	public String viewPage(@PathVariable String url) {
@@ -53,7 +63,7 @@ public class MemberController {
 		vo.setMember_lv(Integer.parseInt("1"));
 		memberService.userReg(vo);
 
-		return "redirect:/test.do";
+		return "redirect:/index.do";
 	}
 
 	// 회원가입 아이디 중복 체크
@@ -232,7 +242,7 @@ public class MemberController {
     
 	// 로그인 요청이 들어왔을 때
 	@RequestMapping("login.do")
-	public String userLogin(MemberVO vo, HttpSession session) {
+	public String userLogin(MemberVO vo, HttpSession session,HttpServletResponse response) throws IOException {
 		System.out.println("로그인 작동 호출");
 
 		MemberVO result = memberService.userLogin(vo);
@@ -256,8 +266,12 @@ public class MemberController {
 			session.setAttribute("loginSns", result.getMember_sns());
 			System.out.println("sns로그인 값" + result.getMember_sns());
 			System.out.println("일반:1 / 관리자 :9 ->" + result.getMember_lv());
-			return "redirect:/test.do";
+			return "redirect:/index.do";
 		} else {
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('로그인 정보를 확인 해주세요'); </script>");
+			out.flush();
 			return "loginPage";
 		}
 	}
@@ -266,7 +280,7 @@ public class MemberController {
 	@RequestMapping("logout.do")
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "redirect:/test.do";
+		return "redirect:/index.do";
 	}
 
 	/* 구글계정으로 로그인 */	
@@ -303,7 +317,7 @@ public class MemberController {
 			session.setAttribute("memberLv", returnVO.getMember_lv());		
 			rttr.addFlashAttribute("mvo", returnVO);
 			
-			return "redirect:/test.do"; 
+			return "redirect:/index.do"; 
 		}else {//아이디가 DB에 존재하지 않는 경우
 			
 			//구글 로그인
@@ -315,7 +329,7 @@ public class MemberController {
 			rttr.addFlashAttribute("mvo", returnVO);
 		}
 		
-		return "redirect:/test.do";
+		return "redirect:/index.do";
     }
 	/*
 	 * My PAGE

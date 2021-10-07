@@ -19,41 +19,9 @@
 	})
 </script>
 <style type="text/css">
-@import
-	url(https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,800)
-	;
-
-body {
-	font-size: 16px;
-	line-height: 22px;
-	color: #555;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 300;
-	text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
-}
-
-#myPageAtag {
-	color: black;
-	font-size: 150%;
-	display: flex;
-}
-
-#navList {
-	margin-bottom: 10px;
-	background-color: #050d15;
-}
 tbody a img{
 	max-width: 100px; 
 	max-height: 100px;
-}
-tbody a:hover { color: #8c59b9; }
-a:link { color:#4b70fd; }
-a:visited { color: #8c59b9; }
-
-.buttons-cart a:hover{
-	color: #ffffff;
-	background-color:#8c59b9;
-
 }
 
 </style>
@@ -85,13 +53,13 @@ a:visited { color: #8c59b9; }
 						<div class="col-sm-4">
 							<h3 style="text-align: center">Menu</h3>
 							<ul class="nav nav-pills flex-column">
-								<li class="nav-item"><a class="nav-link active" id="navList"
-									href="modifyMember.do">회원정보수정</a></li>
-								<li class="nav-item"><a class="nav-link active" id="navList" href="showBoard.do">등록글
+								<li class="nav-item"><a class="nav-link orange" id="navList"
+									href="modifyMember.do">회원 정보 수정</a></li>
+								<li class="nav-item"><a class="nav-link orange" id="navList" href="showBoard.do">등록글
 										조회</a></li>
-								<li class="nav-item"><a class="nav-link active" id="navList" href="showReply.do">등록댓글보기</a>
+								<li class="nav-item"><a class="nav-link orange" id="navList" href="showReply.do">등록 댓글 보기</a>
 								</li>
-								<li class="nav-item"><a class="nav-link active" id="navList" href="wishList.do">관심 물품</a>
+								<li class="nav-item"><a class="nav-link orange" id="navList" href="wishList.do">관심 물품</a>
 								</li>
 							</ul>
 							<hr class="d-sm-none">
@@ -103,7 +71,7 @@ a:visited { color: #8c59b9; }
 							<div id="container_box">
 
 								<table class="table"  style="text-align: center; " >
-									<thead class="thead-dark">
+									<thead class="table-orange">
 										<tr>
 											<th>상품 이미지</th>
 											<th>상품명</th>
@@ -122,11 +90,14 @@ a:visited { color: #8c59b9; }
 														href="product.do?product_code=${wish.product_code }"><img
 															src="resources/img/images/${wish.product_code}.jpg"
 															alt="${wish.product_name }"  /></a></td>
-													<td class="product-name"><a
-														href="product.do?product_code=${wish.product_code }">${wish.product_name }</a></td>
-													<td class="product-price"><span class="amount">${wish.product_last_average_price}원</span></td>
-													<td class="product-min-price"><span class="amount">${wish.product_last_min_price}원</span></td>
-													<td class="product-remove"><a href="#" class="remove"
+													<td class="product-name" style="vertical-align: middle;">
+													
+													<a href="product.do?product_code=${wish.product_code }" style="color:black;">${wish.product_name }</a>
+													
+													</td>
+													<td class="product-price" style="vertical-align: middle;"><span class="amount">${wish.product_last_average_price}원</span></td>
+													<td class="product-min-price" style="vertical-align: middle;" ><span class="amount">${wish.product_last_min_price}원</span></td>
+													<td class="product-remove" style="vertical-align: middle;" ><a href="#" class="remove" style="color:black"
 														id="${wish.wish_num }">X</a></td>
 												</tr>
 											</c:forEach>
@@ -134,7 +105,7 @@ a:visited { color: #8c59b9; }
 									</tbody>
 								</table>
 								<div class="buttons-cart" style="text-align: right">
-									<a href="#" onclick="drop_wishlist()">전체 삭제</a>
+									<a href="#" onclick="drop_wishlist()" style="color:black">전체 삭제</a>
 								</div>
 							</div>
 

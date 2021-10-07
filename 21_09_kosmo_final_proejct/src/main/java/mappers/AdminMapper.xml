@@ -20,15 +20,13 @@
 	UPDATE CMIS_MEM SET 
 	member_name = #{member_name},
 	member_age = #{member_age},
-	member_phone = #{member_phone}
+	member_phone = #{member_phone},
+	member_lv = #{member_lv}
 	where user_id = #{user_id}
 	</update>
 	<!-- E: 관리자 회원 관리  -->
 	
-	<!-- S: 관리자 통계 -->
-	
-	<!-- /*신규 회원가입 수*/ -->
-	
+	<!-- S: 통계 데이터 -->
 	<!-- 신규 회원 가입수 -->
 	<resultMap type="hashmap" id="memberJoinCountMap">
 		<id column="TOT_MEM" property="totMem"/>
@@ -53,16 +51,16 @@
 	</select>
 	
 	<!-- 상품 최다 조회 5건 출력 -->
-	<select id="getProductViewRank" resultType="hashmap">
-		select product_name, product_views_count as view_count from CMIS_PRO group by product_name order by view_count desc limit 5;
+	<select id="getProductViewRank" resultType="product">
+		select * from CMIS_PRO order by product_views_count desc limit 5
 	</select>
 	
 	<!-- 찜목록 최다 순위 5건 출력 -->
 	<select id="getProductWishRank" resultType="hashmap">
-		SELECT count(member_id) as count, member_id from CMIS_WISH group by member_id order by count desc
+		select product_name, count(*) as cnt from CMIS_WISH group by product_name order by cnt desc limit 5
 	</select>
 	
-	<!-- 모든 게시판 글/댓글 총합 순위  (clear)-->
+	<!-- 모든 게시판 글/댓글 총합 순위 -->
 	<select id="getCommunityRank" resultType="hashmap">
 		select user_id, sum(comu.cnt) as cnt_sum from (select board_writer as user_id, count(*) as cnt from CMIS_BOARD group by user_id
 		union all
@@ -74,33 +72,43 @@
 		) as comu group by user_id order by cnt_sum desc limit 5
 	</select>
 	
-	<!-- 핫딜 상품 많은 매장 순위 (clear) -->
+	<!-- 핫딜 상품 많은 매장 순위 -->
 	<select id="getHotPriceShopRank" resultType="hashmap">
-		select CMIS_PRICES.shop_name, count(CMIS_PRICES.shop_name) as cnt
-from CMIS_PRICES inner join CMIS_PRO on CMIS_PRICES.product_name = CMIS_PRO.product_name 
-where sale_price <![CDATA[<=]]> product_hot_sale_price and research_date = (select max(research_date) from CMIS_PRICES)
-group by CMIS_PRICES.shop_name order by cnt desc limit 5
+		select shop_name, count(*) as cnt from CMIS_PRICES join CMIS_PRO on CMIS_PRICES.product_name = CMIS_PRO.product_name where CMIS_PRICES.sale_price <![CDATA[<=]]> CMIS_PRO.product_hot_sale_price and research_date = (SELECT max(research_date) from CMIS_PRICES) group by CMIS_PRICES.shop_name order by cnt desc limit 5
 	</select>
 	
-	<!-- 회원 연령 분포도 (clear)-->
+	<!-- 회원 연령 분포도 -->
 	<select id="getMemberAge" resultType="hashmap">
-		select '10대이하' as age, count(if(member_age <![CDATA[<]]> 20, 1, null)) as cnt from CMIS_MEM
-	union
-	select '20대' as age, count(if(member_age <![CDATA[<]]> 29 and member_age  <![CDATA[>=]]> 20 , 1, null)) as cnt from CMIS_MEM
-	union
-	select '30대' as age, count(if(member_age <![CDATA[<]]> 39 and member_age <![CDATA[>=]]> 30, 1, null)) as cnt from CMIS_MEM
-	union
-	select '40대' as age, count(if(member_age <![CDATA[<]]> 49 and member_age <![CDATA[>=]]> 40, 1, null)) as cnt from CMIS_MEM
-	union
-	select '50대' as age, count(if(member_age <![CDATA[<]]> 59 and member_age <![CDATA[>=]]> 50, 1, null)) as cnt from CMIS_MEM
-	union
-	select '60대이상' as age, count(if(member_age <![CDATA[>=]]> 60, 1, null)) as cnt from CMIS_MEM
+		select '10대이하' as age, count(IF(LENGTH(member_age)=1,1,if(SUBSTRING(member_age,1,1)=1,1,null))) as cnt from CMIS_MEM
+		union
+		select '20대' as age, count(IF(LENGTH(member_age)=1,null,if(SUBSTRING(member_age,1,1)=2,1,null))) as cnt from CMIS_MEM
+		union
+		select '30대' as age, count(IF(LENGTH(member_age)=1,null,if(SUBSTRING(member_age,1,1)=3,1,null))) as cnt from CMIS_MEM
+		union
+		select '40대' as age, count(IF(LENGTH(member_age)=1,null,if(SUBSTRING(member_age,1,1)=4,1,null))) as cnt from CMIS_MEM
+		union
+		select '50대' as age, count(IF(LENGTH(member_age)=1,null,if(SUBSTRING(member_age,1,1)=5,1,null))) as cnt from CMIS_MEM
+		union
+		select '60대이상' as age, count(IF(LENGTH(member_age)=1,null,if(SUBSTRING(member_age,1,1)>=6,1,null))) as cnt from CMIS_MEM
 	</select>
 	
+	<!-- 상품 카테고리 비율 -->
+	<select id="getCategoryRatio" resultType="hashmap">
+		select CATE.main_category_name, count(*) as cnt from CMIS_PRO left join (select distinct(main_category), main_category_name from CMIS_CATE) as CATE on CMIS_PRO.main_category = CATE.main_category group by CATE.main_category_name
+	</select>
+	
+	<!-- 1주간 신규 회원 가입 수 -->
+	<select id="getMemberWeekJoin" resultType="hashmap">
+		select date_format(B.regdate, '%Y,%m-1,%d') as regdate, B.cnt from(    
+select regdate, count(regdate) as cnt from CMIS_MEM where regdate between DATE_SUB(now(), INTERVAL 6 DAY) and now() group by regdate
+union
+select curdate() - INTERVAL (a.a) DAY as ragdate, 0 as cnt
+    from (select 0 as a union all select 1 union all select 2 union all select 3 union all select 4 union all select 5 union all select 6) as a order by regdate)
+    as B group by regdate
+	</select>
 	
 	<!-- 플랫폼 별 회원가입 수 -->
 	<select id="getMemberPlatform" resultType="hashmap">
 	select member_sns as platform, count(*) as cnt FROM CMIS_MEM group by platform
 	</select>
-	<!-- E: 관리자 통계 -->
 </mapper>

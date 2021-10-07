@@ -284,11 +284,7 @@ body.sidenav-toggled #mainNav.static-top #sidenavToggler i {
   background: white;
 }
 
-@media (min-width: 992px) {
-  .content-wrapper {
-    margin-left: 250px;
-  }
-}
+
 
 #sidenavToggler i {
   font-weight: 800;
@@ -475,4 +471,8 @@ footer.sticky-footer {
   body.sidenav-toggled footer.sticky-footer {
     width: calc(100% - 55px);
   }
+  
+.card-header{
+	font-size:18px;
+} 
 }

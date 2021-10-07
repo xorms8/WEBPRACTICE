@@ -13,7 +13,8 @@
 		<typeAlias alias="qnareply" type="com.cmis.domain.QnaReplyVO"/>			
 		<typeAlias alias="wish" type="com.cmis.domain.WishVO" />
 		<typeAlias alias="board" type="com.cmis.domain.BoardVO" />
-		<typeAlias alias="comment" type="com.cmis.domain.CommentVO" />		
+		<typeAlias alias="comment" type="com.cmis.domain.CommentVO" />
+		<typeAlias alias="newsboard" type="com.cmis.domain.NewsBoardVO" />		
 	</typeAliases>
 
 

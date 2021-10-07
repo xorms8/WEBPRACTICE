@@ -17,34 +17,6 @@
 		});
 	})
 </script>
-<style type="text/css">
-@import
-	url(https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,800)
-	;
-
-body {
-	font-size: 16px;
-	line-height: 22px;
-	color: #555;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 300;
-	text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
-}
-
-#myPageAtag {
-	color: black;
-	font-size: 150%;
-	display: flex;
-}
-
-#navList{
-	margin-bottom : 10px;
-	background-color : #050d15;
-}
-
-
-</style>
-
 
 </head>
 <body>
@@ -72,13 +44,12 @@ body {
 						<div class="col-sm-4">
 							<h3 style="text-align:center">Menu</h3>
 							<ul class="nav nav-pills flex-column">
-								<li class="nav-item"><a class="nav-link active" id="navList"
+								<li class="nav-item"><a class="nav-link orange" id="navList"
 									href="modifyMember.do">회원 정보 수정</a></li>
-								<li class="nav-item"><a class="nav-link active" id="navList" href="showBoard.do">등록글
-										조회</a></li>
-								<li class="nav-item"><a class="nav-link active" id="navList" href="showReply.do">등록 댓글 보기</a>
+								<li class="nav-item"><a class="nav-link orange" id="navList" href="showBoard.do">등록글 조회</a></li>
+								<li class="nav-item"><a class="nav-link orange" id="navList" href="showReply.do">등록 댓글 보기</a>
 								</li>
-								<li class="nav-item"><a class="nav-link active" id="navList" href="wishList.do">관심 물품</a>
+								<li class="nav-item"><a class="nav-link orange" id="navList" href="wishList.do">관심 물품</a>
 								</li>
 							</ul>
 							<hr class="d-sm-none">
@@ -90,8 +61,8 @@ body {
 							<div id="container_box">
 
 				<table class="table">
-					<thead class="thead-dark">
-						<tr>
+					<thead class="table-orange" >
+						<tr style="text-align:center">
 							<th>번호</th>
 							<th>댓글 내용</th>
 							<th>작성일자</th>
@@ -99,7 +70,7 @@ body {
 					</thead>
 					<tbody>
 						<c:forEach items="${commentList }" var="commentList">
-							<tr>
+							<tr style="text-align:center">
 								<td class = "board">${commentList.comment_num}</td>
 								<td class = "board">${commentList.comment_content }</td>
 								<td class = "board">${commentList.comment_date}</td>

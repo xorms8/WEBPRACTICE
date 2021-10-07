@@ -17,35 +17,6 @@
 		});
 	})
 </script>
-<style type="text/css">
-@import
-	url(https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,800)
-	;
-
-body {
-	font-size: 16px;
-	line-height: 22px;
-	color: #555;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 300;
-	text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
-}
-
-#myPageAtag {
-	color: black;
-	font-size: 150%;
-	display: flex;
-}
-
-#navList{
-	margin-bottom : 10px;
-	background-color : #050d15;
-}
-
-
-</style>
-
-
 </head>
 <body>
 	<div id="root">
@@ -72,13 +43,13 @@ body {
 						<div class="col-sm-4">
 							<h3 style="text-align:center">Menu</h3>
 							<ul class="nav nav-pills flex-column">
-								<li class="nav-item"><a class="nav-link active" id="navList"
+								<li class="nav-item"><a class="nav-link orange" id="navList"
 									href="modifyMember.do">회원 정보 수정</a></li>
-								<li class="nav-item"><a class="nav-link active" id="navList" href="showBoard.do">등록글
+								<li class="nav-item"><a class="nav-link orange" id="navList" href="showBoard.do">등록글
 										조회</a></li>
-								<li class="nav-item"><a class="nav-link active" id="navList" href="showReply.do">등록 댓글 보기</a>
+								<li class="nav-item"><a class="nav-link orange" id="navList" href="showReply.do">등록 댓글 보기</a>
 								</li>
-								<li class="nav-item"><a class="nav-link active" id="navList" href="wishList.do">관심 물품</a>
+								<li class="nav-item"><a class="nav-link orange" id="navList" href="wishList.do">관심 물품</a>
 								</li>
 							</ul>
 							<hr class="d-sm-none">
@@ -90,7 +61,7 @@ body {
 							<div id="container_box">
 
 				<table class="table">
-					<thead class="thead-dark">
+					<thead class="table-orange" >
 						<tr>
 							<th>번호</th>
 							<th>글 제목</th>
@@ -100,7 +71,7 @@ body {
 					</thead>
 					<tbody>
 						<c:forEach items="${boardList }" var="boardList">
-							<tr>
+							<tr style="text-align:center">
 								<td class = "board">${boardList.board_num}</td>
 								<td class = "board"><a href="boardDetail.do?board_num=${boardList.board_num}" style="color:black" class="memberListID">${boardList.board_title}</a></td>
 								<td class = "board">${boardList.board_hits}</td>

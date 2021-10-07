@@ -48,7 +48,7 @@
 										
 										<td>
 												<div class="mail_check_button">
-													<span style="border:solid">인증번호 전송</span>
+													<span style="border:solid">임시 비밀번호 전송</span>
 												</div>
 										</td>
 									</tr>

@@ -33,58 +33,51 @@ public class AdminDAOImpl implements AdminDAO {
 		System.out.println("Mybatis updateMember() 호출");
 		mybatis.update("AdminDAO.updateMember", vo);
 	}
-	
-	
-	//관리자의 통계 확인
-	
-	
+
 	public HashMap getMemberJoinCount() {
 		System.out.println("Mybatis getMemberJoinCount() 호출");
 		return mybatis.selectOne("AdminDAO.getMemberJoinCount");
 	}
 
-	
 	public List<HashMap> getAdminBoardCount() {
 		System.out.println("Mybatis getAdminBoardCount() 호출");
 		return mybatis.selectList("AdminDAO.getAdminBoardCount");
 	}
 
-	
 	public List<ProductVO> getProductViewRank() {
 		System.out.println("Mybatis getProductViewRank() 호출");
 		return mybatis.selectList("AdminDAO.getProductViewRank");
 	}
 
-	
 	public List<HashMap> getProductWishRank() {
 		System.out.println("Mybatis getProductWishRank() 호출");
 		return mybatis.selectList("AdminDAO.getProductWishRank");
 	}
 
-	
 	public List<HashMap> getCommunityRank() {
 		System.out.println("Mybatis getCommunityRank() 호출");
 		return mybatis.selectList("AdminDAO.getCommunityRank");
 	}
 
-	
 	public List<HashMap> getHotPriceShopRank() {
 		System.out.println("Mybatis getHotPriceShopRank() 호출");
 		return mybatis.selectList("AdminDAO.getHotPriceShopRank");
 	}
 
-	
 	public List<HashMap> getMemberAge() {
 		System.out.println("Mybatis getMemberAge() 호출");
 		return mybatis.selectList("AdminDAO.getMemberAge");
 	}
 
-	
 	public List<HashMap> getCategoryRatio() {
 		System.out.println("Mybatis getCategoryRatio() 호출");
 		return mybatis.selectList("AdminDAO.getCategoryRatio");
 	}
 
+	public List<HashMap> getMemberWeekJoin() {
+		System.out.println("Mybatis getMemberWeekJoin() 호출");
+		return mybatis.selectList("AdminDAO.getMemberWeekJoin");
+	}
 	
 	public List<HashMap> getMemberPlatform() {
 		System.out.println("Mybatis getMemberPlatform() 호출");

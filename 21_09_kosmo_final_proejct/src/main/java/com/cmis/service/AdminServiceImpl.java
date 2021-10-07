@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cmis.dao.AdminDAO;
 import com.cmis.dao.AdminDAOImpl;
 import com.cmis.dao.MemberDAOImpl;
 import com.cmis.domain.MemberVO;
@@ -15,7 +16,7 @@ import com.cmis.domain.ProductVO;
 public class AdminServiceImpl implements AdminService {
 	
 	@Autowired
-	private AdminDAOImpl adminDAO;
+	private AdminDAO adminDAO;
 
 	@Override
 	public List<MemberVO> getMemberList(MemberVO vo) {
@@ -30,14 +31,13 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void updateMember(MemberVO vo) {
 		adminDAO.updateMember(vo);
-		
 	}
-	
+
 	@Override
 	public HashMap getMemberJoinCount() {
 		return adminDAO.getMemberJoinCount();
 	}
-	
+
 	@Override
 	public List<HashMap> getAdminBoardCount() {
 		return adminDAO.getAdminBoardCount();
@@ -74,11 +74,12 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
+	public List<HashMap> getMemberWeekJoin() {
+		return adminDAO.getMemberWeekJoin();
+	}
+	
+	@Override
 	public List<HashMap> getMemberPlatform() {
 		return adminDAO.getMemberPlatform();
 	}
-
-	
-	
-	
 }

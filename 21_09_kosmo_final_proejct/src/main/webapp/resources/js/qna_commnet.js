@@ -39,5 +39,6 @@
         vm.comment.author = "";
     }
   }
+  
 
 })();

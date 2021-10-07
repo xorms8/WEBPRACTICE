@@ -34,13 +34,15 @@
 	
 	<insert id="writeComment" parameterType="comment">
 		INSERT INTO CMIS_COMMENT (board_num, comment_content, comment_writer, comment_date) 
-		VALUES (#{board_num}, #{comment_content}, #{comment_writer}, sysdate())
+		VALUES (#{board_num}, #{comment_content},#{comment_writer} , sysdate())
 	</insert>
 	
 	<select id="selectComment" parameterType="comment"  resultType="hashmap">
 		SELECT board_num, comment_num, comment_content, comment_writer, date_format(comment_date, '%y-%m-%d %H:%i') comment_date 
 		FROM CMIS_COMMENT
+		 <if test="board_num != null and board_num != ''">
 		WHERE board_num = #{board_num}
+		</if>
 		ORDER BY comment_num DESC 
 	</select>
 	
@@ -48,5 +50,10 @@
 		DELETE FROM CMIS_COMMENT 
 		WHERE board_num = #{board_num} AND comment_num = #{comment_num} AND comment_writer = #{comment_writer}
 	</delete>
+	
+	<!-- 조회수 증가  -->
+	<update id="boardViewCount" parameterType="board">
+		UPDATE CMIS_BOARD SET board_hits = board_hits + 1 WHERE board_num = #{board_num}
+	</update>
 	
 </mapper>

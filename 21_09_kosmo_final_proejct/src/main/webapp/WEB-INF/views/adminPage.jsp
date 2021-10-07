@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>관리자 통계 페이지</title>
+<title>통계 페이지</title>
 <link rel="stylesheet" href="resources/css/adminPage.css">
 <link rel="stylesheet" href="resources/css/bootstrap.min.css">
 <script
@@ -16,28 +16,26 @@
 	<script src="./resources/js/admin.js"></script>
 <script type="text/javascript">
 
+var colors = ['#007bff',	'#dc3545','#fd7e14','#28a745','#6f42c1','#e83e8c'];
+
 // 최다 조회 상품 그래프
 google.load("visualization", "1", {packages:["corechart"]});
 google.setOnLoadCallback(drawChart1);
 function drawChart1() {
   var data = google.visualization.arrayToDataTable([
-    ['상품명', '조회수'],
-    <c:forEach items="${getProductViewRank}" var="productList" varStatus="status">
+    ['상품명', '조회수',  { role: 'style' }],
+    <c:forEach items="${productViewRank}" var="productList" varStatus="status">
 	  		<c:if test="${!status.last}">
-	  			['${productList.product_name}', ${productList.view_count}],
+	  			['${productList.product_name}', ${productList.product_views_count}, colors[${status.index}]],
 	   		</c:if>
-	   <c:if test="${status.last}"> 
-	   ['${productList.product_name}', ${productList.view_count}]
+	   <c:if test="${status.last}">
+	   ['${productList.product_name}', ${productList.product_views_count}, colors[${status.index}]]
 		</c:if>
 	</c:forEach>
   ]);
 
   var options = {
-    legend: {position: 'none'}, //범례 표시
-    colors :['#EF5194
-    	
-    	'] //컬러 조정
-  	
+    legend: {position: 'none'}
     /* vAxis: {minValue: 0} */
  };
 
@@ -50,16 +48,16 @@ google.load("visualization", "1", {packages:["corechart"]});
 google.setOnLoadCallback(drawChart2);
 function drawChart2() {
   var data = google.visualization.arrayToDataTable([
-    ['상품명', '관심물품 등록 건수'],
-    <c:forEach items="${getProductWishRank}" var="productList" varStatus="status">
+    ['상품명', '관심물품 등록 건수',{ role: 'style' }],
+    <c:forEach items="${productWishRank}" var="productList" varStatus="status">
 	  		<c:if test="${!status.last}">
-	  			['${productList.product_name}', ${productList.cnt}],
+	  			['${productList.product_name}', ${productList.cnt},colors[${status.index}]],
 	   		</c:if>
 	   <c:if test="${status.last}">
-	   ['${productList.product_name}', ${productList.cnt}]
+	   ['${productList.product_name}', ${productList.cnt},colors[${status.index}]]
 		</c:if>
 	</c:forEach>
-  ]); 
+  ]);
 
   var options = {
     legend: {position: 'none'}
@@ -71,18 +69,18 @@ var chart = new google.visualization.ColumnChart(document.getElementById('chart_
 }
 
 
-//최다 커뮤니티 활동 통계
+//최다 조회 상품 그래프
 google.load("visualization", "1", {packages:["corechart"]});
 google.setOnLoadCallback(drawChart3);
 function drawChart3() {
 var data = google.visualization.arrayToDataTable([
-  ['회원 아이디', '글 등록 건수'], 
-  <c:forEach items="${getCommunityRank}" var="communityRankList" varStatus="status">
+  ['회원 아이디', '글 등록 건수',{ role: 'style' }],
+  <c:forEach items="${communityRank}" var="communityRankList" varStatus="status">
 	  		<c:if test="${!status.last}">
-	  			['${communityRankList.user_id}', ${communityRankList.cnt_sum}],
+	  			['${communityRankList.user_id}', ${communityRankList.cnt_sum},colors[${status.index}]],
 	   		</c:if>
-	   <c:if test="${status.last}"> 
-	   ['${communityRankList.user_id}', ${communityRankList.cnt_sum}]
+	   <c:if test="${status.last}">
+	   ['${communityRankList.user_id}', ${communityRankList.cnt_sum},colors[${status.index}]]
 		</c:if>
 	</c:forEach>
 ]);
@@ -101,13 +99,13 @@ google.load("visualization", "1", {packages:["corechart"]});
 google.setOnLoadCallback(drawChart4);
 function drawChart4() {
 var data = google.visualization.arrayToDataTable([
-  ['매장명', '핫딜 상품 건수'],  
-  <c:forEach items="${getHotPriceShopRank}" var="hotPriceShopRankList" varStatus="status">
+  ['매장명', '핫딜 상품 건수',{ role: 'style' }],
+  <c:forEach items="${hotPriceShopRank}" var="hotPriceShopRankList" varStatus="status">
 	  		<c:if test="${!status.last}">
-	  			['${hotPriceShopRankList.shop_name}', ${hotPriceShopRankList.cnt}],
+	  			['${hotPriceShopRankList.shop_name}', ${hotPriceShopRankList.cnt},colors[${status.index}]],
 	   		</c:if>
-	   <c:if test="${status.last}"> 
-	   ['${hotPriceShopRankList.shop_name}', ${hotPriceShopRankList.cnt}]
+	   <c:if test="${status.last}">
+	   ['${hotPriceShopRankList.shop_name}', ${hotPriceShopRankList.cnt},colors[${status.index}]]
 		</c:if>
 	</c:forEach>
 ]);
@@ -127,7 +125,7 @@ google.setOnLoadCallback(drawChart5);
 function drawChart5() {
 var data = google.visualization.arrayToDataTable([
   ['연령대', '회원수'],
-  <c:forEach items="${getMemberAge}" var="memberAgeList" varStatus="status">
+  <c:forEach items="${memberAge}" var="memberAgeList" varStatus="status">
 	  		<c:if test="${!status.last}">
 	  			['${memberAgeList.age}', ${memberAgeList.cnt}],
 	   		</c:if>
@@ -150,6 +148,59 @@ google.load("current", {packages:["corechart"]});
 google.setOnLoadCallback(drawChart6);
 function drawChart6() {
 var data = google.visualization.arrayToDataTable([
+  ['연령대', '회원수'],
+  <c:forEach items="${categoryRatio}" var="categoryRatioList" varStatus="status">
+	  		<c:if test="${!status.last}">
+	  			['${categoryRatioList.main_category_name}', ${categoryRatioList.cnt}],
+	   		</c:if>
+	   <c:if test="${status.last}">
+	   ['${categoryRatioList.main_category_name}', ${categoryRatioList.cnt}]
+		</c:if>
+	</c:forEach>
+]);
+
+
+
+var options = {
+
+};
+
+var chart = new google.visualization.PieChart(document.getElementById('chart_div6'));
+chart.draw(data, options);
+}
+
+//1주간 신규 회원 가입 수
+google.charts.load('current', {packages: ['corechart', 'line']});
+google.charts.setOnLoadCallback(drawChart7);
+function drawChart7() {
+var data = new google.visualization.DataTable();
+
+data.addColumn('date');
+data.addColumn('number', '가입자 수');
+
+<c:forEach items="${memberWeekJoin}" var="memberJoinList">
+
+data.addRow([new Date(${memberJoinList.regdate}),${memberJoinList.cnt}]);
+
+
+</c:forEach>
+
+
+
+var options = {
+		 hAxis: {format: 'M월 d일'}
+};
+
+var chart = new google.visualization.LineChart(document.getElementById('chart_div7'));
+chart.draw(data, options);
+}
+
+
+//플랫폼 별 회원 유형
+google.load("current", {packages:["corechart"]});
+google.setOnLoadCallback(drawChart8);
+function drawChart8() {
+var data = google.visualization.arrayToDataTable([
   ['회원가입 유형', '회원수'],
   <c:forEach items="${getMemberPlatform}" var="categoryRatioList" varStatus="status">
 	  		<c:if test="${!status.last}">
@@ -161,13 +212,11 @@ var data = google.visualization.arrayToDataTable([
 	</c:forEach>
 ]);
 
-var options = {
-
-};
-
-var chart = new google.visualization.PieChart(document.getElementById('chart_div6'));
-chart.draw(data, options);
+var chart = new google.visualization.PieChart(document.getElementById('chart_div8'));
+chart.draw(data);
 }
+
+
 
 </script>
 </head>
@@ -179,7 +228,7 @@ chart.draw(data, options);
 		<a class="navbar-brand" href="adminMemberList.do">관리자 페이지 돌아가기</a>
 		<a style="max-height: 40px;position: absolute;right: 0%;" target="_blank" class="navbar-brand" href="https://analytics.google.com/analytics/web/?hl=ko#/p287639973/realtime/overview?params=_u..nav%3Dmaui">
 		 <img style="max-height: 40px;" ng-src="//www.gstatic.com/analytics-suite/header/suite/v2/ic_analytics.svg" alt="애널리틱스" src="//www.gstatic.com/analytics-suite/header/suite/v2/ic_analytics.svg">
-		 애널리틱스</a>
+		FireBase 애널리틱스</a>
 	</nav>
 	<div class="content-wrapper">
 		<div class="container-fluid">
@@ -336,7 +385,41 @@ chart.draw(data, options);
 						</div>
 					</div>
 				</div>
-	
+				
+				<div class="col-lg-6">
+					<div class="card mb-3">
+						<div class="card-header">
+							<i class="fa fa-area-chart"></i>1주간 신규 회원 가입수
+						</div>
+						<div class="card-body">
+							<div class="row" style="text-align: center;">
+								<div id="chart_div7" class="chart"
+									style="width: 100%; min-height: 400px;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-lg-6">
+					<div class="card mb-3">
+						<div class="card-header">
+							<i class="fa fa-area-chart"></i>플랫폼 별 회원 유형
+						</div>
+						<div class="card-body">
+							<div class="row" style="text-align: center;">
+								<div id="chart_div8" class="chart"
+									style="width: 100%; min-height: 400px;"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				
+				
+
+
+
 
 				<!-- Card Columns Example Social Feed-->
 

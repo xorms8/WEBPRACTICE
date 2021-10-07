@@ -24,7 +24,6 @@ a{color:inherit;text-decoration:none}
   max-width:525px;
   min-height:790px;
   position:relative;
-  background:url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg) no-repeat center;
   box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
 }
 .login-html{
@@ -32,7 +31,6 @@ a{color:inherit;text-decoration:none}
   height:100%;
   position:absolute;
   padding:30px 70px 50px 70px;
-  background:rgba(40,57,101,.9);
 }
 .login-html .sign-in-htm,
 .login-html .sign-up-htm{
@@ -65,7 +63,7 @@ a{color:inherit;text-decoration:none}
 }
 .login-html .sign-in:checked + .tab,
 .login-html .sign-up:checked + .tab{
-  color:#fff;
+  color:black;
   border-color:#1161ee;
 }
 .login-form{
@@ -81,25 +79,25 @@ a{color:inherit;text-decoration:none}
 .login-form .group .input,
 .login-form .group .button{
   width:100%;
-  color:#fff;
+  color:black;
   display:block;
 }
 .login-form .group .input,
 .login-form .group .button{
   border:none;
   border-radius:25px;
-  background:rgba(255,255,255,.1);
+  background:#eee;
 }
 .login-form .group input[data-type="password"]{
   text-security:circle;
   -webkit-text-security:circle;
 }
 .login-form .group .label{
-  color:#aaa;
+  color:#1f2b7b;
   font-size:12px;
 }
 .login-form .group .button{
-  background:#1161ee;
+  background:#f15d30 !important;
 }
 .login-form .group label .icon{
   width:15px;
@@ -114,7 +112,7 @@ a{color:inherit;text-decoration:none}
   content:'';
   width:10px;
   height:2px;
-  background:#fff;
+  background:black;
   position:absolute;
   transition:all .2s ease-in-out 0s;
 }
@@ -130,7 +128,7 @@ a{color:inherit;text-decoration:none}
   transform:scale(0) rotate(0);
 }
 .login-form .group .check:checked + label{
-  color:#fff;
+  color:black;
 }
 .login-form .group .check:checked + label .icon{
   background:#1161ee;
@@ -176,29 +174,10 @@ a{color:inherit;text-decoration:none}
 	color:black;
 }
 
-span{
-	color:white;
-}
-
 </style>
 <!-- 구글 Platform 라이브러리 -->
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <meta name="google-signin-client_id" content="382620650636-bd2g83csqijookq39iqpe90ie0dqkplg.apps.googleusercontent.com">
-<!-- 카카오 로그인 --> 
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js" charset="utf-8"></script>
-
-<script type="text/javascript"> //초기화 시키기. 
-
-$(document).ready(function(){ Kakao.init('8863e3abb3c060c0a88afb8840b2e6f5'); Kakao.isInitialized(); }); 
-
-
-function loginWithKakao() { Kakao.Auth.authorize({ redirectUri: 'http://localhost:8080/loginpage_kakao_callback' }); }
-
-
-
-</script>
-
 </head>
 <body>
 	<div id="root">
@@ -215,10 +194,10 @@ function loginWithKakao() { Kakao.Auth.authorize({ redirectUri: 'http://localhos
 			<div id="container_box">
 			<h1 class="display-1" style="text-align: center;">로그인 / 회원가입</h1>
 			<hr/>
-				<main>
+			
 					<!--? Hero Area Start-->
-					<div class="slider-area hero-bg1 hero-overly">
-						<div class="single-slider hero-overly  slider-height1 d-flex align-items-center">
+					<div class="container">
+					<div class="row">
 							<div class="login-wrap">
 								<div class="login-html">
 									<input id="tab-1" type="radio" name="tab" class="sign-in" checked>
@@ -239,19 +218,94 @@ function loginWithKakao() { Kakao.Auth.authorize({ redirectUri: 'http://localhos
 														class="input" data-type="password" required="required">
 												</div>
 												<div class="group">
-													<input id="check" type="checkbox" class="check" checked>
-													<label for="check"><span class="icon"></span> Keep
-														me Signed in</label>
-													<!-- 로그인 정보 저장 또는 자동 로그인 기능. 추가해야함 -->
+													<input type="submit" class="button" value="Sign In" style="cursor:pointer; color:white">
+												</div>
+												<div class="d-flex justify-content-center">
+												<div class="g-signin2" onclick="init();" id="google_login" class="circle google"
+												 style="margin:10px;"></div>
+												</div>
+												<div class="foot-lnk">
+													<a href="findId.do" id = "findId" style="color:black; margin:10px; padding:10px">Forgot ID/PASSWORD?</a>
+												</div>
+											</div>
+										</form>
+										
+										<form onsubmit="return validate();" name="join" action="signUpDo.do" method="post">
+											<div class="sign-up-htm">
+												<div class="group">
+													<label for="member_name" class="label">Username</label> <input
+														id="member_name" name="member_name" type="text"
+														class="input" required="required" maxlength="20" placeholder="이름을 입력하세요">
 												</div>
 												<div class="group">
-													<input type="submit" class="button" value="Sign In">
+													<label for="user_id" class="label">Userid</label> <input
+														id="user_id" name="user_id" type="text" class="input" required="required" maxlength="12"
+														placeholder="아이디를 입력하세요">
+													<div class='valid'></div>
+													<span id="msg1" class="msg1"></span>
 												</div>
-												<div class="hr"></div>
-												<div class="foot-lnk">
-													<a href="findId.do" id = "findId">Forgot ID/PASSWORD?</a>
-													<div class="g-signin2" onclick="init();" id="google_login" class="circle google" ></div>
-												<!-- google signin api -->
+												<div class="group">
+													<label for="member_email" class="label">Email</label> 
+													<input id="member_email" name="member_email" type="text" class="input" required="required" maxlength="30">
+													
+													<span class="mail_input_box_warn"></span>
+													
+													<div class="mail_check_wrap">
+														<div class="mail_check_input_box" id="mail_check_input_box_false">
+															<input id="mail_check_input" class="input" disabled="disabled">
+														</div>
+														<div class="mail_check_button">
+															<span style="border:solid; cursor:pointer">인증번호 전송</span>
+														</div>
+														<div class="clearfix"></div>
+														<span id="mail_check_input_box_warn"></span>
+													</div>
+												</div>
+												<div class="group">
+													<label for="member_pw" class="label">Password</label> <input
+														id="member_pw" name="member_pw" type="password"
+														class="input" data-type="password" required="required" maxlength="12" placeholder="비밀번호를 입력하세요">
+													<div class="valid"></div>
+												</div>
+												<div class="group">
+													<label for="member_pw2" class="label">Password Check</label>
+													<input id="member_pw2" name="member_pw2" type="password"
+														class="input" data-type="password" required="required" maxlength="12" placeholder="비밀번호를 다시 입력하세요">
+													<div class="valid"></div>
+												</div>
+												<div class="group">
+													<label for="member_phone" class="label">PhoneNumber</label>
+													<input id="member_phone" name="member_phone" type="text" class="input" required="required" maxlength="11" placeholder="핸드폰 번호를 입력하세요 ">
+													<div class="valid"></div>
+												</div>
+												<div class="group">
+													<input type="submit" class="button" value="Sign Up" id="submitButton"
+														style="cursor: pointer; color:white">
+												</div>
+											</div>
+										</form>
+										<div class="hr"></div>
+										<div class="foot-lnk"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+			</div>
+			<!--Hero Area End-->
+	</div>
+	</section>
+	<!-- E: 본문 영역 끝 -->
+	<!-- S: 푸터 영역 시작 -->
+	<footer id="footer">
+		<div id="footer_box">
+			<jsp:include page="/WEB-INF/views/include/footer.jsp" />
+		</div>
+	</footer>
+	
+	
+	<!-- 스크립트 CODE -->
+	
+	<!-- google signin api -->
 <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 <script>
 // google signin API
@@ -289,7 +343,7 @@ function attachSignin(element) {
 					    },
 				    success: function (data) {
 				            alert("구글계정으로 로그인 되었습니다 ^^*");
-				            location.href="test.do";
+				            location.href="index.do";
 				        }
 				});
 			})
@@ -300,75 +354,12 @@ function attachSignin(element) {
     console.log("구글API 끝");
   }
 </script>
-													<!-- 비밀번호 찾기 기능. 추가해야함 -->
-												</div>
-											</div>
-										</form>
-										
-										<form onsubmit="return validate();" name="join" action="signUpDo.do" method="post">
-											<div class="sign-up-htm">
-												<div class="group">
-													<label for="member_name" class="label">Username</label> <input
-														id="member_name" name="member_name" type="text"
-														class="input" required="required" maxlength="20">
-												</div>
-												<div class="group">
-													<label for="user_id" class="label">Userid</label> <input
-														id="user_id" name="user_id" type="text" class="input" required="required" maxlength="12"
-														placeholder="아이디를 입력하세요">
-													<div class='valid'></div>
-													<span id="msg1" class="msg1"></span>
-												</div>
-												<div class="group">
-													<label for="member_email" class="label">Email</label> 
-													<input id="member_email" name="member_email" type="text" class="input" required="required" maxlength="30">
-													
-													<span class="mail_input_box_warn"></span>
-													
-													<div class="mail_check_wrap">
-														<div class="mail_check_input_box" id="mail_check_input_box_false">
-															<input id="mail_check_input" class="input" disabled="disabled">
-														</div>
-														<div class="mail_check_button">
-															<span style="border:solid">인증번호 전송</span>
-														</div>
-														<div class="clearfix"></div>
-														<span id="mail_check_input_box_warn"></span>
-													</div>
-												</div>
-												<div class="group">
-													<label for="member_pw" class="label">Password</label> <input
-														id="member_pw" name="member_pw" type="password"
-														class="input" data-type="password" required="required" maxlength="12" placeholder="비밀번호를 입력하세요">
-													<div class="valid"></div>
-												</div>
-												<div class="group">
-													<label for="member_pw2" class="label">Password Check</label>
-													<input id="member_pw2" name="member_pw2" type="password"
-														class="input" data-type="password" required="required" maxlength="12" placeholder="비밀번호를 다시 입력하세요">
-													<div class="valid"></div>
-												</div>
-												<div class="group">
-													<label for="member_phone" class="label">PhoneNumber</label>
-													<input id="member_phone" name="member_phone" type="text" class="input" required="required" maxlength="11" placeholder="핸드폰 번호를 입력하세요 ">
-													<div class="valid"></div>
-												</div>
-												<div class="group">
-													<input type="submit" class="button" value="Sign Up" id="submitButton"
-														style="cursor: pointer">
-												</div>
-											</div>
-										</form>
-										<div class="hr"></div>
-										<div class="foot-lnk"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-			</main>
-			
-			<script>
+	
+	
+	<!-- =================유효성 검사 ========================== -->
+	
+	
+	<script>
 			
 			var code =""; //이메일전송 인증번호 저장을 위한 코드
 			
@@ -515,8 +506,6 @@ function attachSignin(element) {
 			       
 			     }
 			     
-			
-				
 				 /* 입력 이메일 형식 유효성 검사 */
 				 function mailFormCheck(email){
 				    var form = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
@@ -531,25 +520,8 @@ function attachSignin(element) {
 			        //alert(message);
 			        what.focus();
 			    }
-			
-				
 			</script>
-			
-			<!--Hero Area End-->
-	</div>
-	</section>
-	<!-- E: 본문 영역 끝 -->
-	<!-- S: 푸터 영역 시작 -->
-	<footer id="footer">
-		<div id="footer_box">
-			<jsp:include page="/WEB-INF/views/include/footer.jsp" />
-		</div>
-	</footer>
-	
-	
-	
-	
-	
+
 	
 	</div>
 	<!-- E: Index(Home).jsp 의 div 총괄 끝  -->

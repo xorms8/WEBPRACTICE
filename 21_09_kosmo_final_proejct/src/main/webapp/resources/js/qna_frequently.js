@@ -1,7 +1,7 @@
 $j = jQuery;
 
 /*
-  --- Copy from here
+  — Copy from here
 */
 $(function(){
 	

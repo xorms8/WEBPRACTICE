@@ -76,7 +76,7 @@ public class ProductController {
 			pageNum = 1;
 
 		// 한 페이지에 몇 건 보여줄건지
-		int pageCount = 10;
+		int pageCount = 8;
 
 		// 출력할 첫번째 데이터
 		int min = (pageNum - 1) * pageCount;

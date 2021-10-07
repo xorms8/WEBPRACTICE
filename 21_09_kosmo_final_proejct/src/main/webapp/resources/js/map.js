@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-   $("div.loaderbase").hide();
+	$("div.loaderbase").hide();
  
     if (navigator.geolocation) {
         
@@ -17,6 +17,9 @@ $(document).ready(function(){
             $('#lat').val(lat);
             $('#lon').val(lon);
             
+            var price = $('[href="price_compare.do"]')
+            var pricedo = "price_compare.do?lat=" + lat +"&lon=" +lon;
+            price.prop('href', pricedo);
             
             $('[href^="productdetails.do"]').each(function (index, item){
                 // 상품 상세 링크 가져오기
@@ -24,21 +27,45 @@ $(document).ready(function(){
                 $(item).prop('href',details + '&lat=' + lat + '&lon=' + lon);
             })
             
+
+         // 주소-좌표 변환 객체를 생성합니다
+         var geocoder = new kakao.maps.services.Geocoder();
+
+         var callback = function(result, status){
+        	    if(status === daum.maps.services.Status.OK){
+        	    	
+        	        var addr = result[0].address.address_name
+        	        
+        	        var url = "https://google.com/maps/dir/" + addr
+        	        
+        	        $('a.route_map').each(function (index, item){
+                        // 상품 상세 링크 가져오기
+                        var shopName = $(item).attr('id');
+                        $(item).prop('href', url + "/" + shopName + "/");
+                    })
+                    
+        	    }
+        	};
+
+        	geocoder.coord2Address(lon, lat, callback);
+
+
+            
      });
     }
     
     // 매장명 클릭 했을시 함수 실행
     $('a.box').click(function(){
        
-       if (navigator.geolocation) {
-           
-           navigator.geolocation.getCurrentPosition(function(position) {
+    	if (navigator.geolocation) {
+        	
+        	navigator.geolocation.getCurrentPosition(function(position) {
                 
                 lat = position.coords.latitude; // 위도
                 lon = position.coords.longitude; // 경도
-           })
-       }
-       
+        	})
+    	}
+    	
        // 매장명
        var shopName = $(this).children('.storeName').val();
        
@@ -65,10 +92,10 @@ $(document).ready(function(){
              // 해당 매장 상품 반복하여 입력
              for(var i = 0; i < data.length; i++){
                  
-                var price = data[i].salePrice.toString();
-                
-                price = price.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                
+            	 var price = data[i].salePrice.toString();
+            	 
+            	 price = price.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            	 
                    content += "<div class='col-lg-6 item'>";
                    content += "<div class='properties properties2 mb-30'>";
                    content += "<div class='properties__card'>";
@@ -132,15 +159,15 @@ $(document).ready(function(){
 function textSearch(){
    
    // 모든 매장 리스트 숨김
-   $('a.box').css("display","none")
+   $('div.shopList').css("display","none")
    
    // 검색 텍스트 가져오기
    var text = $('input#search_text').val()
    
    // 매장 리스트를 하나씩 확인
-   $('a.box').each(function (index, item){
+   $('div.shopList').each(function (index, item){
       // 매장명 가져오기
-      var shopName = $(item).children("p.subject").text();
+      var shopName = $(item).children().children("p.subject").text();
       // 매장명에 검색 텍스트가 포함되어있으면 매장명 출력
       if(shopName.indexOf(text) != -1){
          $(item).css("display","block")
@@ -151,5 +178,6 @@ function textSearch(){
 }
 
 function showLoader(){
-   $("div.loaderbase").show();
+	$("div.loaderbase").show();
 };
+

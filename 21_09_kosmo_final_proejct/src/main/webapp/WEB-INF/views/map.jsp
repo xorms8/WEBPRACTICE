@@ -33,12 +33,23 @@
       </header>
       <!-- E: 헤더 부분 끝 -->
 
-
+		
+		<div
+         class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light"
+         style="margin-bottom: 0px !important; height: 220px; background: #494343 !important">
+         <div class="col-md-5 p-lg-5 mx-auto my-5">
+            <h1 class="display-4 font-weight-normal" style="color: white">최저가 매장 찾기</h1>
+            <p class="lead font-weight-normal" style="color: white">매장 별 검색을 통해 최적의 매장을 찾아보세요 ! </p>
+         </div>
+         <div class="product-device shadow-sm d-none d-md-block"></div>
+         <div
+            class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+      </div>	
+		
+		
       <!-- S: 본문 영역 시작 -->
-      <div class="container-fluid">
+      <div class="container">
          <!-- 전체 Container -->
-         <h1 class="display-1" style="text-align: center; margin: 15px;">최저가
-            찾기</h1>
          <hr />
          <div class="row">
             <div class="col-sm-3 col-md-6 col-lg-4">
@@ -48,14 +59,14 @@
                      onsubmit="return false">
                      <input type="hidden" name="lat" id="lat" value=""> <input
                         type="hidden" name="lng" id="lng" value="">
-                     <h2 style="color: black; text-align: center">매장찾기</h2>
+                     <h2 style="color: black; text-align: center; font-size:38px" >매장찾기</h2>
                      <div class="input-group mb-3">
                         <input type="text" class="form-control" id="search_text" placeholder="매장명" style="height: 50px">
                         <div class="input-group-append">
                            <button class="btn btn-outline-secondary" type="button"
                               onclick="textSearch(); return false;" id="button-addon2">Search</button>
                         </div>
-                     </div>
+                     </div> 
                      <p class="ex">- 롯데마트, 이마트, GS</p>
                   </form>
                   <div class="shop_sort" style="overflow: hidden; outline: none;">
@@ -93,9 +104,6 @@
                </div>
                <div class="container productlist"></div>
             </div>
-
-
-
 
          </div>
       </div>

@@ -9,35 +9,6 @@
 <title>CMIS MY PAGE</title>
 <script
 	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-
-<style type="text/css">
-@import
-	url(https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,800)
-	;
-
-body {
-	font-size: 16px;
-	line-height: 22px;
-	color: #555;
-	font-family: 'Raleway', sans-serif;
-	font-weight: 300;
-	text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
-}
-
-#myPageAtag {
-	color: black;
-	font-size: 150%;
-	display: flex;
-}
-
-#navList {
-	margin-bottom: 10px;
-	background-color: #050d15;
-}
-</style>
-
-
 </head>
 <body>
 	<div id="root">
@@ -64,14 +35,14 @@ body {
 						<div class="col-sm-4">
 							<h3 style="text-align: center">Menu</h3>
 							<ul class="nav nav-pills flex-column">
-								<li class="nav-item"><a class="nav-link active"
-									id="navList" href="modifyMember.do">회원정보수정</a></li>
-								<li class="nav-item"><a class="nav-link active"
-									id="navList" href="showBoard.do">등록글 조회</a></li>
-								<li class="nav-item"><a class="nav-link active"
-									id="navList" href="showReply.do">등록댓글보기</a></li>
-								<li class="nav-item"><a class="nav-link active"
-									id="navList" href="wishList.do">관심 물품</a></li>
+								<li class="nav-item"><a class="nav-link orange" id="navList"
+									href="modifyMember.do">회원 정보 수정</a></li>
+								<li class="nav-item"><a class="nav-link orange" id="navList" href="showBoard.do">등록글
+										조회</a></li>
+								<li class="nav-item"><a class="nav-link orange" id="navList" href="showReply.do">등록 댓글 보기</a>
+								</li>
+								<li class="nav-item"><a class="nav-link orange" id="navList" href="wishList.do">관심 물품</a>
+								</li>
 							</ul>
 							<hr class="d-sm-none">
 						</div>
@@ -86,7 +57,6 @@ body {
 										<tr> <!-- loginSns 값이 test일 때 ID,PASSWORD 값 표시 / google 로그인일 경우 표시 X -->
 										<c:choose> 
 										<c:when test="${sessionScope.loginSns eq 'test'}">
-										
 											<th scope="row">아이디</th>
 											<td>
 											<input type="text" id="user_id" name="user_id" placeholder="아이디"

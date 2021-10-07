@@ -2862,7 +2862,7 @@ keyframes zoom { 0%{
 }
 
 .mobile_menu .slicknav_menu .slicknav_btn .slicknav_icon-bar {
-	background-color: #B367FF !important
+   background-color: #f15d30 !important
 }
 
 .mobile_menu .slicknav_menu .slicknav_nav {
@@ -3797,9 +3797,6 @@ keyframes zoom { 0%{
 	color: #B367FF
 }
 
-.our-services .single-services:hover .services-ion span {
-	color: #B367FF
-}
 
 .wantToWork-area {
 	padding-bottom: 40px
@@ -6266,14 +6263,7 @@ keyframes zoom { 0%{
 	justify-content: start
 }
 
-.popular-location .single-location .location-img::before {
-	background-image: -moz-linear-gradient(90deg, #010a27 0%, #010a27 0%, rgba(6, 31, 120, 0.3
-		) 70%, rgba(11, 52, 201, 0.01) 100%, #0b34c9 100%);
-	background-image: -webkit-linear-gradient(90deg, #010a27 0%, #010a27 0%, rgba(6, 31, 120,
-		0.3) 70%, rgba(11, 52, 201, 0.01) 100%, #0b34c9 100%);
-	background-image: -ms-linear-gradient(90deg, #010a27 0%, #010a27 0%, rgba(6, 31, 120, 0.3)
-		70%, rgba(11, 52, 201, 0.01) 100%, #0b34c9 100%)
-}
+
 
 .sample-text-area {
 	background: #fff;

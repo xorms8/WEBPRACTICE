@@ -14,9 +14,7 @@ public interface AdminDAO {
 	public MemberVO getMember(MemberVO vo);
 	
 	public void updateMember(MemberVO vo);
-	
-	//관리자의 통계 확인
-	
+
 	public HashMap getMemberJoinCount();
 
 	public List<HashMap> getAdminBoardCount();
@@ -32,6 +30,8 @@ public interface AdminDAO {
 	public List<HashMap> getMemberAge();
 
 	public List<HashMap> getCategoryRatio();
+
+	public List<HashMap> getMemberWeekJoin();
 	
 	public List<HashMap> getMemberPlatform();
 }

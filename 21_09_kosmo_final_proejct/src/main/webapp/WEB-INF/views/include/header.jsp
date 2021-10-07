@@ -40,9 +40,9 @@
       <div
          class="preloader d-flex align-items-center justify-content-center">
          <div class="preloader-inner position-relative">
-            <div class="preloader-circle"></div>
+            <div class="preloader-circle" style="border-top-color: #e85037;"></div>
             <div class="preloader-img pere-text">
-               <img src="resources/img/logo/loder.png" alt="">
+               <img src="resources/img/logo/logo1.png" alt="">
             </div>
          </div>
       </div>
@@ -72,13 +72,14 @@
                            <li><a href="productList.do">데이터 센터</a>
                               <ul class="submenu">
                                  <li><a href="productList.do">상품 목록</a></li>
+                                 <li><a href="price_compare.do">상품 견적</a></li>
                               </ul></li>
                            <li><a href="#">커뮤니티</a>
                               <ul class="submenu">
                                  <li><a href="board.do">자유 게시판</a></li>
-                                 <li><a href="listing.html">뉴스 / Hot issue</a></li>
-                                 <li><a href="listing.html">실시간 채팅</a></li>
-                                 <li><a href="qnaBoard.do">Q/A</a></li>
+                                 <li><a href="newsBoard.do"">뉴스 / Hot issue</a></li>
+                                 <li><a href="chat.do">실시간 채팅</a></li>
+                                 <li><a href="qna_board.do">Q/A</a></li>
                               </ul></li>
 
                            <li><a href="error.do">Contact</a></li>

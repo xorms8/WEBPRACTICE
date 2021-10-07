@@ -33,7 +33,8 @@
 	<!-- Theme main style -->
     <link rel="stylesheet" href="resources/css/style.css">
 	
-	
+	<!-- custom css -->
+	<link rel="stylesheet" href="resources/css/custom.css">
 
     <style>
     /* Subscribe me on Youtube
