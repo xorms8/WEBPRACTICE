@@ -35,7 +35,7 @@ public class WebSocketChat {
 	public void onOpen(Session session) {
 		logger.info("Open session id : "+session.getId());
 		try {
-			final Basic basic = session.getBasicRemote();
+			final Basic basic = session.getBasicRemote(); //클라이언트 딴에 세션하나 만들어줌
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

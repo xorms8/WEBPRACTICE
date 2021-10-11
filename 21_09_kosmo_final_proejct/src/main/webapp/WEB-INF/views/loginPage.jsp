@@ -337,7 +337,7 @@ function attachSignin(element) {
 				    type: 'post',
 				    data: { 
 						"user_id" : "", // controller딴 set 적용
-						"member_pw" : "", //공백
+						"member_pw" : "", // controller딴 set 적용
 				        "member_name": profile.getName(),
 						"member_email": profile.getEmail()
 					    },
@@ -357,10 +357,7 @@ function attachSignin(element) {
 	
 	
 	<!-- =================유효성 검사 ========================== -->
-	
-	
-	<script>
-			
+	<script>	
 			var code =""; //이메일전송 인증번호 저장을 위한 코드
 			
 			/* 인증번호 이메일 전송 */
@@ -492,17 +489,11 @@ function attachSignin(element) {
 			         alert("휴대폰번호 11자리만 입력해주세요");
 			         return false;
 			        }
-			       // 이메일 유효성 검사 실패버전
+			       // 이메일 유효성 검사
 			        if(emailExp.test(email) == false){
 			        alert("email주소를 확인해주세요");
 			        return false;
 			        }
-			       
-				    //이메일 유효성 검사 고친버전
-				   /*  if(!mailFormCheck(email)){ //올바른 이메일 형식일때
-				    	alert("email주소를 확인해주세요");
-				        return false;
-				    } */
 			       
 			     }
 			     
@@ -517,7 +508,6 @@ function attachSignin(element) {
 			        if (test1.test(what.value)) {
 			            return true;
 			        }
-			        //alert(message);
 			        what.focus();
 			    }
 			</script>

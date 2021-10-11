@@ -82,7 +82,7 @@
                                  <li><a href="qna_board.do">Q/A</a></li>
                               </ul></li>
 
-                           <li><a href="error.do">Contact</a></li>
+                           <li><a href="contact.do">Contact</a></li>
                            
                            <li class="hideDesk">
                            <c:if test="${sessionScope.userId != null && sessionScope.memberLv == 1}">
@@ -220,7 +220,6 @@
 </script>
 <!-- E: Google FireBase & Analytics -->
 
-
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -229,7 +228,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-N9JKC4D');</script>
 <!-- End Google Tag Manager -->
 
-
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-BFS844XTQ1"></script>
@@ -237,7 +235,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-BFS844XTQ1');
 </script>
 

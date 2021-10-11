@@ -162,10 +162,8 @@ public class MemberController {
 	    		   "<br><br>" + "랜덤한 값으로 수정된 비밀번호는 " + checkNum + " 입니다."+
 	    		   "<br>"+
 	    		   "해당 비밀번호로 재 로그인 후 수정해주세요.";
-	       
 	       try {
-	    	 
-	    	   
+
 	    	   MimeMessage message = mailSender.createMimeMessage();
 	    	   MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
 	    	   helper.setFrom(setFrom);
@@ -186,7 +184,6 @@ public class MemberController {
 	//비밀번호 찾기 기본 페이지 매핑
 	@RequestMapping(value="findPassword.do")
 	public void findPassword() {
-		
 	}
 	
 	//비밀번호 찾은 페이지 기본 매핑
@@ -243,21 +240,14 @@ public class MemberController {
 	// 로그인 요청이 들어왔을 때
 	@RequestMapping("login.do")
 	public String userLogin(MemberVO vo, HttpSession session,HttpServletResponse response) throws IOException {
-		System.out.println("로그인 작동 호출");
-
+		
+		
 		MemberVO result = memberService.userLogin(vo);
 		System.out.println("고객이 로그인할떄 입력한 아이디 : " + vo.getUser_id());
 		// 만약 가져온 result 값이 null 이거나 id값이 없거나 그 아이디 값이 result에 있는 값과 같지 않거나 Password값이
-		// TRUE!!! 이면 if문 안의 구문 실행
-		// TRUE이면 성공했으며 return이 마지막으로 실행되어 test.do로 리다이렉트
 		if (result != null && vo.getUser_id().equals(result.getUser_id())
 				&& vo.getMember_pw().equals(result.getMember_pw())) {
-			
-			// 로그인 시 session에 set, "userID" key값에 MemberVO result.getUser_id 값을 (즉 로그인 한 회원
-			// 아이디 값)
-			// 이하 로그인시 session에 setAttribute로 key, value 값 부여, value는 MemberVO 변수 명 result !
-			// MemberVO 값을 mapper select문에 맞게 가져오는 DAO와 Service 클래스가 만들어져 있음
-			
+
 			session.setAttribute("member", result);
 			session.setAttribute("userId", result.getUser_id());
 			session.setAttribute("memberName", result.getMember_name());
@@ -267,6 +257,7 @@ public class MemberController {
 			System.out.println("sns로그인 값" + result.getMember_sns());
 			System.out.println("일반:1 / 관리자 :9 ->" + result.getMember_lv());
 			return "redirect:/index.do";
+			
 		} else {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
@@ -331,24 +322,11 @@ public class MemberController {
 		
 		return "redirect:/index.do";
     }
+    
 	/*
 	 * My PAGE
 	 */
 
-//	// Mypage(회원 수정, 주문내역 보기 전 사이트)
-//	@RequestMapping("myPage.do")
-//	public String preHandle(MemberVO vo, HttpServletRequest req, HttpServletResponse res) throws Exception {
-//		// myPage - > 회원만 접근 가능하게 세션관리, 세션 없으면 로그인 화면으로 리턴
-//		HttpSession session = req.getSession();
-//		MemberVO result = (MemberVO) session.getAttribute("member");
-//		System.out.println(result);
-//		if (result == null) { //result session값이 null이면 index page로 리턴
-//			return "loginPage";
-//		} else {
-//			return "myPage"; //아니면 myPage 접근
-//		}
-//
-//	}
 	@RequestMapping("myPage.do")
 	public String myPage(HttpSession session) {
 		// 세션 IF문 으로 세션 보안 처리

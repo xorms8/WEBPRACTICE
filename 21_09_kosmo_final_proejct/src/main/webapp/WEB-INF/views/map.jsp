@@ -1,124 +1,131 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>제목</title>
+<title>매장별 최저가</title>
+<link rel="shortcut icon" href="resources/img/favicon.png"
+	type="image/png">
+<link rel="icon" href="resources/img/favicon.png" type="image/png">
 </head>
 <body>
-<div class="loaderbase">
-   <div class="loader"></div>
-   <div class="loaderText"><h1 style="color: white;">상품 데이터를 분석중입니다</h4>
-   
-   </div>
-</div>
-   <div id="root">
-      <!-- S: Index(Home).jsp 의 div 총괄 시작 -->
-      <!-- S: 헤더 부분 시작 -->
-      <header id="header">
-         <div id="header_box">
-            <jsp:include page="/WEB-INF/views/include/header.jsp" />
-            <link rel="stylesheet" href="resources/css/map.css">
-            <link rel="stylesheet"
-               href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
-            <link rel="stylesheet" href="resources/css/slider.css">
-            <link rel="stylesheet"
-               href="resources/css/material-design-iconic-font.min.css">
-         </div>
-      </header>
-      <!-- E: 헤더 부분 끝 -->
-
-		
+	<div class="loaderbase">
+		<div class="loader"></div>
+		<div class="loaderText">
+			<h1 style="color: white;">
+				상품 데이터를 분석중입니다
+				</h4>
+		</div>
+	</div>
+	<div id="root">
+		<!-- S: Index(Home).jsp 의 div 총괄 시작 -->
+		<!-- S: 헤더 부분 시작 -->
+		<header id="header">
+			<div id="header_box">
+				<jsp:include page="/WEB-INF/views/include/header.jsp" />
+				<link rel="stylesheet" href="resources/css/map.css">
+				<link rel="stylesheet"
+					href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+				<link rel="stylesheet" href="resources/css/slider.css">
+				<link rel="stylesheet"
+					href="resources/css/material-design-iconic-font.min.css">
+			</div>
+		</header>
+		<!-- E: 헤더 부분 끝 -->
 		<div
-         class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light"
-         style="margin-bottom: 0px !important; height: 220px; background: #494343 !important">
-         <div class="col-md-5 p-lg-5 mx-auto my-5">
-            <h1 class="display-4 font-weight-normal" style="color: white">최저가 매장 찾기</h1>
-            <p class="lead font-weight-normal" style="color: white">매장 별 검색을 통해 최적의 매장을 찾아보세요 ! </p>
-         </div>
-         <div class="product-device shadow-sm d-none d-md-block"></div>
-         <div
-            class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
-      </div>	
-		
-		
-      <!-- S: 본문 영역 시작 -->
-      <div class="container">
-         <!-- 전체 Container -->
-         <hr />
-         <div class="row">
-            <div class="col-sm-3 col-md-6 col-lg-4">
-               <!-- 왼쪽 컨테이너 구조 -->
-               <div class="float" style="height: 350px">
-                  <form name="search_form" id="search_form" class="form"
-                     onsubmit="return false">
-                     <input type="hidden" name="lat" id="lat" value=""> <input
-                        type="hidden" name="lng" id="lng" value="">
-                     <h2 style="color: black; text-align: center; font-size:38px" >매장찾기</h2>
-                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="search_text" placeholder="매장명" style="height: 50px">
-                        <div class="input-group-append">
-                           <button class="btn btn-outline-secondary" type="button"
-                              onclick="textSearch(); return false;" id="button-addon2">Search</button>
-                        </div>
-                     </div> 
-                     <p class="ex">- 롯데마트, 이마트, GS</p>
-                  </form>
-                  <div class="shop_sort" style="overflow: hidden; outline: none;">
-                     <div class="area on" id="shopArea1" style="outline: none;overflow:scroll;height: 231.4px;"
-                        tabindex="1">
-                        <c:forEach items="${storeList}" var="storeList">
-                           <a href="#" class="box"
-                              onclick="storeMarker(${storeList.lon},${storeList.lat },&#39${storeList.shopName}&#39);return false;">
-                              <input type="hidden" class="storeLon" value="${storeList.lon}"/>
-                              <input type="hidden" class="storeLat" value="${storeList.lat}"/>
-                              <input type="hidden" class="storeName" value="${storeList.shopName}"/>
-                              <p class="subject">${storeList.shopName }</p>
-                              <p class="add">${storeList.address }</p> <c:if
-                                 test="${not empty storeList.shopTelnum}">
-                                 <p class="tel">${storeList.shopTelnum }</p>
-                              </c:if>
-                              <hr/>
-                           </a>
-                        </c:forEach>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="col-sm-9 col-md-6 col-lg-8">
-               <!-- 오른쪽 컨테이너 -->
-               <div id="map" style="width: 100%; height: 350px;"></div>
+			class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light"
+			style="margin-bottom: 50px !important; height: 220px; background: #494343 !important">
+			<div class="col-md-5 p-lg-5 mx-auto my-5">
+				<h1 class="display-4 font-weight-normal" style="color: white">매장별
+					최저가</h1>
+				<p class="lead font-weight-normal" style="color: white">내 주변 최저가
+					매장을 찾아보세요</p>
+			</div>
+			<div class="product-device shadow-sm d-none d-md-block"></div>
+			<div
+				class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+		</div>
 
-            </div>
-            <!-- 상품 목록 출력 컨테이너 -->
-            <div class="col-sm-12" style="margin-top: 15px">
-               <hr />
-               <div class="col-sm-12"
-                  style="text-align: center; margin-bottom: 15px">
-                  <h1>상품 목록</h1>
-               </div>
-               <div class="container productlist"></div>
-            </div>
+		<!-- S: 본문 영역 시작 -->
+		<div class="container">
+			<!-- 전체 Container -->
 
-         </div>
-      </div>
-      <!-- E: 본문 영역 끝 -->
-   </div>
-   <!-- E: Index(Home).jsp 의 div 총괄 끝  -->
-   <footer id="footer">
-      <div id="footer_box">
-         <jsp:include page="/WEB-INF/views/include/footer.jsp" />
-      </div>
-   </footer>
+			<div class="row">
+				<div class="col-sm-3 col-md-6 col-lg-4">
+					<!-- 왼쪽 컨테이너 구조 -->
+					<div class="category-listing">
+						<form name="search_form" id="search_form" class="form"
+							onsubmit="return false">
+							<input type="hidden" name="lat" id="lat" value=""> <input
+								type="hidden" name="lng" id="lng" value="">
+							<h2 style="color: black; text-align: center">매장찾기</h2>
+							<div class="input-group mb-3">
+								<input type="text" class="form-control" id="search_text"
+									placeholder="매장명" style="height: 50px">
+								<div class="input-group-append">
+									<button class="btn btn-outline-secondary" type="button"
+										onclick="textSearch(); return false;" id="button-addon2">Search</button>
+								</div>
+							</div>
+							<p class="ex">- 롯데마트, 이마트, GS</p>
+						</form>
+						<div class="shop_sort" style="overflow: hidden; outline: none;">
+							<div class="area on" id="shopArea1"
+								style="outline: none; overflow: scroll; height: 231.4px;"
+								tabindex="1">
+								<c:forEach items="${storeList}" var="storeList">
+									<a href="#" class="box"
+										onclick="storeMarker(${storeList.lon},${storeList.lat },&#39${storeList.shopName}&#39);return false;">
+										<input type="hidden" class="storeLon" value="${storeList.lon}" />
+										<input type="hidden" class="storeLat" value="${storeList.lat}" />
+										<input type="hidden" class="storeName"
+										value="${storeList.shopName}" />
+										<p class="subject">${storeList.shopName }</p>
+										<p class="add">${storeList.address }</p> <c:if
+											test="${not empty storeList.shopTelnum}">
+											<p class="tel">${storeList.shopTelnum }</p>
+										</c:if>
+										<hr style="border-bottom: 1px solid #f15d30" />
+									</a>
+								</c:forEach>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-9 col-md-6 col-lg-8">
+					<!-- 오른쪽 컨테이너 -->
+					<div id="map" class="category-listing" style="width: 100%; height: 100%;"></div>
+
+				</div>
+				<!-- 상품 목록 출력 컨테이너 -->
+				<div class="col-sm-12" style="margin-top: 15px">
+					<hr style="border-bottom: 1px solid #f15d30" />
+					<div class="col-sm-12"
+						style="text-align: center; margin-bottom: 15px">
+						<h1>상품 목록</h1>
+					</div>
+					<div class="container productlist"></div>
+				</div>
+
+			</div>
+		</div>
+		<!-- E: 본문 영역 끝 -->
+	</div>
+	<!-- E: Index(Home).jsp 의 div 총괄 끝  -->
+	<footer id="footer">
+		<div id="footer_box">
+			<jsp:include page="/WEB-INF/views/include/footer.jsp" />
+		</div>
+	</footer>
 </body>
 </html>
 <script type="text/javascript"
-   src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f8a16e73608a4a6a4fe93cd542e3eb76"></script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f8a16e73608a4a6a4fe93cd542e3eb76"></script>
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 

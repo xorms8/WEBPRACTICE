@@ -7,7 +7,7 @@ function openSocket() {
 		return;
 	}
 	// 웹소켓 객체 만드는 코드
-	ws = new WebSocket("ws://localhost:8082/zFinalProject/echo.do");
+	ws = new WebSocket("ws://localhost:8000/zFinalProject/echo.do");
 	
 	ws.onopen = function(event){
 		send2();
@@ -25,10 +25,6 @@ function openSocket() {
 	
 	ws.onclose = function(event){
 		$('#chat-comments-area').append("대화종료");
-		
-		setInterval(function(){
-			location.reload();
-		}, 2300)
 	}
 };
 
